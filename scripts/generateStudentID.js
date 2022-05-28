@@ -7,7 +7,8 @@ export const generateStudentID = () => {
   return (
     /* First we want to document the year the student is registering*/
     moment().format("YYYY") +
-    "-" /* Separate the year with a hyphen */ +
+    "-" /* Separate the year
+     with a hyphen */ +
     Math.floor(Math.random() * (MAX - MIN + 1) + MIN)
   );
 };
