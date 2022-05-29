@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import {
   Box,
   Flex,
@@ -16,8 +14,6 @@ import {
   IconProps,
   Icon,
 } from "@chakra-ui/react";
-
-import { useState } from "react";
 
 const avatars = [
   {
@@ -42,13 +38,7 @@ const avatars = [
   },
 ];
 
-function LoginComponent() {
-  const [credentials, setCredentials] = useState({
-    email: "",
-    password: "",
-    schoolCode: "",
-  });
-
+export default function LoginComponent() {
   return (
     <Box position={"relative"}>
       <Container
@@ -142,55 +132,79 @@ function LoginComponent() {
               lineHeight={1.1}
               fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
             >
-              Log in
-            </Heading>
-          </Stack>
-          <form>
-            <Box as={"form"} mt={10}>
-              <Stack spacing={4}>
-                <Input
-                  placeholder="Email"
-                  type="email"
-                  bg={"gray.100"}
-                  border={0}
-                  color={"gray.500"}
-                  _placeholder={{
-                    color: "gray.500",
-                  }}
-                />
-                <Input
-                  placeholder="Password"
-                  bg={"gray.100"}
-                  type="password"
-                  border={0}
-                  color={"gray.500"}
-                  _placeholder={{
-                    color: "gray.500",
-                  }}
-                />
-              </Stack>
-
-              <Button
-                fontFamily={"heading"}
-                mt={8}
-                w={"full"}
+              Create your account
+              <Text
+                as={"span"}
                 bgGradient="linear(to-r, red.400,pink.400)"
-                color={"white"}
-                _hover={{
-                  bgGradient: "linear(to-r, red.400,pink.400)",
-                  boxShadow: "xl",
-                }}
+                bgClip="text"
               >
-                Submit
-              </Button>
-            </Box>
-          </form>
+                !
+              </Text>
+            </Heading>
+            <Text color={"gray.500"} fontSize={{ base: "sm", sm: "md" }}>
+              We’re looking for amazing engineers just like you! Become a part
+              of our rockstar engineering team and skyrocket your career!
+            </Text>
+          </Stack>
+          <Box as={"form"} mt={10}>
+            <Stack spacing={4}>
+              <Input
+                placeholder="First name"
+                type="text"
+                bg={"gray.100"}
+                border={0}
+                color={"gray.500"}
+                _placeholder={{
+                  color: "gray.500",
+                }}
+              />
+              <Input
+                placeholder="Last name"
+                type="text"
+                bg={"gray.100"}
+                border={0}
+                color={"gray.500"}
+                _placeholder={{
+                  color: "gray.500",
+                }}
+              />
+              <Input
+                placeholder="Email"
+                type="email"
+                bg={"gray.100"}
+                border={0}
+                color={"gray.500"}
+                _placeholder={{
+                  color: "gray.500",
+                }}
+              />
+              <Input
+                placeholder="Password"
+                bg={"gray.100"}
+                type="password"
+                border={0}
+                color={"gray.500"}
+                _placeholder={{
+                  color: "gray.500",
+                }}
+              />
+            </Stack>
+            <Button
+              fontFamily={"heading"}
+              mt={8}
+              w={"full"}
+              bgGradient="linear(to-r, red.400,pink.400)"
+              color={"white"}
+              _hover={{
+                bgGradient: "linear(to-r, red.400,pink.400)",
+                boxShadow: "xl",
+              }}
+            >
+              Submit
+            </Button>
+          </Box>
           form
         </Stack>
-
-        <br />
-        <br />
-        <p>{JSON.stringify(credentials, null, 2)}</p>
       </Container>
       <Blur
         position={"absolute"}
@@ -223,5 +237,3 @@ export const Blur = (props: IconProps) => {
     </Icon>
   );
 };
-
-export default LoginComponent;
