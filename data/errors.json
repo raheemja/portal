@@ -1,0 +1,212 @@
+[
+  {
+    "code": "auth/invalid-email",
+    "icon": "",
+    "title": "Invalid Email",
+    "message": "Please check your email and try again",
+    "solution": ""
+  },
+  {
+    "code": "auth/wrong-password",
+    "icon": "",
+    "title": "Hmmm...",
+    "message": "Please check your email and password",
+    "solution": ""
+  },
+  {
+    "code": "auth/user-not-found",
+    "icon": "warning",
+    "title": "We can't find that account",
+    "message": "Please check your email and try again",
+    "solution": ""
+  },
+  {
+    "code": "auth/network-request-failed",
+    "icon": "info",
+    "title": "Not Connected",
+    "message": "Please check your internet connection and try again",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  }
+]

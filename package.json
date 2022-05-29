@@ -30,6 +30,7 @@
     "react-hook-form": "^7.31.3",
     "react-icons": "^4.3.1",
     "react-redux": "^8.0.2",
+    "sweetalert2": "^11.4.17",
     "uniqid": "^5.4.0"
   },
   "devDependencies": {
