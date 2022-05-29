@@ -3,8 +3,6 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import getError from "./getError";
 
-let error;
-
 export const login = (props) => {
   if (_.isEmpty(props.email) && _.isEmpty(props.password)) {
     getError("app/missing-credentials");

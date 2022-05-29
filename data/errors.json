@@ -28,73 +28,73 @@
     "solution": ""
   },
   {
-    "code": "",
-    "icon": "",
+    "code": "auth/missing-verification-code",
+    "icon": "Information",
     "title": "",
-    "message": "",
+    "message": "Please enter your verification code",
     "solution": ""
   },
   {
-    "code": "",
+    "code": "auth/missing-phone-number",
     "icon": "",
     "title": "",
-    "message": "",
+    "message": "Please enter your phone number",
     "solution": ""
   },
   {
-    "code": "",
-    "icon": "",
-    "title": "",
-    "message": "",
+    "code": "auth/user-signed-out",
+    "icon": "error",
+    "title": "Please log in",
+    "message": "Please log in to continue",
     "solution": ""
   },
   {
-    "code": "",
-    "icon": "",
-    "title": "",
-    "message": "",
+    "code": "auth/user-disabled",
+    "icon": "info",
+    "title": "Hmmm...",
+    "message": "You can't log in right now. Please contact your administrator.",
     "solution": ""
   },
   {
-    "code": "",
-    "icon": "",
-    "title": "",
-    "message": "",
+    "code": "auth/weak-password",
+    "icon": "warning",
+    "title": "Choose another password",
+    "message": "The password you entered doesn't match the minimum security requirements.",
     "solution": ""
   },
   {
-    "code": "",
+    "code": "auth/timeout",
     "icon": "",
     "title": "",
-    "message": "",
+    "message": "Your session has timed out. Please log in again.",
     "solution": ""
   },
   {
-    "code": "",
+    "code": "auth/captcha-check-failed",
     "icon": "",
     "title": "",
-    "message": "",
+    "message": "Please try again",
     "solution": ""
   },
   {
-    "code": "",
+    "code": "auth/email-already-in-use",
     "icon": "",
     "title": "",
-    "message": "",
+    "message": "An account with that email already exists. Please log in to continue",
     "solution": ""
   },
   {
-    "code": "",
-    "icon": "",
-    "title": "",
-    "message": "",
+    "code": "auth/requires-recent-login",
+    "icon": "Log in required",
+    "title": "warning",
+    "message": "Please log in to continue",
     "solution": ""
   },
   {
-    "code": "",
+    "code": "auth/invalid-api-key",
     "icon": "",
-    "title": "",
-    "message": "",
+    "title": "Hmmm...",
+    "message": "Something went wrong. Please try again.",
     "solution": ""
   },
   {
