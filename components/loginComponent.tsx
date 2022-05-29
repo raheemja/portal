@@ -43,11 +43,25 @@ const avatars = [
 ];
 
 function LoginComponent() {
+  // The credentials will be used to stored the user credentials that
+  // the user entered
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
     schoolCode: "",
   });
+
+  const handleChange = (e) => {
+    // setDisabled(_.isEmpty(user.email) && _.isEmpty(user.password));
+
+    const { name, value } = e.target;
+    setCredentials((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+
+    //  setDisabled(_.isEmpty(user.email) && _.isEmpty(user.password));
+  };
 
   return (
     <Box position={"relative"}>
@@ -144,53 +158,63 @@ function LoginComponent() {
             >
               Log in
             </Heading>
+            <Text color={"gray.500"} fontSize={{ base: "sm", sm: "md" }}>
+              We’re looking for amazing engineers just like you! Become a part
+              of our rockstar engineering team and skyrocket your career!
+            </Text>
           </Stack>
-          <form>
-            <Box as={"form"} mt={10}>
-              <Stack spacing={4}>
-                <Input
-                  placeholder="Email"
-                  type="email"
-                  bg={"gray.100"}
-                  border={0}
-                  color={"gray.500"}
-                  _placeholder={{
-                    color: "gray.500",
-                  }}
-                />
-                <Input
-                  placeholder="Password"
-                  bg={"gray.100"}
-                  type="password"
-                  border={0}
-                  color={"gray.500"}
-                  _placeholder={{
-                    color: "gray.500",
-                  }}
-                />
-              </Stack>
-
-              <Button
-                fontFamily={"heading"}
-                mt={8}
-                w={"full"}
-                bgGradient="linear(to-r, red.400,pink.400)"
-                color={"white"}
-                _hover={{
-                  bgGradient: "linear(to-r, red.400,pink.400)",
-                  boxShadow: "xl",
+          <Box as={"form"} mt={10}>
+            <Stack spacing={4}>
+              <Input
+                placeholder="Email"
+                type="email"
+                name="email"
+                id="email"
+                bg={"gray.100"}
+                border={0}
+                color={"gray.500"}
+                _placeholder={{
+                  color: "gray.500",
                 }}
-              >
-                Submit
-              </Button>
-            </Box>
-          </form>
+                onChange={(e) => {
+                  handleChange(e);
+                }}
+              />
+              <Input
+                placeholder="Password"
+                bg={"gray.100"}
+                type="password"
+                name="password"
+                id="password"
+                border={0}
+                color={"gray.500"}
+                _placeholder={{
+                  color: "gray.500",
+                }}
+                onChange={(e) => {
+                  handleChange(e);
+                }}
+              />
+            </Stack>
+
+            <Button
+              fontFamily={"heading"}
+              mt={8}
+              w={"full"}
+              bgGradient="linear(to-r, red.400,pink.400)"
+              color={"white"}
+              _hover={{
+                color: "pink.400",
+              }}
+              onClick={(e) => {
+                e.preventDefault();
+              }}
+            >
+              Submit
+            </Button>
+          </Box>
           form
         </Stack>
-
-        <br />
-        <br />
-        <p>{JSON.stringify(credentials, null, 2)}</p>
       </Container>
       <Blur
         position={"absolute"}
