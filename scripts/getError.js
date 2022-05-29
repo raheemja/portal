@@ -1,11 +1,14 @@
 import _ from "lodash";
-import errors from "../data/errors.json";
+import Swal from "sweetalert2";
 
 export default function getError(code) {
-  return (
-    _.find(errors, { code }) || {
-      title: "Hmmm...",
-      message: "Something went wrong",
-    }
-  );
+  const errors = require("../data/errors.json");
+  const error = _.find(errors, { code }) || {};
+
+  Swal.fire({
+    title: error.title,
+    text: error.message,
+    icon: error.icon || "error",
+    confirmButtonText: "Ok",
+  });
 }

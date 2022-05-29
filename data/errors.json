@@ -208,5 +208,159 @@
     "title": "",
     "message": "",
     "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "",
+    "icon": "",
+    "title": "",
+    "message": "",
+    "solution": ""
+  },
+  {
+    "code": "app/missing-credentials",
+    "icon": "",
+    "title": "Hmm...",
+    "message": "Email and password cannot be blank",
+    "solution": ""
+  },
+  {
+    "code": "app/missing-email",
+    "icon": "info",
+    "title": "",
+    "message": "Please enter your email",
+    "solution": ""
+  },
+  {
+    "code": "app/missing-password",
+    "icon": "",
+    "title": "info",
+    "message": "Please enter your password",
+    "solution": ""
   }
 ]
