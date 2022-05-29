@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Link from "next/link";
 
 import {
@@ -17,28 +18,39 @@ import {
   Icon,
 } from "@chakra-ui/react";
 
-import { useState } from "react";
+import axios from "axios";
+import { login } from "../scripts/login";
 
 const avatars = [
   {
-    name: "",
-    url: "",
+    name: "Jamaica",
+    url:
+      "https://vectorflags.s3-us-west-2.amazonaws.com/flags/jm-sphere-01.png",
+  },
+  {
+    name: "Trindad & Tobago",
+    url:
+      "https://vectorflags.s3-us-west-2.amazonaws.com/flags/tt-sphere-01.png",
+  },
+  {
+    name: "Barbados",
+    url:
+      "https://vectorflags.s3-us-west-2.amazonaws.com/flags/bb-sphere-01.png",
+  },
+  {
+    name: "St. Lucia",
+    url:
+      "https://vectorflags.s3-us-west-2.amazonaws.com/flags/lc-circle-01.png",
+  },
+  {
+    name: "Belize",
+    url:
+      "https://vectorflags.s3-us-west-2.amazonaws.com/flags/bz-circle-01.png",
   },
   {
     name: "",
-    url: "",
-  },
-  {
-    name: "",
-    url: "",
-  },
-  {
-    name: "",
-    url: "",
-  },
-  {
-    name: "",
-    url: "",
+    url:
+      "https://vectorflags.s3-us-west-2.amazonaws.com/flags/us-circle-01.png",
   },
 ];
 
@@ -103,7 +115,6 @@ function LoginComponent() {
                     height: "full",
                     rounded: "full",
                     transform: "scale(1.125)",
-                    bgGradient: "linear(to-bl, red.400,pink.400)",
                     position: "absolute",
                     zIndex: -1,
                     top: 0,
@@ -208,6 +219,7 @@ function LoginComponent() {
               }}
               onClick={(e) => {
                 e.preventDefault();
+                login(credentials);
               }}
             >
               Submit
