@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Jamaica",
+    "url": "https://vectorflags.s3-us-west-2.amazonaws.com/flags/jm-sphere-01.png"
+  },
+  {
+    "name": "Trindad & Tobago",
+    "url": "https://vectorflags.s3-us-west-2.amazonaws.com/flags/tt-sphere-01.png"
+  },
+  {
+    "name": "Barbados",
+    "url": "https://vectorflags.s3-us-west-2.amazonaws.com/flags/bb-sphere-01.png"
+  },
+  {
+    "name": "St. Lucia",
+    "url": "https://vectorflags.s3-us-west-2.amazonaws.com/flags/lc-circle-01.png"
+  },
+  {
+    "name": "",
+    "url": "https://vectorflags.s3-us-west-2.amazonaws.com/flags/us-circle-01.png"
+  }
+]

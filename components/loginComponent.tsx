@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import {
   Box,
@@ -18,43 +19,22 @@ import {
   Icon,
 } from "@chakra-ui/react";
 
+// Redux components and hooks
+import { initialize } from "../features/user/userSlice";
+import { useSelector, useDispatch } from "react-redux";
+
 import axios from "axios";
-import { login } from "../scripts/login";
 
-const avatars = [
-  {
-    name: "Jamaica",
-    url:
-      "https://vectorflags.s3-us-west-2.amazonaws.com/flags/jm-sphere-01.png",
-  },
-  {
-    name: "Trindad & Tobago",
-    url:
-      "https://vectorflags.s3-us-west-2.amazonaws.com/flags/tt-sphere-01.png",
-  },
-  {
-    name: "Barbados",
-    url:
-      "https://vectorflags.s3-us-west-2.amazonaws.com/flags/bb-sphere-01.png",
-  },
-  {
-    name: "St. Lucia",
-    url:
-      "https://vectorflags.s3-us-west-2.amazonaws.com/flags/lc-circle-01.png",
-  },
-  {
-    name: "Belize",
-    url:
-      "https://vectorflags.s3-us-west-2.amazonaws.com/flags/bz-circle-01.png",
-  },
-  {
-    name: "",
-    url:
-      "https://vectorflags.s3-us-west-2.amazonaws.com/flags/us-circle-01.png",
-  },
-];
+// Scripts
+import _ from "lodash";
+import getError from "../scripts/getError";
 
-function LoginComponent() {
+function LoginComponent(props) {
+  // Router object
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const avatars = require("../data/homeAvatars.json");
+
   // The credentials will be used to stored the user credentials that
   // the user entered
   const [credentials, setCredentials] = useState({
@@ -64,16 +44,38 @@ function LoginComponent() {
   });
 
   const handleChange = (e) => {
-    // setDisabled(_.isEmpty(user.email) && _.isEmpty(user.password));
-
     const { name, value } = e.target;
     setCredentials((prevState) => ({
       ...prevState,
       [name]: value,
     }));
-
-    //  setDisabled(_.isEmpty(user.email) && _.isEmpty(user.password));
   };
+
+  async function login() {
+    const { email, password } = credentials;
+
+    if (_.isEmpty(email) && _.isEmpty(password)) {
+      getError("app/missing-credentials");
+    } else if (_.isEmpty(email)) {
+      getError("app/missing-email");
+    } else if (_.isEmpty(password)) {
+      getError("app/missing-password");
+    } else {
+      await axios({
+        url: "/api/auth/login",
+        method: "POST",
+        params: credentials,
+      }).then(function (response) {
+        if (response.data.error) {
+          getError(response.data.error.code);
+          response = { auth: false };
+        } else {
+          // Cookies.set("sis-uid", response.data.uid, { expires: 7 });
+          router.push(props.href || "/dashboard");
+        }
+      });
+    }
+  }
 
   return (
     <Box position={"relative"}>
@@ -219,7 +221,7 @@ function LoginComponent() {
               }}
               onClick={(e) => {
                 e.preventDefault();
-                login(credentials);
+                login();
               }}
             >
               Submit

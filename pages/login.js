@@ -12,9 +12,15 @@ const Login = () => {
   return (
     <>
       <Seo title="Log in" description="Log into your Global SIS account." />
-      <LoginComponent />
+      <LoginComponent href="/dashboard" />
     </>
   );
 };
+
+export async function getServerSideProps(context) {
+  return {
+    props: {},
+  };
+}
 
 export default Login;
