@@ -11,7 +11,7 @@ import LoginComponent from "../components/loginComponent.tsx";
 const Login = () => {
   return (
     <>
-      <Seo title="Log in" />
+      <Seo title="Log in" description="Log into your Global SIS account." />
       <LoginComponent />
     </>
   );

@@ -1,14 +1,12 @@
-import Image from "next/image";
-
 // Components
 import Seo from "../components/seo";
-import Layout from "../components/layout";
+import LoginComponent from "../components/loginComponent.tsx";
 
 const Home = () => {
   return (
     <div>
       <Seo title="Home" description="" />
-      <Layout></Layout>
+      <LoginComponent />
     </div>
   );
 };
