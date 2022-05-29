@@ -23,6 +23,9 @@ import {
   ChevronRightIcon,
 } from "@chakra-ui/icons";
 
+// Logo
+import { Logo } from "../logos/logo";
+
 export default function Navigation() {
   const { isOpen, onToggle } = useDisclosure();
 
@@ -122,7 +125,7 @@ const DesktopNav = () => {
             <PopoverTrigger>
               <Link
                 p={2}
-                href={navItem.href ?? "#"}
+                href={navItem.href}
                 fontSize={"sm"}
                 fontWeight={500}
                 color={linkColor}
@@ -271,6 +274,10 @@ interface NavItem {
 
 const NAV_ITEMS: Array<NavItem> = [
   {
+    label: "Dashboard",
+    href: "/dashboard",
+  },
+  {
     label: "Inspiration",
     children: [
       {
@@ -302,10 +309,6 @@ const NAV_ITEMS: Array<NavItem> = [
   },
   {
     label: "Learn Design",
-    href: "#",
-  },
-  {
-    label: "Hire Designers",
     href: "#",
   },
 ];

@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+
 import {
   IconButton,
   Avatar,
@@ -22,6 +23,7 @@ import {
   MenuItem,
   MenuList,
 } from "@chakra-ui/react";
+
 import {
   FiHome,
   FiTrendingUp,
@@ -32,13 +34,17 @@ import {
   FiBell,
   FiChevronDown,
 } from "react-icons/fi";
+
 import { IconType } from "react-icons";
 import { ReactText } from "react";
+
+import StudentMenu from "../menus/student.tsx";
 
 interface LinkItemProps {
   name: string;
   icon: IconType;
 }
+
 const LinkItems: Array<LinkItemProps> = [
   { name: "Home", icon: FiHome },
   { name: "Trending", icon: FiTrendingUp },
@@ -99,11 +105,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
-      {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
-          {link.name}
-        </NavItem>
-      ))}
+      <StudentMenu />
     </Box>
   );
 };
@@ -180,7 +182,6 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       >
         Logo
       </Text>
-
       <HStack spacing={{ base: "0", md: "6" }}>
         <IconButton
           size="lg"
