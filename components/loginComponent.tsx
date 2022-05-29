@@ -53,15 +53,15 @@ export default function LoginComponent() {
             lineHeight={1.1}
             fontSize={{ base: "3xl", sm: "4xl", md: "5xl", lg: "6xl" }}
           >
-            Senior web designers{" "}
+            Global{" "}
             <Text
               as={"span"}
               bgGradient="linear(to-r, red.400,pink.400)"
               bgClip="text"
             >
-              &
+              Student
             </Text>{" "}
-            Full-Stack Developers
+            Information System
           </Heading>
           <Stack direction={"row"} spacing={4} align={"center"}>
             <AvatarGroup>
@@ -188,9 +188,6 @@ export default function LoginComponent() {
                   color: "gray.500",
                 }}
               />
-              <Button fontFamily={"heading"} bg={"gray.200"} color={"gray.800"}>
-                Upload CV
-              </Button>
             </Stack>
             <Button
               fontFamily={"heading"}
