@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-
+import Link from "next/link";
 import {
   IconButton,
   Avatar,
@@ -10,7 +10,6 @@ import {
   VStack,
   Icon,
   useColorModeValue,
-  Link,
   Drawer,
   DrawerContent,
   Text,
@@ -218,7 +217,11 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
               bg={useColorModeValue("white", "gray.900")}
               borderColor={useColorModeValue("gray.200", "gray.700")}
             >
-              <MenuItem>Profile</MenuItem>
+              <>
+                <Link href={`/app/user/${activeUser.uid}`}>
+                  <MenuItem>Profile</MenuItem>
+                </Link>
+              </>
               <MenuItem>Settings</MenuItem>
               <MenuItem>Billing</MenuItem>
               <MenuDivider />

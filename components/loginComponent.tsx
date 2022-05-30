@@ -71,7 +71,6 @@ function LoginComponent(props) {
           response = { auth: false };
         } else {
           dispatch(initialize(response.data));
-          alert(JSON.stringify(response.data.uid));
           Cookies.set("sis-uid", response.data.uid);
           router.push(props.href || "/app/dashboard");
         }

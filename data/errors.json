@@ -336,10 +336,10 @@
     "solution": ""
   },
   {
-    "code": "",
-    "icon": "",
-    "title": "",
-    "message": "",
+    "code": "app/user-not-found",
+    "icon": "warning",
+    "title": "Hmmm...",
+    "message": "We can't load that user right now. Please try again later.",
     "solution": ""
   },
   {

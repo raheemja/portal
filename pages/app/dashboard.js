@@ -15,76 +15,7 @@ const DashboardPage = () => {
       <Seo title="Dashboard" />
       <AppLayout>
         <Col md={8}>
-          <Row>
-            <Card md={12}>
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-            </Card>
-
-            <Card md={4}>
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-            </Card>
-
-            <Card md={4}>
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-            </Card>
-
-            <Card md={4}>
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-            </Card>
-          </Row>
-        </Col>
-        <Col md={4}>
-          <Card>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-          </Card>
+          <Row></Row>
         </Col>
       </AppLayout>
     </>
