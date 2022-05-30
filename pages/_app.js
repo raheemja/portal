@@ -4,6 +4,9 @@ import { Provider } from "react-redux";
 // Sore
 import store from "../app/store";
 
+// Libraries
+import "../styles/bootstrap-grid.css";
+
 function MyApp({ Component, pageProps }) {
   return (
     <>

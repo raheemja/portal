@@ -98,10 +98,10 @@
     "solution": ""
   },
   {
-    "code": "",
+    "code": "auth/admin-restricted-operation",
     "icon": "",
-    "title": "",
-    "message": "",
+    "title": "Hmmm ...",
+    "message": "You're not permitted to do that",
     "solution": ""
   },
   {

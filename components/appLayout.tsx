@@ -38,23 +38,17 @@ import {
 import { IconType } from "react-icons";
 import { ReactText } from "react";
 
+import { Row } from "react-bootstrap";
+
+// Customized menus
 import StudentMenu from "../menus/student.tsx";
 
-interface LinkItemProps {
-  name: string;
-  icon: IconType;
-}
-
-const LinkItems: Array<LinkItemProps> = [
-  { name: "Home", icon: FiHome },
-  { name: "Trending", icon: FiTrendingUp },
-  { name: "Explore", icon: FiCompass },
-  { name: "Favourites", icon: FiStar },
-  { name: "Settings", icon: FiSettings },
-];
+// Redux Components
+import { useSelector, userDispatch } from "react-redux";
 
 export default function AppLayout({ children }: { children: ReactNode }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
       <SidebarContent
@@ -77,7 +71,7 @@ export default function AppLayout({ children }: { children: ReactNode }) {
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
       <Box ml={{ base: 0, md: 60 }} p="4">
-        {children}
+        <Row>{children}</Row>
       </Box>
     </Box>
   );
@@ -101,7 +95,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
+          Global SIS
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
@@ -153,7 +147,10 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
 interface MobileProps extends FlexProps {
   onOpen: () => void;
 }
+
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
+  const activeUser = useSelector((state) => state.user);
+
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -180,7 +177,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         fontFamily="monospace"
         fontWeight="bold"
       >
-        Logo
+        Global SIS
       </Text>
       <HStack spacing={{ base: "0", md: "6" }}>
         <IconButton
@@ -197,21 +194,19 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
               _focus={{ boxShadow: "none" }}
             >
               <HStack>
-                <Avatar
-                  size={"sm"}
-                  src={
-                    "https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
-                  }
-                />
+                <Avatar size={"sm"} src={activeUser.role} />
                 <VStack
                   display={{ base: "none", md: "flex" }}
                   alignItems="flex-start"
                   spacing="1px"
                   ml="2"
                 >
-                  <Text fontSize="sm">Justina Clark</Text>
+                  {/* Name of the logged in user */}
+                  <Text fontSize="sm">
+                    {activeUser.firstName + " " + activeUser.lastName}
+                  </Text>
                   <Text fontSize="xs" color="gray.600">
-                    Admin
+                    {activeUser.role}
                   </Text>
                 </VStack>
                 <Box display={{ base: "none", md: "flex" }}>

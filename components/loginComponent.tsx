@@ -30,7 +30,6 @@ import _ from "lodash";
 import getError from "../scripts/getError";
 
 function LoginComponent(props) {
-  // Router object
   const router = useRouter();
   const dispatch = useDispatch();
   const avatars = require("../data/homeAvatars.json");
@@ -70,8 +69,9 @@ function LoginComponent(props) {
           getError(response.data.error.code);
           response = { auth: false };
         } else {
+          dispatch(initialize(response.data));
           // Cookies.set("sis-uid", response.data.uid, { expires: 7 });
-          router.push(props.href || "/dashboard");
+          router.push(props.href || "/app/dashboard");
         }
       });
     }

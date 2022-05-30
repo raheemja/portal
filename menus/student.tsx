@@ -21,11 +21,11 @@ interface LinkItemProps {
 }
 
 const LinkItems: Array<LinkItemProps> = [
-  { name: "Dashboard", icon: FiHome, href: "/dashboard" },
-  { name: "Courses", icon: FiCompass, href: "/courses" },
-  { name: "Calendar", icon: FiCalendar, href: "/calendar" },
-  { name: "Bursary", icon: FiCreditCard, href: "/bursary" },
-  { name: "Settings", icon: FiSettings, href: "/settings" },
+  { name: "Dashboard", icon: FiHome, href: "/app/dashboard" },
+  { name: "Courses", icon: FiCompass, href: "/app/courses" },
+  { name: "Calendar", icon: FiCalendar, href: "/app/calendar" },
+  { name: "Bursary", icon: FiCreditCard, href: "/app/bursary" },
+  { name: "Settings", icon: FiSettings, href: "/app/settings" },
 ];
 
 export default function StudentMenu() {

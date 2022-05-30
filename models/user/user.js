@@ -6,6 +6,7 @@ export function UserModel() {
     activeSchoolCode: process.env.NEXT_PUBLIC_SCHOOL_CODE,
     photoUrl: "",
     isActive: true,
+    avatar: "",
     email: "",
     username: "",
     firstName: "",
