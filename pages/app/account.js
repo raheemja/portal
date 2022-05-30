@@ -17,4 +17,10 @@ const AccountPage = () => {
   );
 };
 
+export async function getServerSideProps(context) {
+  return {
+    props: {},
+  };
+}
+
 export default AccountPage;

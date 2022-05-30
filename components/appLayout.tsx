@@ -93,7 +93,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       {...rest}
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
+        <Text fontSize="2xl" fontWeight="bold">
           Global SIS
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
@@ -173,7 +173,6 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       <Text
         display={{ base: "flex", md: "none" }}
         fontSize="2xl"
-        fontFamily="monospace"
         fontWeight="bold"
       >
         Global SIS

@@ -5,7 +5,7 @@ import AppLayout from "../../components/appLayout.tsx";
 
 import Seo from "../../components/seo";
 
-const Login = () => {
+const BursaryPage = () => {
   return (
     <>
       <Seo title="Bursary" />
@@ -14,4 +14,10 @@ const Login = () => {
   );
 };
 
-export default Login;
+export async function getServerSideProps(context) {
+  return {
+    props: {},
+  };
+}
+
+export default BursaryPage;

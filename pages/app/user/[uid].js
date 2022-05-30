@@ -62,4 +62,10 @@ function UserAccountPage(props) {
   );
 }
 
+export async function getServerSideProps(context) {
+  return {
+    props: {},
+  };
+}
+
 export default UserAccountPage;

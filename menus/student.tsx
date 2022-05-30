@@ -11,7 +11,7 @@ import {
   FiChevronDown,
 } from "react-icons/fi";
 import { IconType } from "react-icons";
-import { useColorModeValue } from "@chakra-ui/react";
+import { useColorModeValue, Text } from "@chakra-ui/react";
 import CalendarIcon from "../fun/calendar";
 
 interface LinkItemProps {
@@ -35,7 +35,7 @@ export default function StudentMenu() {
     <>
       {LinkItems.map((link) => (
         <NavItem key={link.name} icon={link.icon} href={link.href}>
-          {link.name}
+          <Text>{link.name}</Text>
         </NavItem>
       ))}
     </>

@@ -9,6 +9,8 @@ import AppLayout from "../../components/appLayout.tsx";
 import Seo from "../../components/seo";
 import Card from "../../common/card";
 
+import Todo from "../../components/dashboard/todo/todo";
+
 const DashboardPage = () => {
   return (
     <>
@@ -16,10 +18,20 @@ const DashboardPage = () => {
       <AppLayout>
         <Col md={8}>
           <Row></Row>
+          <Card />
+        </Col>
+        <Col md={4}>
+          <Todo />
         </Col>
       </AppLayout>
     </>
   );
 };
+
+export async function getServerSideProps(context) {
+  return {
+    props: {},
+  };
+}
 
 export default DashboardPage;

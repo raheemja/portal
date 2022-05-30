@@ -12,7 +12,7 @@ const Login = () => {
   return (
     <>
       <Seo title="Log in" description="Log into your Global SIS account." />
-      <LoginComponent href="/dashboard" />
+      <LoginComponent href="/app/dashboard" />
     </>
   );
 };

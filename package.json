@@ -33,7 +33,8 @@
     "react-icons": "^4.3.1",
     "react-redux": "^8.0.2",
     "sweetalert2": "^11.4.17",
-    "uniqid": "^5.4.0"
+    "uniqid": "^5.4.0",
+    "uuidv4": "^6.2.13"
   },
   "devDependencies": {
     "eslint": "8.16.0",
