@@ -42,9 +42,7 @@ function UserAccountPage(props) {
         <Col>
           <Row>
             <Col xs={12} lg={8}>
-              <Card>
-                <Heading>{data.firstName + " " + data.lastName}</Heading>
-              </Card>
+              <Card></Card>
             </Col>
             <Col xs={12} lg={4}>
               <Card></Card>
