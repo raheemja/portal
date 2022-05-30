@@ -1,5 +1,7 @@
 // UI Components
-import { SimpleGrid, Box, Text } from "@chakra-ui/react";
+import { SimpleGrid, Box, Text, Heading } from "@chakra-ui/react";
+import { Row, Col } from "react-bootstrap";
+import Card from "../../../common/card";
 
 // Components
 import Seo from "../../../components/seo";
@@ -37,6 +39,19 @@ function UserAccountPage(props) {
     <>
       <Seo title="Account" />
       <AppLayout>
+        <Col>
+          <Row>
+            <Col xs={12} lg={8}>
+              <Card>
+                <Heading>{data.firstName + " " + data.lastName}</Heading>
+              </Card>
+            </Col>
+            <Col xs={12} lg={4}>
+              <Card></Card>
+            </Col>
+          </Row>
+        </Col>
+
         <Text>
           {isLoading
             ? "Loading"
