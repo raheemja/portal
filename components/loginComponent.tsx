@@ -28,6 +28,7 @@ import axios from "axios";
 // Scripts
 import _ from "lodash";
 import getError from "../scripts/getError";
+import Cookies from "js-cookie";
 
 function LoginComponent(props) {
   const router = useRouter();
@@ -70,7 +71,8 @@ function LoginComponent(props) {
           response = { auth: false };
         } else {
           dispatch(initialize(response.data));
-          // Cookies.set("sis-uid", response.data.uid, { expires: 7 });
+          alert(JSON.stringify(response.data.uid));
+          Cookies.set("sis-uid", response.data.uid);
           router.push(props.href || "/app/dashboard");
         }
       });

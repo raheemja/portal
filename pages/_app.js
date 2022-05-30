@@ -1,5 +1,6 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { Provider } from "react-redux";
+import Worker from "../scripts/worker";
 
 // Sore
 import store from "../app/store";
@@ -12,6 +13,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Provider store={store}>
         <ChakraProvider>
+          <Worker />
           <Component {...pageProps} />
         </ChakraProvider>
       </Provider>
