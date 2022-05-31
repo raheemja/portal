@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 // Scripts and libraries
-import { useSelector, userDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import _ from "lodash";
 import axios from "axios";
 
