@@ -21,6 +21,7 @@ import {
   MenuDivider,
   MenuItem,
   MenuList,
+  Container,
 } from "@chakra-ui/react";
 
 import {
@@ -44,35 +45,39 @@ import StudentMenu from "../menus/student.tsx";
 
 // Redux Components
 import { useSelector, userDispatch } from "react-redux";
+import Worker from "../scripts/worker";
 
 export default function AppLayout({ children }: { children: ReactNode }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
-      <SidebarContent
-        onClose={() => onClose}
-        display={{ base: "none", md: "block" }}
-      />
-      <Drawer
-        autoFocus={false}
-        isOpen={isOpen}
-        placement="left"
-        onClose={onClose}
-        returnFocusOnClose={false}
-        onOverlayClick={onClose}
-        size="full"
-      >
-        <DrawerContent>
-          <SidebarContent onClose={onClose} />
-        </DrawerContent>
-      </Drawer>
-      {/* mobilenav */}
-      <MobileNav onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4">
-        <Row>{children}</Row>
+    <>
+      <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
+        <SidebarContent
+          onClose={() => onClose}
+          display={{ base: "none", md: "block" }}
+        />
+        <Drawer
+          autoFocus={false}
+          isOpen={isOpen}
+          placement="left"
+          onClose={onClose}
+          returnFocusOnClose={false}
+          onOverlayClick={onClose}
+          size="full"
+        >
+          <DrawerContent>
+            <SidebarContent onClose={onClose} />
+          </DrawerContent>
+        </Drawer>
+        {/* mobilenav */}
+        <MobileNav onOpen={onOpen} />
+        <Box ml={{ base: 0, md: 60 }} p="4">
+          <Row>{children}</Row>
+        </Box>
       </Box>
-    </Box>
+      <Worker />
+    </>
   );
 }
 
@@ -137,7 +142,7 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
             as={icon}
           />
         )}
-        {children}
+        <Container>{children}</Container>
       </Flex>
     </Link>
   );
@@ -192,7 +197,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
               _focus={{ boxShadow: "none" }}
             >
               <HStack>
-                <Avatar size={"sm"} src={activeUser.role} />
+                <Avatar size={"sm"} src={""} />
                 <VStack
                   display={{ base: "none", md: "flex" }}
                   alignItems="flex-start"
@@ -204,7 +209,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                     {activeUser.firstName + " " + activeUser.lastName}
                   </Text>
                   <Text fontSize="xs" color="gray.600">
-                    {activeUser.role}
+                    {activeUser.role || ""}
                   </Text>
                 </VStack>
                 <Box display={{ base: "none", md: "flex" }}>
@@ -217,12 +222,23 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
               borderColor={useColorModeValue("gray.200", "gray.700")}
             >
               <>
-                <Link href={`/app/user/${activeUser.uid}`}>
-                  <MenuItem>Profile</MenuItem>
+                <Link href={`/app/account`}>
+                  <MenuItem>Account</MenuItem>
                 </Link>
               </>
-              <MenuItem>Settings</MenuItem>
-              <MenuItem>Billing</MenuItem>
+
+              <>
+                <Link href={`/app/courses`}>
+                  <MenuItem>Courses</MenuItem>
+                </Link>
+              </>
+
+              <>
+                <Link href={`/app/bursary`}>
+                  <MenuItem>Bursary</MenuItem>
+                </Link>
+              </>
+
               <MenuDivider />
               <MenuItem>Sign out</MenuItem>
             </MenuList>

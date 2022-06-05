@@ -1,42 +1,40 @@
 import {
   Box,
-  Flex,
-  AspectRatio,
-  Image,
+  Center,
   Text,
-  Link,
-  Button,
   Stack,
+  List,
+  ListItem,
+  ListIcon,
+  Button,
+  Alert,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { Col } from "react-bootstrap";
+import { CheckIcon } from "@chakra-ui/icons";
 
-function Card(props) {
-  // Extracting all columns
-  const { xs, sm, md, lg, xl } = props;
+// Other components
+import { Row, Col } from "react-bootstrap";
+
+export default function Card(props) {
+  const { xs, sm, md, lg, xl, bc } = props;
 
   return (
-    <Col xs={xs} sm={sm} md={md} lg={lg} xl={xl}>
-      <Box
-        p={4}
-        display={{ md: "flex" }}
-        maxWidth="auto"
-        borderWidth={1}
-        margin={2}
-        bg={useColorModeValue("white", "white")}
-      >
-        <Stack
-          align={{ base: "center", md: "stretch" }}
-          textAlign={{ base: "center", md: "left" }}
-          mt={{ base: 4, md: 0 }}
-          ml={{ md: 6 }}
+    <>
+      <Col xs={xs} sm={sm} md={md} lg={lg} xl={xl}>
+        <Box
+          w={"full"}
+          bg={useColorModeValue("white", "white")}
+          boxShadow={"1xl"}
+          rounded={"md"}
+          overflow={"hidden"}
+          className={bc ? "break-container" : ""}
         >
-          {props.children}
-        </Stack>
-      </Box>
-      <br />
-    </Col>
+          <Stack textAlign={"left"} p={6} align={"left"}>
+            {props.children}
+          </Stack>
+        </Box>
+        <br />
+      </Col>
+    </>
   );
 }
-
-export default Card;

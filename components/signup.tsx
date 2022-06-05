@@ -13,32 +13,81 @@ import {
   useBreakpointValue,
   IconProps,
   Icon,
+  Select,
 } from "@chakra-ui/react";
 
-const avatars = [
-  {
-    name: "",
-    url: "",
-  },
-  {
-    name: "",
-    url: "",
-  },
-  {
-    name: "",
-    url: "",
-  },
-  {
-    name: "",
-    url: "",
-  },
-  {
-    name: "",
-    url: "",
-  },
-];
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 
-export default function LoginComponent() {
+import { UserModel } from "../models/user/user";
+
+import { initialize } from "../features/user/userSlice";
+
+import _ from "lodash";
+import getError from "../scripts/getError";
+
+const avatars = require("../data/homeAvatars.json");
+const countries = require("../data/countries.json");
+
+export default function SignupComponent() {
+  const [user, setUser] = useState(UserModel());
+
+  const activeUser = useSelector((state) => state.user);
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const axios = require("axios").default;
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setUser((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+
+    if (
+      _.isEqual(name, "firstName") ||
+      _.isEqual(name, "lastName") ||
+      _.isEqual(name, "lastName")
+    ) {
+      setUser((prevState) => ({
+        ...prevState,
+        displayName:
+          prevState.firstName +
+          " " +
+          prevState.middleName +
+          " " +
+          prevState.lastName,
+      }));
+    }
+  };
+
+  function signUp(e) {
+    if (!user.firstName) {
+      getError("app/missing-first-name");
+    } else if (!user.lastName) {
+      getError("app/missing-last-name");
+    } else if (!user.password) {
+      getError("app/missing-password");
+    } else {
+      axios({
+        url: "/api/auth/new",
+        method: "POST",
+        params: user,
+      }).then(function (response) {
+        if (response.data.error) {
+          alert(JSON.stringify(response.data, null, 2));
+        } else {
+          Cookies.set("sis-uid", response.data.uid);
+          dispatch(initialize(response.data));
+          router.push("/app/dashboard");
+        }
+      });
+    }
+  }
+
   return (
     <Box position={"relative"}>
       <Container
@@ -79,7 +128,6 @@ export default function LoginComponent() {
                     height: "full",
                     rounded: "full",
                     transform: "scale(1.125)",
-                    bgGradient: "linear(to-bl, red.400,pink.400)",
                     position: "absolute",
                     zIndex: -1,
                     top: 0,
@@ -142,50 +190,72 @@ export default function LoginComponent() {
               </Text>
             </Heading>
             <Text color={"gray.500"} fontSize={{ base: "sm", sm: "md" }}>
-              We’re looking for amazing engineers just like you! Become a part
-              of our rockstar engineering team and skyrocket your career!
+              Create your account to begin the start choosing your subjects,
+              courses and degree.
             </Text>
           </Stack>
           <Box as={"form"} mt={10}>
             <Stack spacing={4}>
               <Input
-                placeholder="First name"
                 type="text"
+                name="firstName"
+                id="firstName"
+                value={user.firstName}
+                placeholder="First name"
                 bg={"gray.100"}
                 border={0}
                 color={"gray.500"}
                 _placeholder={{
                   color: "gray.500",
                 }}
+                onChange={(e) => {
+                  handleChange(e);
+                }}
               />
               <Input
-                placeholder="Last name"
                 type="text"
+                name="lastName"
+                id="lastName"
+                value={user.lastName}
+                placeholder="Last name"
                 bg={"gray.100"}
                 border={0}
                 color={"gray.500"}
                 _placeholder={{
                   color: "gray.500",
+                }}
+                onChange={(e) => {
+                  handleChange(e);
                 }}
               />
               <Input
                 placeholder="Email"
                 type="email"
+                name="email"
                 bg={"gray.100"}
                 border={0}
                 color={"gray.500"}
                 _placeholder={{
                   color: "gray.500",
                 }}
+                onChange={(e) => {
+                  handleChange(e);
+                }}
               />
               <Input
+                type="password"
+                name="password"
+                id="password"
+                value={user.password}
                 placeholder="Password"
                 bg={"gray.100"}
-                type="password"
                 border={0}
                 color={"gray.500"}
                 _placeholder={{
                   color: "gray.500",
+                }}
+                onChange={(e) => {
+                  handleChange(e);
                 }}
               />
             </Stack>
@@ -198,6 +268,10 @@ export default function LoginComponent() {
               _hover={{
                 bgGradient: "linear(to-r, red.400,pink.400)",
                 boxShadow: "xl",
+              }}
+              onClick={(e) => {
+                e.preventDefault();
+                signUp();
               }}
             >
               Submit

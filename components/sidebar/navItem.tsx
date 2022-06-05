@@ -20,7 +20,6 @@ export default function NavItem({
 }: NavItemProps) {
   const router = useRouter();
 
-  console.log(router);
   return (
     <Link href={href}>
       <a style={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>

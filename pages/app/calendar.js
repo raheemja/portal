@@ -20,4 +20,6 @@ export async function getServerSideProps(context) {
   };
 }
 
+CalendarPage.restricted = true;
+
 export default CalendarPage;

@@ -1,17 +1,26 @@
 import { uuid } from "uuidv4";
 import moment from "moment";
 
-export function Todo(props) {
-  const { id, createdAt } = pageProps;
-
+export const TodoModel = (props) => {
+  const {
+    id,
+    uid,
+    title,
+    message,
+    category,
+    createdAt,
+    createdBy,
+    completedAt,
+  } = props;
   return {
-    id: id || uuid(),
-    uid: "",
-    title: "",
-    message: "",
-    category: "",
-    createdAt: "",
-    completedAt: createdAt || "",
-    createdBy: "",
+    id: uuid(),
+    uid: uid || "SYSTEM",
+    status: "",
+    title: title || "",
+    message: message || "",
+    category: category || "",
+    createdAt: createdAt || Date(),
+    completedAt: completedAt || "",
+    createdBy: createdBy || "SYSTEM",
   };
-}
+};

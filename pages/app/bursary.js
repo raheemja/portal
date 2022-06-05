@@ -20,4 +20,6 @@ export async function getServerSideProps(context) {
   };
 }
 
+BursaryPage.restricted = true;
+
 export default BursaryPage;

@@ -8,6 +8,7 @@ import {
   FiSettings,
   FiMenu,
   FiBell,
+  FiHelpCircle,
   FiChevronDown,
 } from "react-icons/fi";
 import { IconType } from "react-icons";
@@ -25,6 +26,7 @@ const LinkItems: Array<LinkItemProps> = [
   { name: "Courses", icon: FiCompass, href: "/app/courses" },
   { name: "Calendar", icon: FiCalendar, href: "/app/calendar" },
   { name: "Bursary", icon: FiCreditCard, href: "/app/bursary" },
+  { name: "Support Tickets", icon: FiHelpCircle, href: "/app/support" },
   { name: "Settings", icon: FiSettings, href: "/app/settings" },
 ];
 

@@ -29,6 +29,7 @@ import axios from "axios";
 import _ from "lodash";
 import getError from "../scripts/getError";
 import Cookies from "js-cookie";
+import { storeUser } from "../scripts/storeUser";
 
 function LoginComponent(props) {
   const router = useRouter();
@@ -67,9 +68,13 @@ function LoginComponent(props) {
         params: credentials,
       }).then(function (response) {
         if (response.data.error) {
+          alert(JSON.stringify(response.data));
           getError(response.data.error.code);
           response = { auth: false };
         } else {
+          console.log(response.data);
+          alert(JSON.stringify(response.data));
+          //  storeUser(response.data);
           dispatch(initialize(response.data));
           Cookies.set("sis-uid", response.data.uid);
           router.push(props.href || "/app/dashboard");
@@ -172,10 +177,6 @@ function LoginComponent(props) {
             >
               Log in
             </Heading>
-            <Text color={"gray.500"} fontSize={{ base: "sm", sm: "md" }}>
-              We’re looking for amazing engineers just like you! Become a part
-              of our rockstar engineering team and skyrocket your career!
-            </Text>
           </Stack>
           <Box as={"form"} mt={10}>
             <Stack spacing={4}>

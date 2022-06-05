@@ -9,15 +9,16 @@ import AppLayout from "../../components/appLayout.tsx";
 import Seo from "../../components/seo";
 import Card from "../../common/card";
 
-import Todo from "../../components/dashboard/todo/todo";
+import Todo from "../../components/dashboard/todo/todo.tsx";
 
 const DashboardPage = () => {
+  const platform = require("platform");
+
   return (
     <>
       <Seo title="Dashboard" />
       <AppLayout>
         <Col md={8}>
-          <Row></Row>
           <Card />
         </Col>
         <Col md={4}>
@@ -33,5 +34,7 @@ export async function getServerSideProps(context) {
     props: {},
   };
 }
+
+DashboardPage.restricted = true;
 
 export default DashboardPage;

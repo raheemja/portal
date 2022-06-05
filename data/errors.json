@@ -322,17 +322,24 @@
     "solution": ""
   },
   {
-    "code": "",
+    "code": "app/missing-country",
     "icon": "",
-    "title": "",
-    "message": "",
+    "title": "Where are you from?",
+    "message": "Please select your country",
     "solution": ""
   },
   {
-    "code": "",
-    "icon": "",
+    "code": "app/missing-first-name",
+    "icon": "warning",
     "title": "",
-    "message": "",
+    "message": "Please enter your first name",
+    "solution": ""
+  },
+  {
+    "code": "app/missing-last-name",
+    "icon": "warning",
+    "title": "",
+    "message": "Please enter your last name",
     "solution": ""
   },
   {

@@ -17,8 +17,9 @@ import _ from "lodash";
 import axios from "axios";
 
 function UserAccountPage(props) {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState();
   const [isLoading, setLoading] = useState(true);
+  const [title, setTitle] = useState("");
 
   const activeUser = useSelector((state) => state.user);
 
@@ -30,42 +31,41 @@ function UserAccountPage(props) {
     fetch(`/api/user/${uid}`)
       .then((res) => res.json())
       .then((data) => {
-        setData(_.omit(data, "password"));
+        setData(data);
+        setTitle(data.firstName + " " + data.lastName);
         setLoading(false);
       });
   }, []);
 
   return (
     <>
-      <Seo title="Account" />
+      <Seo title={title} />
       <AppLayout>
         <Col>
           <Row>
             <Col xs={12} lg={8}>
-              <Card></Card>
+              <Card>
+                <Text>{JSON.stringify(data, null, 2)}</Text>
+              </Card>
             </Col>
             <Col xs={12} lg={4}>
               <Card></Card>
             </Col>
           </Row>
         </Col>
-
-        <Text>
-          {isLoading
-            ? "Loading"
-            : !data
-            ? "No account information found"
-            : JSON.stringify(data, null, 2)}
-        </Text>
       </AppLayout>
     </>
   );
 }
 
 export async function getServerSideProps(context) {
+  const uid = context.params;
+
   return {
-    props: {},
+    props: { id: uid },
   };
 }
+
+UserAccountPage.restricted = true;
 
 export default UserAccountPage;

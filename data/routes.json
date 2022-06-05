@@ -1,0 +1,19 @@
+{
+  "home": "/home",
+  "login": "/login",
+  "signup": "/sign-up",
+  "dashboard": "/app/dashboard",
+  "courses": "/app/courses",
+  "calendar": "/app/calendar",
+  "bursary": "/app/bursary",
+  "settings": "/app/settings",
+  "": "/app/",
+  "": "/app/",
+  "": "/app/",
+  "": "/app/",
+  "": "/app/",
+  "": "/app/",
+  "": "/app/",
+  "": "/app/",
+  "": "/app/"
+}

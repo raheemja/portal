@@ -8,7 +8,11 @@ import { getDatabase, child, ref, get } from "firebase/database";
 let result = {};
 
 function handler(req, res) {
+  console.log("API called");
+
   const { email, password } = req.query;
+  console.log(`Email ${email}`);
+  console.log(`Password ${password}`);
 
   const firebaseConfig = {
     apiKey: process.env.FIREBASE_API_KEY,
@@ -23,24 +27,34 @@ function handler(req, res) {
   const auth = getAuth();
   let user;
 
-  signInWithEmailAndPassword(auth, _.toLower(email), password)
-    .then((userCredential) => {
-      const dbRef = ref(getDatabase());
+  try {
+    signInWithEmailAndPassword(auth, _.toLower(email), password)
+      .then((userCredential) => {
+        console.log("Signed in");
 
-      get(child(dbRef, `users/${userCredential.user.uid}`)).then((snapshot) => {
-        if (snapshot.exists()) {
-          user = snapshot.val();
-          user.isLoggedIn = true;
+        const dbRef = ref(getDatabase());
+        console.log(dbRef);
 
-          res.status(200).json(_.omit(user, "password"));
-        } else {
-          res.status(200).json({ message: "Internal server error" });
-        }
+        get(child(dbRef, `users/${userCredential.user.uid}`)).then(
+          (snapshot) => {
+            if (snapshot.exists()) {
+              user = snapshot.val();
+              user.isLoggedIn = true;
+
+              res.status(200).json(_.omit(user, "password"));
+            } else {
+              res.status(200).json({ message: "Internal server error" });
+            }
+          }
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+        res.status(200).json({ error: error });
       });
-    })
-    .catch((error) => {
-      res.status(200).json({ error: error });
-    });
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 export default handler;

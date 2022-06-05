@@ -1,13 +1,14 @@
 import { SimpleGrid, Box } from "@chakra-ui/react";
 
+import Layout from "../../components/layout";
 import AppLayout from "../../components/appLayout.tsx";
 
 import Seo from "../../components/seo";
 
-const CoursesPage = () => {
+const SupportPage = () => {
   return (
     <>
-      <Seo title="Courses" />
+      <Seo title="Support" />
       <AppLayout></AppLayout>
     </>
   );
@@ -19,6 +20,6 @@ export async function getServerSideProps(context) {
   };
 }
 
-CoursesPage.restricted = true;
+SupportPage.restricted = true;
 
-export default CoursesPage;
+export default SupportPage;

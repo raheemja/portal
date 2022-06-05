@@ -1,4 +1,4 @@
-export function UserModel() {
+export function UserModel(props) {
   return {
     uid: "" /* Unique ID */,
     isStudent: true,
@@ -13,6 +13,7 @@ export function UserModel() {
     middleName: "",
     lastName: "",
     displayName: "",
+    description: "",
     gender: "",
     phoneNumber: "",
     dateOfBirth: "",
@@ -20,7 +21,8 @@ export function UserModel() {
     community: "",
     city: "",
     state: "",
-    country: "",
+    country: "Jamaica",
     postalCode: "",
+    role: "Student",
   };
 }

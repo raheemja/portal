@@ -1,17 +1,27 @@
-import Cookies from "js-cookie";
-import { useSelector, useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
-import { initialize } from "../features/user/userSlice";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { useSelector, useDispatch } from "react-redux";
+import { initialize } from "../features/user/userSlice";
+import { getUserFromStorage } from "../scripts/getUserFromStorage";
 
-function Worker() {
-  const platform = require("platform");
-  const router = useRouter();
+import Cookies from "js-cookie";
+
+const Protected = () => {
   const activeUser = useSelector((state) => state.user);
-  const axios = require("axios").default;
+  const router = useRouter();
   const dispatch = useDispatch();
 
+  const axios = require("axios").default;
+
   useEffect(() => {
+    /*
+    const user = getUserFromStorage();
+
+    if (user) {
+      dispatch(initialize());
+    }
+*/
+
     const uid = Cookies.get("sis-uid"); // => 'value'
 
     if (uid) {
@@ -27,18 +37,18 @@ function Worker() {
           dispatch(initialize(response.data));
         }
       });
-    } else {
+    }
+
+    if (!activeUser.isLoggedIn && !uid) {
       router.push("/login");
     }
   }, []);
 
   return (
     <>
-      <>
-        <></>
-      </>
+      <></>
     </>
   );
-}
+};
 
-export default Worker;
+export default Protected;

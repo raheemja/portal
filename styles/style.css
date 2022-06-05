@@ -1,0 +1,5 @@
+.break-container {
+  width: 100vw !important;
+  position: relative !important;
+  left: calc(-1 * (100vw - 100%) / 2);
+}
