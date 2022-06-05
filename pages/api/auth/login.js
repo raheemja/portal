@@ -11,8 +11,6 @@ function handler(req, res) {
   console.log("API called");
 
   const { email, password } = req.query;
-  console.log(`Email ${email}`);
-  console.log(`Password ${password}`);
 
   const firebaseConfig = {
     apiKey: process.env.FIREBASE_API_KEY,
@@ -30,10 +28,7 @@ function handler(req, res) {
   try {
     signInWithEmailAndPassword(auth, _.toLower(email), password)
       .then((userCredential) => {
-        console.log("Signed in");
-
         const dbRef = ref(getDatabase());
-        console.log(dbRef);
 
         get(child(dbRef, `users/${userCredential.user.uid}`)).then(
           (snapshot) => {
@@ -49,11 +44,11 @@ function handler(req, res) {
         );
       })
       .catch((error) => {
-        console.log(error);
         res.status(200).json({ error: error });
       });
   } catch (err) {
     console.log(err);
+    res.status(200).json({ error: err });
   }
 }
 

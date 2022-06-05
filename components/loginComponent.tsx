@@ -68,13 +68,11 @@ function LoginComponent(props) {
         params: credentials,
       }).then(function (response) {
         if (response.data.error) {
-          alert(JSON.stringify(response.data));
           getError(response.data.error.code);
           response = { auth: false };
         } else {
           console.log(response.data);
-          alert(JSON.stringify(response.data));
-          //  storeUser(response.data);
+          storeUser(response.data);
           dispatch(initialize(response.data));
           Cookies.set("sis-uid", response.data.uid);
           router.push(props.href || "/app/dashboard");

@@ -27,6 +27,11 @@ import Contacts from "./contacts";
 // Icons
 import { FiSave, FiBook } from "react-icons/fi";
 
+// Scripts
+import getLoggedInUID from "../../scripts/getLoggedInUID";
+import ShowSuccessMessage from "../../scripts/success";
+import getError from "../../scripts/getError";
+
 const FormGroup = (props) => {
   const { xs, sm, md, lg, xl } = props;
   return (
@@ -49,6 +54,7 @@ const UserAccountView = (props) => {
   const [data, setData] = useState();
   const [user, setUser] = useState(self ? activeUser : null);
   const [isLoading, setLoading] = useState(true);
+  const axios = require("axios").default;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -58,9 +64,23 @@ const UserAccountView = (props) => {
     }));
   };
 
+  const saveChanges = () => {
+    axios({
+      method: "PATCH",
+      url: `/api/user/${user.uid}`,
+      params: user,
+    }).then(function (response) {
+      if (response.data.error) {
+        getError(response.data.error.code);
+      } else {
+        ShowSuccessMessage(response.data.message);
+      }
+    });
+  };
+
   useEffect(() => {
     setLoading(true);
-    fetch(`/api/user/${uid}`)
+    fetch(`/api/user/${uid || getLoggedInUID()}`)
       .then((res) => res.json())
       .then((data) => {
         setUser(data);
@@ -70,7 +90,14 @@ const UserAccountView = (props) => {
 
   const SaveButton = () => {
     return (
-      <Button leftIcon={<FiSave />} colorScheme="whatsapp">
+      <Button
+        leftIcon={<FiSave />}
+        colorScheme="whatsapp"
+        onClick={(e) => {
+          e.preventDefault();
+          saveChanges();
+        }}
+      >
         Save Changes
       </Button>
     );
@@ -105,6 +132,9 @@ const UserAccountView = (props) => {
                   placeholder="First Name"
                   value={user.firstName}
                   disabled={!editModeOn}
+                  onChange={(e) => {
+                    handleChange(e);
+                  }}
                 />
               </FormControl>
             </FormGroup>
@@ -120,6 +150,9 @@ const UserAccountView = (props) => {
                   placeholder="Last Name"
                   value={user.lastName}
                   disabled={!editModeOn}
+                  onChange={(e) => {
+                    handleChange(e);
+                  }}
                 />
               </FormControl>
             </FormGroup>
@@ -136,6 +169,9 @@ const UserAccountView = (props) => {
                   placeholder="Enter your phone number"
                   value={user.phoneNumber}
                   disabled={!editModeOn}
+                  onChange={(e) => {
+                    handleChange(e);
+                  }}
                 />
               </FormControl>
             </FormGroup>
@@ -152,6 +188,9 @@ const UserAccountView = (props) => {
                   placeholder="Enter your email"
                   value={user.email}
                   disabled={!editModeOn}
+                  onChange={(e) => {
+                    handleChange(e);
+                  }}
                 />
               </FormControl>
             </FormGroup>
@@ -168,6 +207,9 @@ const UserAccountView = (props) => {
                   placeholder="Street Address"
                   value={user.streetAddress}
                   disabled={!editModeOn}
+                  onChange={(e) => {
+                    handleChange(e);
+                  }}
                 />
               </FormControl>
             </FormGroup>
@@ -183,6 +225,9 @@ const UserAccountView = (props) => {
                   placeholder="Town / Community"
                   value={user.community}
                   disabled={!editModeOn}
+                  onChange={(e) => {
+                    handleChange(e);
+                  }}
                 />
               </FormControl>
             </FormGroup>
@@ -197,6 +242,9 @@ const UserAccountView = (props) => {
                   placeholder="Enter your city"
                   value={user.city}
                   disabled={!editModeOn}
+                  onChange={(e) => {
+                    handleChange(e);
+                  }}
                 />
               </FormControl>
             </FormGroup>
@@ -277,7 +325,7 @@ const UserAccountView = (props) => {
 
       {/* Here we want to display the user contacts */}
       <Col xs={12} md={4}>
-        <Contacts uid={activeUser.uid} />
+        <Contacts uid={getLoggedInUID()} />
       </Col>
     </Row>
   );

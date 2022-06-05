@@ -53,9 +53,6 @@ export default function handler(req, res) {
     case "POST":
       let contact = req.query;
       contact.id = uuidv4();
-
-      console.log(contact);
-
       set(ref(database, "contacts/" + contact.id), contact);
       res.status(200).json({
         success: {

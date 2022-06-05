@@ -2,26 +2,45 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import Card from "../../../common/card";
+import Loading from "../../../common/loading";
+import getLoggedInUID from "../../../scripts/getLoggedInUID";
+
+// UI Components
+import { SimpleGrid, Box, Button, Text } from "@chakra-ui/react";
 
 const Todo = (props) => {
   const activeUser = useSelector((state) => state.user);
-  const [data, setData] = useState(null);
-  const [isLoading, setLoading] = useState(false);
+  const [data, setData] = useState();
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
-    fetch(`/api/user/${activeUser.uid}/todos`)
+    fetch(`/api/todo/${getLoggedInUID() || activeUser.uid || getLoggedInUID()}`)
       .then((res) => res.json())
       .then((data) => {
         setData(data);
-        setLoading(false);
       });
+
+    setLoading(false);
   }, []);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (!data)
+    return (
+      <>
+        <Card>
+          <Text>All caught up</Text>
+        </Card>
+      </>
+    );
 
   return (
     <>
       <Card>
-        <p>{data}</p>
+        <Text>{JSON.stringify(data, null, 2)}</Text>
       </Card>
     </>
   );

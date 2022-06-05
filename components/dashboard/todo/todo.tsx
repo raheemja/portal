@@ -15,6 +15,8 @@ import {
   Center,
   Spinner,
   useBreakpointValue,
+  Alert,
+  AlertIcon,
 } from "@chakra-ui/react";
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 // And react-slick as our Carousel Lib
@@ -35,6 +37,8 @@ const settings = {
 
 // Todo Items
 import TodoItem from "./todoItem";
+import Loading from "../../../common/loading";
+import getLoggedInUID from "../../../scripts/getLoggedInUID";
 
 // Scripts
 import toArray from "../../../scripts/toArray";
@@ -50,6 +54,7 @@ const Todo = () => {
 
   const [data, setData] = useState([]);
   const [isLoading, setLoading] = useState(false);
+  const [message, setMessage] = useState();
 
   // As we have used custom buttons, we need a reference variable to
   // change the state
@@ -63,26 +68,34 @@ const Todo = () => {
   useEffect(() => {
     setLoading(true);
 
-    fetch(`/api/todo/${activeUser.uid}`)
+    fetch(`/api/todo/${activeUser.uid || getLoggedInUID}`)
       .then((res) => res.json())
-      .then((rdata) => {
-        setData(rdata);
-        setLoading(false);
+      .then((data) => {
+        if (data.message) {
+          setMessage(data.message);
+        } else {
+          setData(data);
+        }
       });
+
+    setLoading(false);
   }, []);
 
   if (isLoading) {
     return (
+      <>
+        <Loading />
+      </>
+    );
+  }
+
+  if (message) {
+    return (
       <Card>
-        <Center>
-          <Spinner
-            thickness="4px"
-            speed="0.65s"
-            emptyColor="gray.200"
-            color="blue.500"
-            size="xl"
-          />
-        </Center>
+        <Alert status="info">
+          <AlertIcon />
+          {message}
+        </Alert>
       </Card>
     );
   }

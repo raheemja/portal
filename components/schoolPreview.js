@@ -11,6 +11,7 @@ import {
   PopoverCloseButton,
   PopoverAnchor,
   Link,
+  Image,
 } from "@chakra-ui/react";
 
 // Scripts
@@ -37,12 +38,7 @@ const SchoolPreview = (props) => {
           <PopoverArrow />
           <PopoverCloseButton />
           <PopoverHeader>Contact Details</PopoverHeader>
-          <PopoverBody>
-            <Text> Phone #: {school.phoneNumber}</Text>
-            <Text> Email: {school.email}</Text>
-            <Text>{school.streetAddress}</Text>
-            <Text>{`${school.city}, ${school.country}`}</Text>
-          </PopoverBody>
+          <PopoverBody></PopoverBody>
         </PopoverContent>
       </Popover>
     </>

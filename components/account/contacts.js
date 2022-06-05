@@ -24,10 +24,11 @@ const Contacts = (props) => {
   const [isLoading, setLoading] = useState(true);
   const [count, setCount] = useState();
 
+  const { uid } = props;
+
   useEffect(() => {
-    const id = getLoggedInUID();
     setLoading(true);
-    fetch(`/api/contacts/${id}`)
+    fetch(`/api/contacts/${uid || getLoggedInUID()}`)
       .then((res) => res.json())
       .then((data) => {
         if (!data.error) {
@@ -45,7 +46,7 @@ const Contacts = (props) => {
         <Loading />
 
         <br />
-        <NewContactModal uid={getLoggedInUID()} />
+        <NewContactModal uid={uid || getLoggedInUID()} />
       </Card>
     );
 
@@ -54,7 +55,7 @@ const Contacts = (props) => {
       <>
         <Card>
           <Text>No contacts found.</Text>
-          <NewContactModal uid={getLoggedInUID()} />
+          <NewContactModal uid={uid || getLoggedInUID()} />
         </Card>
       </>
     );
@@ -74,7 +75,7 @@ const Contacts = (props) => {
         );
       })}
 
-      <NewContactModal uid={getLoggedInUID()} />
+      <NewContactModal uid={uid || getLoggedInUID()} />
     </>
   );
 };

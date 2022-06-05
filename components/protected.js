@@ -14,14 +14,13 @@ const Protected = () => {
   const axios = require("axios").default;
 
   useEffect(() => {
-    /*
     const user = getUserFromStorage();
 
     if (user) {
       dispatch(initialize());
     }
-*/
 
+    /*
     const uid = Cookies.get("sis-uid"); // => 'value'
 
     if (uid) {
@@ -38,8 +37,9 @@ const Protected = () => {
         }
       });
     }
+    */
 
-    if (!activeUser.isLoggedIn && !uid) {
+    if (!activeUser.isLoggedIn && !user) {
       router.push("/login");
     }
   }, []);
