@@ -1,8 +1,9 @@
 import _ from "lodash";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { getDatabase, child, get, ref } from "firebase/database";
+import { getDatabase, child, get, ref, set } from "firebase/database";
 import { initializeApp } from "firebase/app";
+import { v4 as uuidv4 } from "uuid";
 
 import toArray from "../../../scripts/toArray";
 
@@ -37,6 +38,18 @@ export default async function handler(req, res) {
       break;
 
     case "POST":
+      let todo = req.query;
+
+      todo.id = uuidv4();
+      todo.createdAt = Date();
+      todo.createdBy = "SYSTEM";
+      set(ref(database, "todos/" + todo.id), todo);
+
+      res.status(200).json({
+        success: {
+          message: `Todo list saved successfully.`,
+        },
+      });
       break;
 
     case "DELETE":
