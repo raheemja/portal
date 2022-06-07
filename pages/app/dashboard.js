@@ -38,8 +38,6 @@ const DashboardPage = () => {
           <Row>
             <GPA />
             <Tuition />
-            <Tuition />
-            <GPA />
           </Row>
         </Col>
 

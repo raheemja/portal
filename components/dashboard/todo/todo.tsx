@@ -19,6 +19,7 @@ import {
   AlertIcon,
 } from "@chakra-ui/react";
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
+
 // And react-slick as our Carousel Lib
 import Slider from "react-slick";
 

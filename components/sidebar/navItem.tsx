@@ -33,7 +33,7 @@ export default function NavItem({
           role="group"
           cursor="pointer"
           _hover={{
-            bg: "cyan.600",
+            bg: "blue.600",
             color: "white",
           }}
           {...rest}

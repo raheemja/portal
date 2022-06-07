@@ -21,6 +21,12 @@ import getLoggedInUID from "../../../scripts/getLoggedInUID";
 const Tuition = (props) => {
   const [data, setData] = useState();
   const [isLoading, setLoading] = useState(true);
+  const [message, setMessage] = useState();
+
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "JMD",
+  });
 
   // Copies the User ID
   const { uid } = props;
@@ -30,9 +36,8 @@ const Tuition = (props) => {
     fetch(`/api/tuition/${uid || getLoggedInUID()}`)
       .then((res) => res.json())
       .then((data) => {
-        if (!data.error) {
+        if (!data.error && !data.message) {
           setData(data);
-          setLoading(false);
         }
 
         setLoading(false);
@@ -40,6 +45,18 @@ const Tuition = (props) => {
   }, []);
 
   if (isLoading) return <Loading />;
+
+  if (!data) {
+    return (
+      <Card xs={6} md={6} bg={"blue.400"} color={"white"}>
+        <Stat>
+          <StatLabel>Tuition</StatLabel>
+          <StatNumber>{formatter.format(0)}</StatNumber>
+          <StatHelpText>Due in 5 days</StatHelpText>
+        </Stat>
+      </Card>
+    );
+  }
 
   return (
     <Card xs={6} md={6} bg={"blue.400"} color={"white"}>

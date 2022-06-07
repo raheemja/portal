@@ -22,6 +22,8 @@ import {
   RadioGroup,
 } from "@chakra-ui/react";
 
+import Image from "next/image";
+
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
@@ -282,6 +284,25 @@ export default function SignupComponent() {
                 />
               </FormControl>
 
+              <FormControl>
+                <Select
+                  name="country"
+                  id="country"
+                  placeholder="Select your country"
+                  onChange={(e) => {
+                    handleChange(e);
+                  }}
+                >
+                  {countries.map((country, i) => {
+                    return (
+                      <>
+                        <option value={country.name}>{country.name}</option>
+                      </>
+                    );
+                  })}
+                </Select>
+              </FormControl>
+
               <FormControl as="fieldset">
                 <RadioGroup
                   id="role"
@@ -326,6 +347,7 @@ export default function SignupComponent() {
           </Box>
           form
         </Stack>
+        <Text>{JSON.stringify(user, null, 2)}</Text>
       </Container>
       <Blur
         position={"absolute"}
