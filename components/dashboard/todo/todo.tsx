@@ -45,40 +45,21 @@ import getLoggedInUID from "../../../scripts/getLoggedInUID";
 import toArray from "../../../scripts/toArray";
 
 const items = {
-  "0": {
-    id: "0",
-    title: "Hello",
-    message: "This is a message",
-    action: "Start",
-    category: "ACCOUNT",
-  },
   "1": {
     id: "1",
-    title: "Hello",
-    message: "This is a message",
+    title: "Start Applying",
+    message: "Choose the subjects and/ or courses you'd to enroll in.",
     action: "Start",
     category: "COURSE",
   },
-  "2": {
-    id: "1",
-    title: "Hello",
-    message: "This is a message",
-    action: "Start",
-    category: "ACCOUNT",
-  },
-  "4": {
-    id: "1",
-    title: "Hello",
-    message: "This is a message",
+  "0": {
+    id: "0",
+    title: "Comlete your account",
+    message:
+      "Complete your sudent profile so you can starting applying for courses.",
     action: "Start",
     category: "PROFILE",
-  },
-  "5": {
-    id: "1",
-    title: "Hello",
-    message: "This is a message",
-    action: "Start",
-    category: "COURSE",
+    href: "/app/account",
   },
 };
 
@@ -144,13 +125,15 @@ const Todo = () => {
       {/* Left Icon */}
 
       {/* Slider */}
-      {Object.values(items).map((value, i) => {
+      {Object.values(items).map((item, i) => {
         return (
           <div key={i} style={{ background: "" }}>
             <TodoItem
-              title={value.title}
-              message={value.message}
-              category={value.category}
+              title={item.title}
+              message={item.message}
+              category={item.category}
+              href={item.href}
+              action={item.action}
             />
           </div>
         );

@@ -26,7 +26,7 @@ const TodoItem = (props) => {
       ? "green.400"
       : category === "COURSE"
       ? "yellow.400"
-      : "";
+      : "orange.400";
   return (
     <>
       <Row>
@@ -40,7 +40,7 @@ const TodoItem = (props) => {
             overflow={"hidden"}
           >
             <Stack textAlign={"left"} p={6} align={"left"}>
-              {props.children}
+              <br /> <br /> <br />
             </Stack>
           </Box>
         </Col>
@@ -54,7 +54,23 @@ const TodoItem = (props) => {
             overflow={"hidden"}
           >
             <Stack textAlign={"left"} p={6} align={"left"}>
-              {props.children}
+              <Text
+                color={"gray.500"}
+                fontSize={{ base: "sm", sm: "md" }}
+                pb={2}
+              >
+                {message}
+              </Text>
+
+              <Button
+                href={href}
+                color={"white"}
+                w="25%"
+                bg={useColorModeValue("grey", "grey")}
+                size={"sm"}
+              >
+                {action || "Start"}
+              </Button>
             </Stack>
           </Box>
         </Col>
