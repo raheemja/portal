@@ -19,6 +19,7 @@ import { Row, Col } from "react-bootstrap";
 const TodoItem = (props) => {
   const { title, message, category, createdAt, href, action } = props;
 
+  /* */
   const color =
     category === "ACCOUNT"
       ? "blue.400"
@@ -27,6 +28,7 @@ const TodoItem = (props) => {
       : category === "COURSE"
       ? "yellow.400"
       : "orange.400";
+
   return (
     <>
       <Row>
@@ -62,15 +64,16 @@ const TodoItem = (props) => {
                 {message}
               </Text>
 
-              <Button
-                href={href}
-                color={"white"}
-                w="25%"
-                bg={useColorModeValue("grey", "grey")}
-                size={"sm"}
-              >
-                {action || "Start"}
-              </Button>
+              <Link href={href}>
+                <Button
+                  color={"white"}
+                  w="30%"
+                  bg={useColorModeValue("gray.400", "gray.400")}
+                  size={"sm"}
+                >
+                  {action || "Get Started"}
+                </Button>
+              </Link>
             </Stack>
           </Box>
         </Col>

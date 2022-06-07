@@ -49,15 +49,16 @@ const items = {
     id: "1",
     title: "Start Applying",
     message: "Choose the subjects and/ or courses you'd to enroll in.",
-    action: "Start",
+    action: "Get Started",
     category: "COURSE",
+    href: "/app/courses",
   },
   "0": {
     id: "0",
     title: "Comlete your account",
     message:
       "Complete your sudent profile so you can starting applying for courses.",
-    action: "Start",
+    action: "Get Started",
     category: "PROFILE",
     href: "/app/account",
   },

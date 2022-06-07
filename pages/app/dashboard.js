@@ -1,5 +1,5 @@
 // UI Components
-import { SimpleGrid, Box, Button, Text } from "@chakra-ui/react";
+import { SimpleGrid, Box, Button, Text, Heading } from "@chakra-ui/react";
 import { Row, Col } from "react-bootstrap";
 
 // Next & Redux Components
@@ -22,16 +22,7 @@ const DashboardPage = () => {
     <>
       <Seo title="Dashboard" />
       <AppLayout>
-        <Card xs={12} md={8}>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
+        <Card bg={""} xs={12} md={8}>
           <br />
         </Card>
         <Col md={4}>
