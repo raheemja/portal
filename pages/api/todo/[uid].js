@@ -40,9 +40,6 @@ export default async function handler(req, res) {
     case "POST":
       let todo = req.query;
 
-      todo.id = uuidv4();
-      todo.createdAt = Date();
-      todo.createdBy = "SYSTEM";
       set(ref(database, "todos/" + todo.id), todo);
 
       res.status(200).json({

@@ -44,11 +44,50 @@ import getLoggedInUID from "../../../scripts/getLoggedInUID";
 // Scripts
 import toArray from "../../../scripts/toArray";
 
-export function getServerSideProps(context) {
-  return {
-    props: {},
-  };
-}
+const items = {
+  "0": {
+    id: "0",
+    title: "Hello",
+    message: "This is a message",
+    action: "Start",
+    category: "ACCOUNT",
+  },
+  "1": {
+    id: "1",
+    title: "Hello",
+    message: "This is a message",
+    action: "Start",
+    category: "ACCOUNT",
+  },
+  "2": {
+    id: "1",
+    title: "Hello",
+    message: "This is a message",
+    action: "Start",
+    category: "ACCOUNT",
+  },
+  "3": {
+    id: "1",
+    title: "Hello",
+    message: "This is a message",
+    action: "Start",
+    category: "ACCOUNT",
+  },
+  "4": {
+    id: "1",
+    title: "Hello",
+    message: "This is a message",
+    action: "Start",
+    category: "ACCOUNT",
+  },
+  "5": {
+    id: "1",
+    title: "Hello",
+    message: "This is a message",
+    action: "Start",
+    category: "ACCOUNT",
+  },
+};
 
 const Todo = () => {
   const activeUser = useSelector((state) => state.user);
@@ -90,16 +129,6 @@ const Todo = () => {
     );
   }
 
-  if (message) {
-    return (
-      <>
-        <Card>
-          <Text>{message}</Text>
-        </Card>
-      </>
-    );
-  }
-
   return (
     <Box
       position={"relative"}
@@ -123,7 +152,7 @@ const Todo = () => {
 
       {/* Slider */}
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
-        {Object.values(data).map((value, i) => {
+        {Object.values(items).map((value, i) => {
           return (
             <div key={i} style={{ background: "" }}>
               <TodoItem
