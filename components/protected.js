@@ -19,6 +19,7 @@ const Protected = () => {
     if (user) {
       dispatch(initialize());
     }
+    const uid = Cookies.get("sis-uid"); // => 'value'
 
     /*
     const uid = Cookies.get("sis-uid"); // => 'value'
@@ -39,7 +40,7 @@ const Protected = () => {
     }
     */
 
-    if (!activeUser.isLoggedIn && !user) {
+    if (!activeUser.isLoggedIn && !user && !uid) {
       router.push("/login");
     }
   }, []);

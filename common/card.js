@@ -16,18 +16,18 @@ import { CheckIcon } from "@chakra-ui/icons";
 import { Row, Col } from "react-bootstrap";
 
 export default function Card(props) {
-  const { xs, sm, md, lg, xl, bc } = props;
+  const { xs, sm, md, lg, xl, bc, color, bg } = props;
 
   return (
     <>
       <Col xs={xs} sm={sm} md={md} lg={lg} xl={xl}>
         <Box
           w={"full"}
-          bg={useColorModeValue("white", "white")}
+          color={color || ""}
+          bg={useColorModeValue(bg, bg) || useColorModeValue("white", "white")}
           boxShadow={"1xl"}
           rounded={"md"}
           overflow={"hidden"}
-          className={bc ? "break-container" : ""}
         >
           <Stack textAlign={"left"} p={6} align={"left"}>
             {props.children}

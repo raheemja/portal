@@ -6,16 +6,6 @@ import { initializeApp } from "firebase/app";
 
 import toArray from "../../../scripts/toArray";
 
-const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
-  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-  databaseURL: process.env.FIREBASE_DATABASE_URL,
-  projectId: process.env.FRIEBASE_PROJECT_ID,
-  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-};
-
-const app = initializeApp(firebaseConfig);
-
 export default async function handler(req, res) {
   const method = req.method;
   const { uid } = req.query;

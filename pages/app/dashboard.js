@@ -2,28 +2,54 @@
 import { SimpleGrid, Box, Button, Text } from "@chakra-ui/react";
 import { Row, Col } from "react-bootstrap";
 
-// Next Components
+// Next & Redux Components
+import { useSelector, useDispatch } from "react-redux";
 
 // Components
 import AppLayout from "../../components/appLayout.tsx";
 import Seo from "../../components/seo";
 import Card from "../../common/card";
 
+// Dashboard components
 import Todo from "../../components/dashboard/todo/todo.tsx";
+import Tuition from "../../components/dashboard/tuition/tuition";
+import GPA from "../../components/dashboard/gpa/gpa";
 
 const DashboardPage = () => {
-  const platform = require("platform");
+  const activeUser = useSelector((state) => state.user);
 
   return (
     <>
       <Seo title="Dashboard" />
       <AppLayout>
-        <Col md={8}>
-          <Card />
-        </Col>
+        <Card xs={12} md={8}>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+        </Card>
         <Col md={4}>
-          <Todo />
+          <Row>
+            <GPA />
+            <Tuition />
+            <Tuition />
+            <GPA />
+          </Row>
         </Col>
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
       </AppLayout>
     </>
   );

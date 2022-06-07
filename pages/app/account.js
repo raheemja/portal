@@ -31,11 +31,20 @@ import MobileView from "../../common/mobileView";
 // User display Components
 import UserAccountView from "../../components/account/userAccountView";
 import UserEducationView from "../../components/account/userEducationView";
+import UserFilesAndDocumentsView from "../../components/account/filesAndDocumentsView";
 
 // Icons
-import { FiSave, FiBook, FiUser, FiFile, FiMoreVertical } from "react-icons/fi";
+import {
+  FiSave,
+  FiBook,
+  FiUser,
+  FiFile,
+  FiLayers,
+  FiMoreVertical,
+} from "react-icons/fi";
 
 // Scripts and libraries
+import getLoggedInUID from "../../scripts/getLoggedInUID";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { isMobile, isBrowser } from "react-device-detect";
@@ -50,6 +59,14 @@ const AccountPage = () => {
   const [isLoading, setLoading] = useState(true);
   const [title, setTitle] = useState("");
   const router = useRouter();
+
+  const sx = isMobile
+    ? {
+        width: "110%",
+        position: "relative",
+        left: "calc(-1 * (100vw - 100%) / 2)",
+      }
+    : null;
 
   const DetailsTray = () => {
     return (
@@ -110,86 +127,68 @@ const AccountPage = () => {
             <Card xs={12} md={6}>
               <DetailsTray />
             </Card>
-
-            <Card xs={0} md={6}>
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-            </Card>
-
-            <Col xs={12}>
-              <Tabs
-                variant="soft-rounded"
-                colorScheme="blue"
-                size="sm"
-                isFitted
-              >
-                <TabList>
-                  <Tab>
-                    <FiUser style={{ marginRight: "10px" }} />
-                    Profile
-                  </Tab>
-                  <Tab>
-                    <FiBook style={{ marginRight: "10px" }} />
-                    Education
-                  </Tab>
-                  <Tab>
-                    <FiMoreVertical style={{ marginRight: "10px" }} />
-                    Experience
-                  </Tab>
-                  {isBrowser ? (
-                    <Tab>
-                      <FiFile style={{ marginRight: "10px" }} />
-                      Files & Documents
-                    </Tab>
-                  ) : null}
-                </TabList>
-
-                <TabPanels>
-                  <TabPanel>
-                    <UserAccountView uid={activeUser.uid} self={true} />
-                  </TabPanel>
-
-                  <TabPanel>
-                    <UserEducationView self={true} />
-                  </TabPanel>
-
-                  <TabPanel>
-                    <Card>
-                      <Text>This is the Experience tab</Text>
-                      <br />
-                    </Card>
-                  </TabPanel>
-
-                  {isBrowser ? (
-                    <TabPanel>
-                      <Card>
-                        <Text>This is the Files & Documents tab</Text>
-                        <br />
-                      </Card>
-                    </TabPanel>
-                  ) : null}
-                </TabPanels>
-              </Tabs>
-            </Col>
           </Row>
+
+          <br />
+          <br />
+          <Tabs variant="soft-rounded" colorScheme="blue" size="sm" isFitted>
+            <TabList>
+              <Tab>
+                <FiUser style={{ marginRight: "10px" }} />
+                Profile
+              </Tab>
+              <Tab>
+                <FiBook style={{ marginRight: "10px" }} />
+                Education
+              </Tab>
+              <Tab>
+                <FiLayers style={{ marginRight: "10px" }} />
+                Experience
+              </Tab>
+              {isBrowser ? (
+                <Tab>
+                  <FiFile style={{ marginRight: "10px" }} />
+                  Files & Documents
+                </Tab>
+              ) : null}
+            </TabList>
+
+            <TabPanels>
+              <TabPanel sx={sx}>
+                <UserAccountView
+                  uid={activeUser.uid || getLoggedInUID()}
+                  self={true}
+                />
+              </TabPanel>
+
+              <TabPanel sx={sx}>
+                <UserEducationView
+                  uid={activeUser.uid || getLoggedInUID()}
+                  self={true}
+                />
+              </TabPanel>
+
+              <TabPanel sx={sx}>
+                <Card>
+                  <Text>This is the Experience tab</Text>
+                  <br />
+                </Card>
+              </TabPanel>
+
+              {isBrowser ? (
+                <TabPanel sx={isMobile ? { width: "105%" } : null}>
+                  <UserFilesAndDocumentsView
+                    uid={activeUser.uid || getLoggedInUID()}
+                  />
+                </TabPanel>
+              ) : null}
+            </TabPanels>
+          </Tabs>
         </Col>
       </AppLayout>
     </>
   );
 };
-
-export async function getServerSideProps(context) {
-  return {
-    props: {},
-  };
-}
 
 AccountPage.restricted = true;
 

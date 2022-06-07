@@ -1,4 +1,3 @@
-import NavItem from "../components/sidebar/navItem.tsx";
 import {
   FiHome,
   FiTrendingUp,
@@ -11,9 +10,11 @@ import {
   FiHelpCircle,
   FiChevronDown,
 } from "react-icons/fi";
+
 import { IconType } from "react-icons";
 import { useColorModeValue, Text } from "@chakra-ui/react";
-import CalendarIcon from "../fun/calendar";
+
+import NavItem from "../components/sidebar/navItem.tsx";
 
 interface LinkItemProps {
   name: string;

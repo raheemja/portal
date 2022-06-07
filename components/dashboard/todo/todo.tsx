@@ -91,12 +91,11 @@ const Todo = () => {
 
   if (message) {
     return (
-      <Card>
-        <Alert status="info">
-          <AlertIcon />
-          {message}
-        </Alert>
-      </Card>
+      <>
+        <Card>
+          <Text>{message}</Text>
+        </Card>
+      </>
     );
   }
 

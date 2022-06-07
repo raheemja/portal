@@ -12,8 +12,14 @@ import {
   AvatarGroup,
   useBreakpointValue,
   IconProps,
+  FormControl,
+  FormLabel,
   Icon,
   Select,
+  HStack,
+  VStack,
+  Radio,
+  RadioGroup,
 } from "@chakra-ui/react";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -25,11 +31,14 @@ import { UserModel } from "../models/user/user";
 
 import { initialize } from "../features/user/userSlice";
 
+// Scripts and functions
 import _ from "lodash";
 import getError from "../scripts/getError";
+import CryptoJS from "crypto-js";
 
 const avatars = require("../data/homeAvatars.json");
 const countries = require("../data/countries.json");
+const { parse, stringify, toJSON, fromJSON } = require("flatted");
 
 export default function SignupComponent() {
   const [user, setUser] = useState(UserModel());
@@ -39,13 +48,19 @@ export default function SignupComponent() {
   const dispatch = useDispatch();
   const axios = require("axios").default;
 
+  // AES encryption
+  const { encrypt } = require("ethereum-cryptography/aes");
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
     setUser((prevState) => ({
       ...prevState,
+      //    [name]: CryptoJS.AES.encrypt(value, process.env.NEXT_PUBLIC_ENC_KEY),
       [name]: value,
     }));
+
+    //    alert(user[name]);
 
     if (
       _.isEqual(name, "firstName") ||
@@ -75,7 +90,7 @@ export default function SignupComponent() {
       axios({
         url: "/api/auth/new",
         method: "POST",
-        params: user,
+        params: toJSON(user),
       }).then(function (response) {
         if (response.data.error) {
           alert(JSON.stringify(response.data, null, 2));
@@ -196,68 +211,100 @@ export default function SignupComponent() {
           </Stack>
           <Box as={"form"} mt={10}>
             <Stack spacing={4}>
-              <Input
-                type="text"
-                name="firstName"
-                id="firstName"
-                value={user.firstName}
-                placeholder="First name"
-                bg={"gray.100"}
-                border={0}
-                color={"gray.500"}
-                _placeholder={{
-                  color: "gray.500",
-                }}
-                onChange={(e) => {
-                  handleChange(e);
-                }}
-              />
-              <Input
-                type="text"
-                name="lastName"
-                id="lastName"
-                value={user.lastName}
-                placeholder="Last name"
-                bg={"gray.100"}
-                border={0}
-                color={"gray.500"}
-                _placeholder={{
-                  color: "gray.500",
-                }}
-                onChange={(e) => {
-                  handleChange(e);
-                }}
-              />
-              <Input
-                placeholder="Email"
-                type="email"
-                name="email"
-                bg={"gray.100"}
-                border={0}
-                color={"gray.500"}
-                _placeholder={{
-                  color: "gray.500",
-                }}
-                onChange={(e) => {
-                  handleChange(e);
-                }}
-              />
-              <Input
-                type="password"
-                name="password"
-                id="password"
-                value={user.password}
-                placeholder="Password"
-                bg={"gray.100"}
-                border={0}
-                color={"gray.500"}
-                _placeholder={{
-                  color: "gray.500",
-                }}
-                onChange={(e) => {
-                  handleChange(e);
-                }}
-              />
+              <FormControl>
+                <Input
+                  type="text"
+                  name="firstName"
+                  id="firstName"
+                  placeholder="First name"
+                  bg={"gray.100"}
+                  border={0}
+                  color={"gray.500"}
+                  _placeholder={{
+                    color: "gray.500",
+                  }}
+                  onChange={(e) => {
+                    handleChange(e);
+                  }}
+                />
+              </FormControl>
+
+              <FormControl>
+                <Input
+                  type="text"
+                  name="lastName"
+                  id="lastName"
+                  placeholder="Last name"
+                  bg={"gray.100"}
+                  border={0}
+                  color={"gray.500"}
+                  _placeholder={{
+                    color: "gray.500",
+                  }}
+                  onChange={(e) => {
+                    handleChange(e);
+                  }}
+                />
+              </FormControl>
+
+              <FormControl>
+                <Input
+                  placeholder="Email"
+                  type="email"
+                  name="email"
+                  bg={"gray.100"}
+                  border={0}
+                  color={"gray.500"}
+                  _placeholder={{
+                    color: "gray.500",
+                  }}
+                  onChange={(e) => {
+                    handleChange(e);
+                  }}
+                />
+              </FormControl>
+
+              <FormControl>
+                <Input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="Password"
+                  bg={"gray.100"}
+                  border={0}
+                  color={"gray.500"}
+                  _placeholder={{
+                    color: "gray.500",
+                  }}
+                  onChange={(e) => {
+                    handleChange(e);
+                  }}
+                />
+              </FormControl>
+
+              <FormControl as="fieldset">
+                <RadioGroup
+                  id="role"
+                  isRequired
+                  onChange={(role) => {
+                    setUser((prevState) => ({
+                      ...prevState,
+                      role: role,
+                    }));
+                  }}
+                >
+                  <HStack direction="row" spacing="30px">
+                    <Radio
+                      value="STUDENT"
+                      defaultChecked={true}
+                      isChecked={true}
+                    >
+                      I am a student
+                    </Radio>
+                    <Radio value="PARENT">I am a parent</Radio>
+                  </HStack>
+                </RadioGroup>
+              </FormControl>
             </Stack>
             <Button
               fontFamily={"heading"}

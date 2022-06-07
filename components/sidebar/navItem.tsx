@@ -24,7 +24,7 @@ export default function NavItem({
     <Link href={href}>
       <a style={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
         <Flex
-          bg={router.pathname.includes(href) ? "cyan.400" : ""}
+          bg={router.pathname.includes(href) ? "blue.400" : ""}
           color={router.pathname.includes(href) ? "white" : ""}
           align="center"
           p="4"
@@ -33,7 +33,7 @@ export default function NavItem({
           role="group"
           cursor="pointer"
           _hover={{
-            bg: "cyan.400",
+            bg: "cyan.600",
             color: "white",
           }}
           {...rest}

@@ -15,6 +15,7 @@ import Card from "../../common/card";
 import ContactCard from "./contactCard";
 import Loading from "../../common/loading";
 import NewContactModal from "./newContactModal";
+import { isMobile, isBrowser } from "react-device-detect";
 
 // Scripts
 import getLoggedInUID from "../../scripts/getLoggedInUID";
@@ -53,7 +54,7 @@ const Contacts = (props) => {
   if (!data) {
     return (
       <>
-        <Card>
+        <Card bc={isMobile}>
           <Text>No contacts found.</Text>
           <NewContactModal uid={uid || getLoggedInUID()} />
         </Card>
