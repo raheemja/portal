@@ -296,7 +296,9 @@ export default function SignupComponent() {
                   {countries.map((country, i) => {
                     return (
                       <>
-                        <option value={country.name}>{country.name}</option>
+                        <option value={country.countryName}>
+                          {country.countryName}
+                        </option>
                       </>
                     );
                   })}
@@ -347,7 +349,6 @@ export default function SignupComponent() {
           </Box>
           form
         </Stack>
-        <Text>{JSON.stringify(user, null, 2)}</Text>
       </Container>
       <Blur
         position={"absolute"}

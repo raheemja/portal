@@ -30,9 +30,8 @@ const GPA = (props) => {
     fetch(`/api/gpa/${uid || getLoggedInUID()}`)
       .then((res) => res.json())
       .then((data) => {
-        if (!data.error) {
+        if (!data.error && !data.message) {
           setData(data);
-          setLoading(false);
         }
 
         setLoading(false);
@@ -40,6 +39,18 @@ const GPA = (props) => {
   }, []);
 
   if (isLoading) return <Loading />;
+
+  if (!data) {
+    return (
+      <Card xs={6} md={6} bg={"pink.400"} color={"white"}>
+        <Stat>
+          <StatLabel>GPA</StatLabel>
+          <StatNumber>0</StatNumber>
+          <StatHelpText>No GPA found</StatHelpText>
+        </Stat>
+      </Card>
+    );
+  }
 
   return (
     <Card xs={6} md={6} bg={"pink.400"} color={"white"}>
