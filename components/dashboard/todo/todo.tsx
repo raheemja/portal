@@ -57,16 +57,9 @@ const items = {
     title: "Hello",
     message: "This is a message",
     action: "Start",
-    category: "ACCOUNT",
+    category: "COURSE",
   },
   "2": {
-    id: "1",
-    title: "Hello",
-    message: "This is a message",
-    action: "Start",
-    category: "ACCOUNT",
-  },
-  "3": {
     id: "1",
     title: "Hello",
     message: "This is a message",
@@ -78,14 +71,14 @@ const items = {
     title: "Hello",
     message: "This is a message",
     action: "Start",
-    category: "ACCOUNT",
+    category: "PROFILE",
   },
   "5": {
     id: "1",
     title: "Hello",
     message: "This is a message",
     action: "Start",
-    category: "ACCOUNT",
+    category: "COURSE",
   },
 };
 
@@ -151,19 +144,17 @@ const Todo = () => {
       {/* Left Icon */}
 
       {/* Slider */}
-      <Slider {...settings} ref={(slider) => setSlider(slider)}>
-        {Object.values(items).map((value, i) => {
-          return (
-            <div key={i} style={{ background: "" }}>
-              <TodoItem
-                title={value.title}
-                message={value.message}
-                category={value.category}
-              />
-            </div>
-          );
-        })}
-      </Slider>
+      {Object.values(items).map((value, i) => {
+        return (
+          <div key={i} style={{ background: "" }}>
+            <TodoItem
+              title={value.title}
+              message={value.message}
+              category={value.category}
+            />
+          </div>
+        );
+      })}
     </Box>
   );
 };
