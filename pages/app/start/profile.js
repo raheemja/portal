@@ -403,7 +403,7 @@ const ProfileStartPage = () => {
                   <ListItem>
                     <ListIcon
                       as={InfoIcon}
-                      color={useColorModeValue("red.400", "yellow.400")}
+                      color={useColorModeValue("red.400", "red.400")}
                     />
                     Please enter your first Name
                   </ListItem>
@@ -416,7 +416,7 @@ const ProfileStartPage = () => {
                   <ListItem>
                     <ListIcon
                       as={InfoIcon}
-                      color={useColorModeValue("red.400", "yellow.400")}
+                      color={useColorModeValue("red.400", "red.400")}
                     />
                     Please enter your last name
                   </ListItem>
@@ -429,7 +429,7 @@ const ProfileStartPage = () => {
                   <ListItem>
                     <ListIcon
                       as={InfoIcon}
-                      color={useColorModeValue("yellow.400", "yellow.400")}
+                      color={useColorModeValue("red.400", "red.400")}
                     />
                     Your date of birth is required
                   </ListItem>
@@ -442,7 +442,7 @@ const ProfileStartPage = () => {
                   <ListItem>
                     <ListIcon
                       as={InfoIcon}
-                      color={useColorModeValue("yellow.400", "yellow.400")}
+                      color={useColorModeValue("red.400", "red.400")}
                     />
                     Your phone number is required
                   </ListItem>
@@ -455,7 +455,7 @@ const ProfileStartPage = () => {
                   <ListItem>
                     <ListIcon
                       as={InfoIcon}
-                      color={useColorModeValue("yellow.400", "yellow.400")}
+                      color={useColorModeValue("red.400", "red.400")}
                     />
                     Your email is required
                   </ListItem>
@@ -468,7 +468,7 @@ const ProfileStartPage = () => {
                   <ListItem>
                     <ListIcon
                       as={InfoIcon}
-                      color={useColorModeValue("yellow.400", "yellow.400")}
+                      color={useColorModeValue("red.400", "red.400")}
                     />
                     Your street address is required
                   </ListItem>
@@ -481,7 +481,7 @@ const ProfileStartPage = () => {
                   <ListItem>
                     <ListIcon
                       as={InfoIcon}
-                      color={useColorModeValue("yellow.400", "yellow.400")}
+                      color={useColorModeValue("red.400", "red.400")}
                     />
                     Please enter your city
                   </ListItem>
@@ -494,7 +494,7 @@ const ProfileStartPage = () => {
                   <ListItem>
                     <ListIcon
                       as={InfoIcon}
-                      color={useColorModeValue("yellow.400", "yellow.400")}
+                      color={useColorModeValue("red.400", "red.400")}
                     />
                     Your state / parish is required
                   </ListItem>

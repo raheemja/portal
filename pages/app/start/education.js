@@ -150,6 +150,7 @@ const EducationStartPage = () => {
                     </FormLabel>
 
                     <Select
+                      color={"gray.500"}
                       id="degree"
                       name="degree"
                       onChange={(e) => {
@@ -174,6 +175,7 @@ const EducationStartPage = () => {
                     <Row>
                       <Col xs={8} md={8}>
                         <Select
+                          color={"gray.500"}
                           id="startMonth"
                           name="startMonth"
                           onChange={(e) => {
@@ -188,6 +190,7 @@ const EducationStartPage = () => {
 
                       <Col xs={4} md={4}>
                         <Select
+                          color={"gray.500"}
                           id="startYear"
                           name="startYear"
                           onChange={(e) => {
@@ -214,6 +217,7 @@ const EducationStartPage = () => {
                     <Row>
                       <Col xs={8} md={8}>
                         <Select
+                          color={"gray.500"}
                           id="endMonth"
                           name="endMonth"
                           onChange={(e) => {
@@ -234,6 +238,7 @@ const EducationStartPage = () => {
 
                       <Col xs={4} md={4}>
                         <Select
+                          color={"gray.500"}
                           id="endYear"
                           name="endYear"
                           onChange={(e) => {
@@ -291,6 +296,80 @@ const EducationStartPage = () => {
               <br />
               <Row>
                 <InfoTab />
+
+                <Card>
+                  <List spacing={3}>
+                    {/* Check if date of birth is set */}
+                    {!state.name ? (
+                      <>
+                        <ListItem>
+                          <ListIcon
+                            as={InfoIcon}
+                            color={useColorModeValue("red.400", "red.400")}
+                          />
+                          Your school or university name is required
+                        </ListItem>
+                      </>
+                    ) : null}
+
+                    {/* Check if degree is set */}
+                    {!state.degree ? (
+                      <>
+                        <ListItem>
+                          <ListIcon
+                            as={InfoIcon}
+                            color={useColorModeValue("red.400", "red.400")}
+                          />
+                          Select your certificate/ degree type from the dropdown
+                        </ListItem>
+                      </>
+                    ) : null}
+
+                    {/* Check if start year is set */}
+                    {!state.startYear || !state.startMonth ? (
+                      <>
+                        <ListItem>
+                          <ListIcon
+                            as={InfoIcon}
+                            color={useColorModeValue("red.400", "red.400")}
+                          />
+                          Please select your start date
+                        </ListItem>
+                      </>
+                    ) : null}
+
+                    {/* Check if end month or year is set */}
+                    {!state.endMonth || !state.endYear ? (
+                      <>
+                        <ListItem>
+                          <ListIcon
+                            as={InfoIcon}
+                            color={useColorModeValue("red.400", "red.400")}
+                          />
+                          Please select your end date
+                        </ListItem>
+                      </>
+                    ) : null}
+
+                    {/* Check if details is set */}
+                    {!state.details ? (
+                      <>
+                        <ListItem>
+                          <ListIcon
+                            as={InfoIcon}
+                            color={useColorModeValue(
+                              "yellow.400",
+                              "yellow.400"
+                            )}
+                          />
+                          Adding more details is optional, but it helps us to
+                          get a broader overview of your academia and
+                          achievements.
+                        </ListItem>
+                      </>
+                    ) : null}
+                  </List>
+                </Card>
               </Row>
             </Col>
           </>
