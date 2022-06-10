@@ -1,0 +1,65 @@
+[
+  {
+    "name": "Mother"
+  },
+  {
+    "name": "Father"
+  },
+  {
+    "name": "Parent / Guardian"
+  },
+  {
+    "name": "Brother"
+  },
+  {
+    "name": "Sister"
+  },
+  {
+    "name": "Son"
+  },
+  {
+    "name": "Daughter"
+  },
+  {
+    "name": "Child"
+  },
+  {
+    "name": "Friend"
+  },
+  {
+    "name": "Spouse"
+  },
+  {
+    "name": "Partner"
+  },
+  {
+    "name": "Assistant"
+  },
+  {
+    "name": "Manager"
+  },
+  {
+    "name": "Roomate"
+  },
+  {
+    "name": "Doctor"
+  },
+  {
+    "name": "Emergency"
+  },
+  {
+    "name": "Family Member"
+  },
+  {
+    "name": "Teacher"
+  },
+  {
+    "name": "Caretaker"
+  },
+  {
+    "name": "Daycare"
+  },
+  {
+    "name": "Other"
+  }
+]

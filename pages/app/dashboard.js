@@ -1,5 +1,12 @@
 // UI Components
-import { SimpleGrid, Box, Button, Text, Heading } from "@chakra-ui/react";
+import {
+  SimpleGrid,
+  Box,
+  Button,
+  Text,
+  Heading,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import { Row, Col } from "react-bootstrap";
 
 // Next & Redux Components
@@ -9,12 +16,13 @@ import { useSelector, useDispatch } from "react-redux";
 import AppLayout from "../../components/appLayout.tsx";
 import Seo from "../../components/seo";
 import Card from "../../common/card";
+import { isMobile, isBrowser } from "react-device-detect";
 
 // Dashboard components
 import Todo from "../../components/dashboard/todo/todo.tsx";
 import Tuition from "../../components/dashboard/tuition/tuition";
 import GPA from "../../components/dashboard/gpa/gpa";
-
+import AcademicPerformance from "../../components/dashboard/ap/academicPerformance";
 const DashboardPage = () => {
   const activeUser = useSelector((state) => state.user);
 
@@ -22,34 +30,62 @@ const DashboardPage = () => {
     <>
       <Seo title="Dashboard" />
       <AppLayout>
-        <Card bg={""} xs={12} md={8}>
+        <Col xs={12} md={8}>
+          <Heading
+            pt={2}
+            as={"h3"}
+            size="lg"
+            color={useColorModeValue("gray.600", "gray.600")}
+          >
+            {activeUser.firstName}'s Dashboard
+          </Heading>
           <br />
-        </Card>
-        <Col md={4}>
-          <Row>
-            <GPA />
-            <Tuition />
-            <Todo />
-          </Row>
+
+          <Card bg={""} xs={12} md={12}>
+            <br />
+            <Text
+              color={"gray.500"}
+              fontSize={{ base: "sm", sm: "md" }}
+              align={"center"}
+            >
+              No data available
+            </Text>
+            <br />
+          </Card>
+
+          {isBrowser ? (
+            <>
+              <AcademicPerformance />
+            </>
+          ) : null}
+
+          {isMobile ? (
+            <>
+              <Row>
+                <GPA />
+                <Tuition />
+                <Todo />
+                <AcademicPerformance />
+              </Row>
+            </>
+          ) : null}
         </Col>
 
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+        {isBrowser ? (
+          <Col md={4}>
+            <Row>
+              <GPA />
+              <Tuition />
+              <Todo />
+            </Row>
+          </Col>
+        ) : null}
+
         <br />
       </AppLayout>
     </>
   );
 };
-
-export async function getServerSideProps(context) {
-  return {
-    props: {},
-  };
-}
 
 DashboardPage.restricted = true;
 

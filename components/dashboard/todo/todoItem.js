@@ -9,12 +9,17 @@ import {
   Avatar,
   useColorModeValue,
   Stack,
+  HStack,
+  ButtonGroup,
 } from "@chakra-ui/react";
 
 import Link from "next/link";
 import Card from "../../../common/card";
 
 import { Row, Col } from "react-bootstrap";
+
+// Icons
+import { FiTrash2 } from "react-icons/fi";
 
 const TodoItem = (props) => {
   const { title, message, category, createdAt, href, action } = props;
@@ -66,8 +71,8 @@ const TodoItem = (props) => {
 
               <Link href={href}>
                 <Button
+                  w="40%"
                   color={"white"}
-                  w="30%"
                   bg={useColorModeValue("gray.400", "gray.400")}
                   size={"sm"}
                 >

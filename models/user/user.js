@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export function UserModel(props) {
   return {
     uid: "" /* Unique ID */,

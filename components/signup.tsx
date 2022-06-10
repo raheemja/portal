@@ -58,7 +58,6 @@ export default function SignupComponent() {
 
     setUser((prevState) => ({
       ...prevState,
-      //    [name]: CryptoJS.AES.encrypt(value, process.env.NEXT_PUBLIC_ENC_KEY),
       [name]: value,
     }));
 
@@ -92,14 +91,14 @@ export default function SignupComponent() {
       axios({
         url: "/api/auth/new",
         method: "POST",
-        params: toJSON(user),
+        params: user,
       }).then(function (response) {
         if (response.data.error) {
           alert(JSON.stringify(response.data, null, 2));
         } else {
           Cookies.set("sis-uid", response.data.uid);
           dispatch(initialize(response.data));
-          router.push("/app/dashboard");
+          router.push("/app/start");
         }
       });
     }
@@ -296,7 +295,7 @@ export default function SignupComponent() {
                   {countries.map((country, i) => {
                     return (
                       <>
-                        <option value={country.countryName}>
+                        <option key={country.name} value={country.countryName}>
                           {country.countryName}
                         </option>
                       </>

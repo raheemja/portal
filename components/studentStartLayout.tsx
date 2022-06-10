@@ -41,13 +41,17 @@ import { ReactText } from "react";
 import { Row } from "react-bootstrap";
 
 // Customized menus
-import StudentMenu from "../menus/student.tsx";
+import StudentStartMenu from "../menus/studentStartMenu.tsx";
 
 // Redux Components
 import { useSelector, userDispatch } from "react-redux";
 import Worker from "../scripts/worker";
 
-export default function AppLayout({ children }: { children: ReactNode }) {
+export default function StudentStartLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -107,7 +111,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
-      <StudentMenu />
+      <StudentStartMenu />
     </Box>
   );
 };
@@ -217,36 +221,8 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                     {activeUser.role || ""}
                   </Text>
                 </VStack>
-                <Box display={{ base: "none", md: "flex" }}>
-                  <FiChevronDown />
-                </Box>
               </HStack>
             </MenuButton>
-            <MenuList
-              bg={useColorModeValue("white", "gray.900")}
-              borderColor={useColorModeValue("gray.200", "gray.700")}
-            >
-              <>
-                <Link href={`/app/account`}>
-                  <MenuItem>Account</MenuItem>
-                </Link>
-              </>
-
-              <>
-                <Link href={`/app/courses`}>
-                  <MenuItem>Courses</MenuItem>
-                </Link>
-              </>
-
-              <>
-                <Link href={`/app/bursary`}>
-                  <MenuItem>Bursary</MenuItem>
-                </Link>
-              </>
-
-              <MenuDivider />
-              <MenuItem>Sign out</MenuItem>
-            </MenuList>
           </Menu>
         </Flex>
       </HStack>

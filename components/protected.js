@@ -14,12 +14,12 @@ const Protected = () => {
   const axios = require("axios").default;
 
   useEffect(() => {
+    const uid = Cookies.get("sis-uid");
     const user = getUserFromStorage();
 
     if (user) {
-      dispatch(initialize());
+      dispatch(initialize(user));
     }
-    const uid = Cookies.get("sis-uid"); // => 'value'
 
     /*
     const uid = Cookies.get("sis-uid"); // => 'value'

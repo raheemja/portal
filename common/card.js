@@ -16,7 +16,7 @@ import { CheckIcon } from "@chakra-ui/icons";
 import { Row, Col } from "react-bootstrap";
 
 export default function Card(props) {
-  const { xs, sm, md, lg, xl, bc, color, bg } = props;
+  const { xs, sm, md, lg, xl, bc, color, bg, card } = props;
 
   return (
     <>

@@ -49,14 +49,29 @@ export default async function handler(req, res) {
 
       update(userRef, strip(user))
         .then(() => {
-          get(child(userRef, `users/${user.uid}`)).then((snapshot) => {
-            res.status(200).json({ message: "Changes made successfully" });
-          });
+          get(child(userRef, `users/${user.uid}`)).then((snapshot) => {});
         })
         .catch((e) => {
           console.log(e);
           res.status(200).json(e);
         });
+
+      if (user.role === "Student" || "STUDENT") {
+        const studentRef = ref(db, `students/${user.uid}`);
+
+        update(studentRef, strip(user))
+          .then(() => {
+            get(child(userRef, `students/${user.uid}`)).then((snapshot) => {
+              res.status(200).json({ message: "Changes made successfully" });
+            });
+          })
+          .catch((e) => {
+            console.log(e);
+            res.status(200).json(e);
+          });
+      }
+
+      res.status(200).json({ message: "Changes made successfully" });
 
       break;
 

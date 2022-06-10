@@ -45,7 +45,7 @@ const NewContactModal = (props) => {
 
   const saveContact = () => {
     axios({
-      url: `/api/contacts/${uid}`,
+      url: `/api/contacts/${uid || getLoggedInUID()}`,
       method: "POST",
       params: contact,
     }).then(function (response) {

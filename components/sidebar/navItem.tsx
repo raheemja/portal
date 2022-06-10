@@ -19,13 +19,16 @@ export default function NavItem({
   ...rest
 }: NavItemProps) {
   const router = useRouter();
+  const route = router.pathname.split("/").pop();
+  const p = href.split("/").pop();
+  console.log(p);
 
   return (
     <Link href={href}>
       <a style={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
         <Flex
-          bg={router.pathname.includes(href) ? "blue.400" : ""}
-          color={router.pathname.includes(href) ? "white" : ""}
+          bg={route === href.split("/").pop() ? "blue.400" : "transparent"}
+          color={router.pathname.includes(href) ? "white" : "black"}
           align="center"
           p="4"
           mx="4"

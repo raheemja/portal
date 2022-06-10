@@ -19,6 +19,7 @@ import { isMobile, isBrowser } from "react-device-detect";
 
 // Scripts
 import getLoggedInUID from "../../scripts/getLoggedInUID";
+import { Row, Col } from "react-bootstrap";
 
 const Contacts = (props) => {
   const [data, setData] = useState();
@@ -45,9 +46,10 @@ const Contacts = (props) => {
     return (
       <Card>
         <Loading />
-
         <br />
-        <NewContactModal uid={uid || getLoggedInUID()} />
+        {!props.hideNew ? (
+          <NewContactModal uid={uid || getLoggedInUID()} />
+        ) : null}{" "}
       </Card>
     );
 
@@ -55,15 +57,17 @@ const Contacts = (props) => {
     return (
       <>
         <Card bc={isMobile}>
-          <Text>No contacts found.</Text>
-          <NewContactModal uid={uid || getLoggedInUID()} />
+          <Text>No contacts found.</Text>''
+          {!props.hideNew ? (
+            <NewContactModal uid={uid || getLoggedInUID()} />
+          ) : null}{" "}
         </Card>
       </>
     );
   }
 
   return (
-    <>
+    <Row>
       {Object.values(data).map((contact, i) => {
         return (
           <ContactCard
@@ -76,8 +80,10 @@ const Contacts = (props) => {
         );
       })}
 
-      <NewContactModal uid={uid || getLoggedInUID()} />
-    </>
+      {!props.hideNew ? (
+        <NewContactModal uid={uid || getLoggedInUID()} />
+      ) : null}
+    </Row>
   );
 };
 
