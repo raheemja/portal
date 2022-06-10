@@ -30,6 +30,7 @@ import {
   Input,
   Select,
   ButtonGroup,
+  Textarea,
 } from "@chakra-ui/react";
 
 // Essential app components
@@ -60,8 +61,14 @@ import _ from "lodash";
 
 const EducationStartPage = () => {
   const activeUser = useSelector((state) => state.user);
+  const [state, setState] = useState({
+    startMonth: "January",
+    endMonth: "January",
+  });
 
-  const [state, setState] = useState();
+  // Data
+  const degrees = require("../../../data/degrees.json");
+  const months = require("../../../data/months-detailed.json");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -115,6 +122,7 @@ const EducationStartPage = () => {
           <Row>
             <Card>
               <Row>
+                {/* Name os school / university */}
                 <Col xs={12} md={6}>
                   <FormControl isRequired>
                     <FormLabel htmlFor="name" color={"gray.500"}>
@@ -130,14 +138,147 @@ const EducationStartPage = () => {
                         handleChange(e);
                       }}
                     />
+                  </FormControl>
+                  <br />
+                </Col>
 
-                    <br />
-                    <br />
+                {/* Type of Degree / Qualification */}
+                <Col xs={12} md={6}>
+                  <FormControl isRequired>
+                    <FormLabel htmlFor="name" color={"gray.500"}>
+                      Certification / Degree
+                    </FormLabel>
+
+                    <Select
+                      id="degree"
+                      name="degree"
+                      onChange={(e) => {
+                        handleChange(e);
+                      }}
+                    >
+                      {degrees.map((degrees, i) => {
+                        return <option key={i}>{degrees.name}</option>;
+                      })}
+                    </Select>
+                  </FormControl>
+                  <br />
+                </Col>
+
+                {/* Start Date */}
+                <Col xs={12} md={6}>
+                  <FormControl isRequired>
+                    <FormLabel htmlFor="name" color={"gray.500"}>
+                      Start Date
+                    </FormLabel>
+
+                    <Row>
+                      <Col xs={8} md={8}>
+                        <Select
+                          id="startMonth"
+                          name="startMonth"
+                          onChange={(e) => {
+                            handleChange(e);
+                          }}
+                        >
+                          {months.map((month, i) => {
+                            return <option key={i}>{month.name}</option>;
+                          })}
+                        </Select>
+                      </Col>
+
+                      <Col xs={4} md={4}>
+                        <Select
+                          id="startYear"
+                          name="startYear"
+                          onChange={(e) => {
+                            handleChange(e);
+                          }}
+                        >
+                          {_.range(1950, 2023).map((i) => {
+                            return <option key={i}>{i}</option>;
+                          })}
+                        </Select>
+                      </Col>
+                    </Row>
+                  </FormControl>
+                  <br />
+                </Col>
+
+                {/* Name os school / university */}
+                <Col xs={12} md={6}>
+                  <FormControl isRequired>
+                    <FormLabel htmlFor="name" color={"gray.500"}>
+                      End Date
+                    </FormLabel>
+
+                    <Row>
+                      <Col xs={8} md={8}>
+                        <Select
+                          id="endMonth"
+                          name="endMonth"
+                          onChange={(e) => {
+                            handleChange(e);
+                          }}
+                        >
+                          {months.map((month, i) => {
+                            return (
+                              <>
+                                <option value={month.name} key={i}>
+                                  {month.name}
+                                </option>
+                              </>
+                            );
+                          })}
+                        </Select>
+                      </Col>
+
+                      <Col xs={4} md={4}>
+                        <Select
+                          id="endYear"
+                          name="endYear"
+                          onChange={(e) => {
+                            handleChange(e);
+                          }}
+                        >
+                          {_.range(1950, 2023).map((i) => {
+                            return <option key={i}>{i}</option>;
+                          })}
+                        </Select>
+                      </Col>
+                    </Row>
+                  </FormControl>
+                  <br />
+                </Col>
+
+                {/* Details */}
+                <Col xs={12} md={12}>
+                  <FormControl isRequired>
+                    <FormLabel htmlFor="details" color={"gray.500"}>
+                      Details
+                    </FormLabel>
+
+                    <Textarea
+                      color={"gray.500"}
+                      id="details"
+                      name="details"
+                      type="text"
+                      onChange={(e) => {
+                        handleChange(e);
+                      }}
+                    />
+                    <FormHelperText>
+                      Please share your subjects, courses, awards, GPA or any
+                      extracurricular activities you were involved in.
+                    </FormHelperText>
                   </FormControl>
                   <br />
                 </Col>
               </Row>
               <br />
+              <br />
+              <br />
+              <br />
+              <Text>{JSON.stringify(state, null, 2)}</Text>
             </Card>
           </Row>
         </Col>
