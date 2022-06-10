@@ -9,11 +9,6 @@ import {
   FiBell,
   FiHelpCircle,
   FiChevronDown,
-  FiUser,
-  FiUsers,
-  FiBook,
-  FiFileText,
-  FiPieChart,
 } from "react-icons/fi";
 
 import { IconType } from "react-icons";
@@ -28,19 +23,15 @@ interface LinkItemProps {
 }
 
 const LinkItems: Array<LinkItemProps> = [
-  { name: "Welcome", icon: FiHome, href: "/app/start" },
-  { name: "Profile", icon: FiUser, href: "/app/start/profile" },
-  { name: "Contacts", icon: FiUsers, href: "/app/start/contacts" },
-  { name: "Education", icon: FiBook, href: "/app/start/education" },
-  {
-    name: "Work Experience",
-    icon: FiPieChart,
-    href: "/app/start/experience",
-  },
-  { name: "Files & Documents", icon: FiFileText, href: "/app/start/files" },
+  { name: "Dashboard", icon: FiHome, href: "/app/admin-dashboard" },
+  { name: "Admissions", icon: FiCompass, href: "/app/admissions" },
+  { name: "Calendar", icon: FiCalendar, href: "/app/calendar" },
+  { name: "Bursary", icon: FiCreditCard, href: "/app/bursary" },
+  { name: "Support Tickets", icon: FiHelpCircle, href: "/app/tickets" },
+  { name: "Administration", icon: FiSettings, href: "/app/admin" },
 ];
 
-export default function StudentStartMenu() {
+export default function AdminMenu() {
   const color = useColorModeValue("gray.600", "gray.300");
 
   return (

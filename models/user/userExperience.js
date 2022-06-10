@@ -1,13 +1,16 @@
-import uniqid from "uniqid";
-import { AddressModel } from "../address";
+import { v4 as uuidv4 } from "uuid";
 
-export function UserExperienceModel() {
+export function UserExperienceModel(uid) {
   return {
-    key: uniqid(),
-    uid: "",
+    id: uuidv4(),
+    uid: uid || "",
     company: "",
-    startDate: "",
-    endDate: "",
+    role: "",
+    startMonth: "January",
+    startYear: "",
+    endYear: "",
+    endMonth: "December",
     description: "",
+    status: "Active",
   };
 }

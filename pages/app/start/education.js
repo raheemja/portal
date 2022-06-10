@@ -110,7 +110,11 @@ const EducationStartPage = () => {
         }
       });
     } else {
-      Swal.fire("Please complete all relevant fields. ");
+      Swal.fire({
+        icon: "error",
+        title: "Hmmm...",
+        text: "Please complete all the relevant fields",
+      });
     }
   };
 
@@ -140,7 +144,7 @@ const EducationStartPage = () => {
             {/* Check if date of birth is set */}
             {!state.institution ? (
               <>
-                <ListItem>
+                <ListItem color={"gray.500"}>
                   <ListIcon
                     as={InfoIcon}
                     color={useColorModeValue("red.400", "red.400")}
@@ -153,7 +157,7 @@ const EducationStartPage = () => {
             {/* Check if degree is set */}
             {!state.degree ? (
               <>
-                <ListItem>
+                <ListItem color={"gray.500"}>
                   <ListIcon
                     as={InfoIcon}
                     color={useColorModeValue("red.400", "red.400")}
@@ -166,7 +170,7 @@ const EducationStartPage = () => {
             {/* Check if start year is set */}
             {!state.startYear || !state.startMonth ? (
               <>
-                <ListItem>
+                <ListItem color={"gray.500"}>
                   <ListIcon
                     as={InfoIcon}
                     color={useColorModeValue("red.400", "red.400")}
@@ -179,7 +183,7 @@ const EducationStartPage = () => {
             {/* Check if end month or year is set */}
             {!state.endMonth || !state.endYear ? (
               <>
-                <ListItem>
+                <ListItem color={"gray.500"}>
                   <ListIcon
                     as={InfoIcon}
                     color={useColorModeValue("red.400", "red.400")}
@@ -192,7 +196,7 @@ const EducationStartPage = () => {
             {/* Check if details is set */}
             {!state.details ? (
               <>
-                <ListItem>
+                <ListItem color={"gray.500"}>
                   <ListIcon
                     as={InfoIcon}
                     color={useColorModeValue("yellow.400", "yellow.400")}
@@ -359,7 +363,7 @@ const EducationStartPage = () => {
                   <br />
                 </Col>
 
-                {/* Name os school / university */}
+                {/* End date */}
                 <Col xs={12} md={6}>
                   <FormControl isRequired>
                     <FormLabel htmlFor="name" color={"gray.500"}>
@@ -444,7 +448,7 @@ const EducationStartPage = () => {
                       saveEntry();
                     }}
                   >
-                    Save Entry
+                    Save & Add More
                   </Button>
 
                   <Button

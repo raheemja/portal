@@ -42,6 +42,7 @@ import { Row } from "react-bootstrap";
 
 // Customized menus
 import StudentMenu from "../menus/student.tsx";
+import AdminMenu from "../menus/admin.tsx";
 
 // Redux Components
 import { useSelector, userDispatch } from "react-redux";
@@ -86,6 +87,8 @@ interface SidebarProps extends BoxProps {
 }
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+  const activeUser = useSelector((state) => state.user);
+
   return (
     <Box
       transition="3s ease"
@@ -107,7 +110,12 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
-      <StudentMenu />
+
+      {activeUser.role === "Student" ? (
+        <StudentMenu />
+      ) : activeUser.role === "Admin" || "Super Admin" ? (
+        <AdminMenu />
+      ) : null}
     </Box>
   );
 };

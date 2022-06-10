@@ -23,6 +23,7 @@ import Todo from "../../components/dashboard/todo/todo.tsx";
 import Tuition from "../../components/dashboard/tuition/tuition";
 import GPA from "../../components/dashboard/gpa/gpa";
 import AcademicPerformance from "../../components/dashboard/ap/academicPerformance";
+
 const DashboardPage = () => {
   const activeUser = useSelector((state) => state.user);
 

@@ -85,21 +85,29 @@ const ContactsStartPage = () => {
   };
 
   const saveContact = () => {
-    axios({
-      url: `/api/contacts/${activeUser.uid || getLoggedInUID()}`,
-      method: "POST",
-      params: contact,
-    }).then(function (response) {
-      if (response.data.error) {
-      } else {
-        Swal.fire({
-          icon: "success",
-          title: "Your work has been saved",
-          messaage: `${contact.displayName} has been added successfully`,
-        });
-        router.reload(window.location.pathname);
-      }
-    });
+    if (contact.displayName && contact.phoneNumber && contact.relationship) {
+      axios({
+        url: `/api/contacts/${activeUser.uid || getLoggedInUID()}`,
+        method: "POST",
+        params: contact,
+      }).then(function (response) {
+        if (response.data.error) {
+        } else {
+          Swal.fire({
+            icon: "success",
+            title: "Your work has been saved",
+            messaage: `${contact.displayName} has been added successfully`,
+          });
+          router.reload(window.location.pathname);
+        }
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Hmmm...",
+        text: "Please complete all the relevant fields",
+      });
+    }
   };
 
   const InfoTab = () => {

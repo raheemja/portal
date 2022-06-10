@@ -13,5 +13,6 @@ export function UserEducationModel(uid) {
     endMonth: "",
     gpa: "", // stores the gpa, grade or score
     details: "",
+    status: "Active",
   };
 }

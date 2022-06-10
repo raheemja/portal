@@ -61,6 +61,7 @@ import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import _ from "lodash";
 import moment from "moment";
+import Swal from "sweetalert2";
 
 // CSS Modules, react-datepicker-cssmodules.css
 import "react-datepicker/dist/react-datepicker-cssmodules.css";
@@ -80,16 +81,34 @@ const ProfileStartPage = () => {
   const countries = require("../../../data/countries.json");
 
   const saveChanges = () => {
-    axios({
-      method: "PATCH",
-      url: `/api/user/${user.uid}`,
-      params: user,
-    }).then(function (response) {
-      if (response.data.error) {
-      } else {
-        router.push("/app/start/contacts");
-      }
-    });
+    if (
+      user.firstName &&
+      user.lastName &&
+      user.gender &&
+      user.dateOfBirth &&
+      user.phoneNumber &&
+      user.email &&
+      user.streetAddress &&
+      user.state &&
+      user.country
+    ) {
+      axios({
+        method: "PATCH",
+        url: `/api/user/${user.uid || getLoggedInUID()}`,
+        params: user,
+      }).then(function (response) {
+        if (response.data.error) {
+        } else {
+          router.push("/app/start/contacts");
+        }
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Hmmm...",
+        text: "Please complete all the relevant fields",
+      });
+    }
   };
 
   const handleChange = (e) => {
@@ -119,7 +138,7 @@ const ProfileStartPage = () => {
             size="lg"
             color={useColorModeValue("gray.600", "gray.600")}
           >
-            Profile Overview
+            Student Profile
           </Heading>
 
           <br />
