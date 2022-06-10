@@ -86,21 +86,32 @@ const EducationStartPage = () => {
   };
 
   const saveEntry = () => {
-    axios({
-      url: `/api/education/${activeUser.uid || getLoggedInUID()}`,
-      method: "POST",
-      params: state,
-    }).then(function (response) {
-      if (response.data.error) {
-      } else {
-        Swal.fire({
-          icon: "success",
-          title: "Your entry has been saved",
-          messaage: `Education added successfully`,
-        });
-        router.reload(window.location.pathname);
-      }
-    });
+    if (
+      state.institution &&
+      state.programme &&
+      state.startMonth &&
+      state.startYear &&
+      state.endMonth &&
+      state.endYear
+    ) {
+      axios({
+        url: `/api/education/${activeUser.uid || getLoggedInUID()}`,
+        method: "POST",
+        params: state,
+      }).then(function (response) {
+        if (response.data.error) {
+        } else {
+          Swal.fire({
+            icon: "success",
+            title: "Your entry has been saved",
+            messaage: `Education added successfully`,
+          });
+          router.reload(window.location.pathname);
+        }
+      });
+    } else {
+      Swal.fire("Please complete all relevant fields. ");
+    }
   };
 
   const InfoTab = () => {
@@ -127,7 +138,7 @@ const EducationStartPage = () => {
         <Card>
           <List spacing={3}>
             {/* Check if date of birth is set */}
-            {!state.name ? (
+            {!state.institution ? (
               <>
                 <ListItem>
                   <ListIcon
@@ -193,33 +204,6 @@ const EducationStartPage = () => {
             ) : null}
           </List>
         </Card>
-
-        <br />
-        <Stack align={"right"}>
-          <ButtonGroup>
-            <Button
-              leftIcon={<FiSave />}
-              w={"50%"}
-              bg={useColorModeValue("blue.400", "blue.400")}
-              color={useColorModeValue("white", "white")}
-              onClick={(e) => {
-                e.preventDefault();
-                saveEntry();
-              }}
-            >
-              Save Entry
-            </Button>
-
-            <Button
-              onClick={(e) => {
-                e.preventDefault();
-                router.push("/app/start/experience");
-              }}
-            >
-              Skip
-            </Button>
-          </ButtonGroup>
-        </Stack>
       </>
     );
   };
@@ -253,7 +237,7 @@ const EducationStartPage = () => {
                 {/* Name os school / university */}
                 <Col xs={12} md={6}>
                   <FormControl isRequired>
-                    <FormLabel htmlFor="name" color={"gray.500"}>
+                    <FormLabel htmlFor="institution" color={"gray.500"}>
                       Name of School / University
                     </FormLabel>
 
@@ -447,7 +431,32 @@ const EducationStartPage = () => {
                   <br />
                 </Col>
               </Row>
+
               <br />
+              <Stack align={"right"}>
+                <ButtonGroup>
+                  <Button
+                    leftIcon={<FiSave />}
+                    bg={useColorModeValue("blue.400", "blue.400")}
+                    color={useColorModeValue("white", "white")}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      saveEntry();
+                    }}
+                  >
+                    Save Entry
+                  </Button>
+
+                  <Button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      router.push("/app/start/experience");
+                    }}
+                  >
+                    Skip
+                  </Button>
+                </ButtonGroup>
+              </Stack>
             </Card>
           </Row>
         </Col>

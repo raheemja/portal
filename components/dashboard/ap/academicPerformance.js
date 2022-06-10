@@ -17,7 +17,6 @@ import {
 // Custom Components
 import Card from "../../../common/card";
 import Loading from "../../../common/loading";
-import { Chart } from "react-google-charts";
 
 // Scripts and libraries
 import getLoggedInUID from "../../../scripts/getLoggedInUID";
