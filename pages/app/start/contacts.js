@@ -252,7 +252,6 @@ const ContactsStartPage = () => {
                 <br />
               </Col>
 
-              {/* Relationship */}
               <Col xs={12} md={6}>
                 <br />
                 <Stack align={"right"}>

@@ -43,7 +43,8 @@ import { Row, Col } from "react-bootstrap";
 import { isMobile, isBrowser } from "react-device-detect";
 import LazyLoad from "react-lazyload";
 
-// Start page components
+// Models
+import { UserEducationModel } from "../../../models/user/userEducation";
 
 // Icons
 import { FiSave } from "react-icons/fi";
@@ -55,16 +56,22 @@ import {
 } from "@chakra-ui/icons";
 
 // Scripts and libraries
+import getLoggedInUID from "../../../scripts/getLoggedInUID";
 import { useEffect, useState } from "react";
+import { Router, useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import _ from "lodash";
+import Swal from "sweetalert2";
 
 const EducationStartPage = () => {
   const activeUser = useSelector((state) => state.user);
-  const [state, setState] = useState({
-    startMonth: "January",
-    endMonth: "January",
-  });
+  const [state, setState] = useState(
+    UserEducationModel(activeUser.uid || getLoggedInUID())
+  );
+
+  // Router object
+  const router = useRouter();
+  const axios = require("axios").default;
 
   // Data
   const degrees = require("../../../data/degrees.json");
@@ -76,6 +83,24 @@ const EducationStartPage = () => {
       ...prevState,
       [name]: value,
     }));
+  };
+
+  const saveEntry = () => {
+    axios({
+      url: `/api/education/${activeUser.uid || getLoggedInUID()}`,
+      method: "POST",
+      params: state,
+    }).then(function (response) {
+      if (response.data.error) {
+      } else {
+        Swal.fire({
+          icon: "success",
+          title: "Your entry has been saved",
+          messaage: `Education added successfully`,
+        });
+        router.reload(window.location.pathname);
+      }
+    });
   };
 
   const InfoTab = () => {
@@ -92,6 +117,109 @@ const EducationStartPage = () => {
             </Text>
           </Card>
         </Col>
+      </>
+    );
+  };
+
+  const Checklist = () => {
+    return (
+      <>
+        <Card>
+          <List spacing={3}>
+            {/* Check if date of birth is set */}
+            {!state.name ? (
+              <>
+                <ListItem>
+                  <ListIcon
+                    as={InfoIcon}
+                    color={useColorModeValue("red.400", "red.400")}
+                  />
+                  Your school or university name is required
+                </ListItem>
+              </>
+            ) : null}
+
+            {/* Check if degree is set */}
+            {!state.degree ? (
+              <>
+                <ListItem>
+                  <ListIcon
+                    as={InfoIcon}
+                    color={useColorModeValue("red.400", "red.400")}
+                  />
+                  Select your certificate/ degree type from the dropdown
+                </ListItem>
+              </>
+            ) : null}
+
+            {/* Check if start year is set */}
+            {!state.startYear || !state.startMonth ? (
+              <>
+                <ListItem>
+                  <ListIcon
+                    as={InfoIcon}
+                    color={useColorModeValue("red.400", "red.400")}
+                  />
+                  Please select your start date
+                </ListItem>
+              </>
+            ) : null}
+
+            {/* Check if end month or year is set */}
+            {!state.endMonth || !state.endYear ? (
+              <>
+                <ListItem>
+                  <ListIcon
+                    as={InfoIcon}
+                    color={useColorModeValue("red.400", "red.400")}
+                  />
+                  Please select your end date
+                </ListItem>
+              </>
+            ) : null}
+
+            {/* Check if details is set */}
+            {!state.details ? (
+              <>
+                <ListItem>
+                  <ListIcon
+                    as={InfoIcon}
+                    color={useColorModeValue("yellow.400", "yellow.400")}
+                  />
+                  Adding more details is optional, but it helps us to get a
+                  broader overview of your academia and achievements.
+                </ListItem>
+              </>
+            ) : null}
+          </List>
+        </Card>
+
+        <br />
+        <Stack align={"right"}>
+          <ButtonGroup>
+            <Button
+              leftIcon={<FiSave />}
+              w={"50%"}
+              bg={useColorModeValue("blue.400", "blue.400")}
+              color={useColorModeValue("white", "white")}
+              onClick={(e) => {
+                e.preventDefault();
+                saveEntry();
+              }}
+            >
+              Save Entry
+            </Button>
+
+            <Button
+              onClick={(e) => {
+                e.preventDefault();
+                router.push("/app/start/experience");
+              }}
+            >
+              Skip
+            </Button>
+          </ButtonGroup>
+        </Stack>
       </>
     );
   };
@@ -131,8 +259,8 @@ const EducationStartPage = () => {
 
                     <Input
                       color={"gray.500"}
-                      id="name"
-                      name="name"
+                      id="institution"
+                      name="institution"
                       type="text"
                       onChange={(e) => {
                         handleChange(e);
@@ -165,6 +293,46 @@ const EducationStartPage = () => {
                   <br />
                 </Col>
 
+                {/* Programme */}
+                <Col xs={12} md={6}>
+                  <FormControl isRequired>
+                    <FormLabel htmlFor="name" color={"gray.500"}>
+                      Programme
+                    </FormLabel>
+
+                    <Input
+                      color={"gray.500"}
+                      id="programme"
+                      name="programme"
+                      type="text"
+                      onChange={(e) => {
+                        handleChange(e);
+                      }}
+                    />
+                  </FormControl>
+                  <br />
+                </Col>
+
+                {/* GPA */}
+                <Col xs={12} md={6}>
+                  <FormControl>
+                    <FormLabel htmlFor="name" color={"gray.500"}>
+                      GPA
+                    </FormLabel>
+
+                    <Input
+                      color={"gray.500"}
+                      id="gpa"
+                      name="gpa"
+                      type="text"
+                      onChange={(e) => {
+                        handleChange(e);
+                      }}
+                    />
+                  </FormControl>
+                  <br />
+                </Col>
+
                 {/* Start Date */}
                 <Col xs={12} md={6}>
                   <FormControl isRequired>
@@ -173,7 +341,7 @@ const EducationStartPage = () => {
                     </FormLabel>
 
                     <Row>
-                      <Col xs={8} md={8}>
+                      <Col xs={7}>
                         <Select
                           color={"gray.500"}
                           id="startMonth"
@@ -188,7 +356,7 @@ const EducationStartPage = () => {
                         </Select>
                       </Col>
 
-                      <Col xs={4} md={4}>
+                      <Col xs={5}>
                         <Select
                           color={"gray.500"}
                           id="startYear"
@@ -215,7 +383,7 @@ const EducationStartPage = () => {
                     </FormLabel>
 
                     <Row>
-                      <Col xs={8} md={8}>
+                      <Col xs={7}>
                         <Select
                           color={"gray.500"}
                           id="endMonth"
@@ -236,7 +404,7 @@ const EducationStartPage = () => {
                         </Select>
                       </Col>
 
-                      <Col xs={4} md={4}>
+                      <Col xs={5}>
                         <Select
                           color={"gray.500"}
                           id="endYear"
@@ -280,10 +448,6 @@ const EducationStartPage = () => {
                 </Col>
               </Row>
               <br />
-              <br />
-              <br />
-              <br />
-              <Text>{JSON.stringify(state, null, 2)}</Text>
             </Card>
           </Row>
         </Col>
@@ -296,84 +460,16 @@ const EducationStartPage = () => {
               <br />
               <Row>
                 <InfoTab />
-
-                <Card>
-                  <List spacing={3}>
-                    {/* Check if date of birth is set */}
-                    {!state.name ? (
-                      <>
-                        <ListItem>
-                          <ListIcon
-                            as={InfoIcon}
-                            color={useColorModeValue("red.400", "red.400")}
-                          />
-                          Your school or university name is required
-                        </ListItem>
-                      </>
-                    ) : null}
-
-                    {/* Check if degree is set */}
-                    {!state.degree ? (
-                      <>
-                        <ListItem>
-                          <ListIcon
-                            as={InfoIcon}
-                            color={useColorModeValue("red.400", "red.400")}
-                          />
-                          Select your certificate/ degree type from the dropdown
-                        </ListItem>
-                      </>
-                    ) : null}
-
-                    {/* Check if start year is set */}
-                    {!state.startYear || !state.startMonth ? (
-                      <>
-                        <ListItem>
-                          <ListIcon
-                            as={InfoIcon}
-                            color={useColorModeValue("red.400", "red.400")}
-                          />
-                          Please select your start date
-                        </ListItem>
-                      </>
-                    ) : null}
-
-                    {/* Check if end month or year is set */}
-                    {!state.endMonth || !state.endYear ? (
-                      <>
-                        <ListItem>
-                          <ListIcon
-                            as={InfoIcon}
-                            color={useColorModeValue("red.400", "red.400")}
-                          />
-                          Please select your end date
-                        </ListItem>
-                      </>
-                    ) : null}
-
-                    {/* Check if details is set */}
-                    {!state.details ? (
-                      <>
-                        <ListItem>
-                          <ListIcon
-                            as={InfoIcon}
-                            color={useColorModeValue(
-                              "yellow.400",
-                              "yellow.400"
-                            )}
-                          />
-                          Adding more details is optional, but it helps us to
-                          get a broader overview of your academia and
-                          achievements.
-                        </ListItem>
-                      </>
-                    ) : null}
-                  </List>
-                </Card>
+                <Checklist />
               </Row>
             </Col>
           </>
-        ) : null}
+        ) : (
+          <Checklist />
+        )}
+        <br />
+        <br />
+        <br />
       </StudentStartLayout>
     </>
   );
