@@ -3,7 +3,7 @@ import { getFirestore } from "firebase/firestore";
 import { getDatabase, child, get, ref, set } from "firebase/database";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getStorage, ref } from "firebase/storage";
+import { getStorage, ref as r } from "firebase/storage";
 
 // Scripts and libraries
 import _ from "lodash";

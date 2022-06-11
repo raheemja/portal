@@ -61,6 +61,8 @@ import { Router, useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import _ from "lodash";
 import Swal from "sweetalert2";
+import CryptoJS from "crypto-js";
+import { parse, stringify, toJSON, fromJSON } from "flatted";
 
 // Data
 const occupations = require("../../../data/occupations.json");
@@ -131,6 +133,7 @@ const ExperienceStartPage = () => {
           <Card>
             <Text color={"gray.500"}>
               <InfoIcon mr={3} color={"blue.400"} />
+              {JSON.stringify(state, null, 2)}
             </Text>
           </Card>
         </Col>
