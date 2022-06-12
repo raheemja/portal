@@ -62,7 +62,7 @@ const items = {
       "Complete your sudent profile so you can starting applying for courses.",
     action: "Get Started",
     category: "PROFILE",
-    href: "/app/account",
+    href: "/app/start",
   },
 };
 

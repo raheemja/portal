@@ -133,7 +133,7 @@ const ExperienceStartPage = () => {
           <Card>
             <Text color={"gray.500"}>
               <InfoIcon mr={3} color={"blue.400"} />
-              {JSON.stringify(state, null, 2)}
+              Please share any relevant work experience that you have.
             </Text>
           </Card>
         </Col>

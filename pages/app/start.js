@@ -1,28 +1,13 @@
 // UI Components
 import {
-  SimpleGrid,
-  Badge,
-  Box,
   Text,
-  Avatar,
-  Alert,
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  AlertIcon,
-  TabPanel,
   Heading,
-  Show,
-  Hide,
   useColorModeValue,
-  List,
   Link,
   ListItem,
-  ListIcon,
-  OrderedList,
   UnorderedList,
   Button,
+  ListIcon,
 } from "@chakra-ui/react";
 
 // Essential app components
@@ -31,17 +16,16 @@ import Seo from "../../components/seo";
 
 // Custom components
 import Card from "../../common/card";
-import { Row, Col } from "react-bootstrap";
-import { isMobile, isBrowser } from "react-device-detect";
+import { Col } from "react-bootstrap";
 
 // Start page components
 
 // Icons
+import { BsFillCaretRightFill } from "react-icons/bs";
 
 // Scripts and libraries
-import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import _ from "lodash";
 
 const StartPage = () => {
@@ -67,25 +51,48 @@ const StartPage = () => {
             <Text color={"gray.600"} fontSize={{ base: "sm", sm: "md" }}>
               Hi, {activeUser.firstName}. Thank you for your interest in{" "}
               {process.env.NEXT_PUBLIC_SCHOOL_NAME}. Before you can start
-              applying for our courses, please complete your account. Please
-              note that:
+              applying for our courses, please complete your student profile.
             </Text>
 
-            <UnorderedList pl={4} pt={4} spacing={3}>
+            <Text pt={3} color={"gray.600"} fontSize={{ base: "sm", sm: "md" }}>
+              Please note that:
+            </Text>
+
+            <UnorderedList
+              pl={2}
+              pt={4}
+              spacing={2}
+              style={{ listStyleType: "none" }}
+            >
               <ListItem color={"gray.600"} fontSize={{ base: "sm", sm: "md" }}>
+                <ListIcon as={BsFillCaretRightFill} color="orange.400" />
                 applications can only be submitted online via this portal
               </ListItem>
               <ListItem color={"gray.600"} fontSize={{ base: "sm", sm: "md" }}>
-                ensure that this application is <strong>FULLY</strong> completed
-                as incomplete applications will not be processed.{" "}
+                <ListIcon as={BsFillCaretRightFill} color="orange.400" />
+                ensure that this application is
+                <strong color="pink.800" style={{ paddingLeft: "4px" }}>
+                  FULLY
+                </strong>{" "}
+                completed as incomplete applications will not be processed.
               </ListItem>
               <ListItem color={"gray.600"} fontSize={{ base: "sm", sm: "md" }}>
+                <ListIcon as={BsFillCaretRightFill} color="orange.400" />
                 submit only one application. Duplicate applications will be
                 rejected and duplicate accounts will be removed from our system
               </ListItem>
               <ListItem color={"gray.600"} fontSize={{ base: "sm", sm: "md" }}>
-                if you cncounter any issues, please send an email to
-                admissions@csglearn.com
+                <ListIcon as={BsFillCaretRightFill} color="orange.400" />
+                if you cncounter any issues, please create a
+                <Link
+                  color={"blue.400"}
+                  style={{ paddingLeft: "4px" }}
+                  onClick={() => {
+                    router.push("/app/tickets");
+                  }}
+                >
+                  Support Ticket
+                </Link>
               </ListItem>
             </UnorderedList>
           </Card>
@@ -96,7 +103,7 @@ const StartPage = () => {
               router.push("/app/start/profile");
             }}
           >
-            <Button w={{ base: "100%", sm: "50%" }} colorScheme="blue">
+            <Button w={{ base: "100%", sm: "30%" }} colorScheme="blue">
               Get Started
             </Button>
           </Link>

@@ -1,31 +1,15 @@
 // UI Components
 import {
-  SimpleGrid,
-  Badge,
-  Box,
   Text,
-  Avatar,
-  Alert,
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  AlertIcon,
-  TabPanel,
   Heading,
-  Show,
-  Hide,
   Stack,
   useColorModeValue,
   List,
   ListItem,
   ListIcon,
-  OrderedList,
-  UnorderedList,
   Button,
   FormControl,
   FormLabel,
-  FormErrorMessage,
   FormHelperText,
   Input,
   Select,
@@ -41,7 +25,6 @@ import Seo from "../../../components/seo";
 import Card from "../../../common/card";
 import { Row, Col } from "react-bootstrap";
 import { isMobile, isBrowser } from "react-device-detect";
-import LazyLoad from "react-lazyload";
 
 // Models
 import { UserEducationModel } from "../../../models/user/userEducation";
@@ -49,17 +32,14 @@ import { UserEducationModel } from "../../../models/user/userEducation";
 // Icons
 import { FiSave } from "react-icons/fi";
 import {
-  MdCheckCircle,
-  MdSettings,
-  WarningIcon,
   InfoIcon,
 } from "@chakra-ui/icons";
 
 // Scripts and libraries
 import getLoggedInUID from "../../../scripts/getLoggedInUID";
-import { useEffect, useState } from "react";
-import { Router, useRouter } from "next/router";
-import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 import _ from "lodash";
 import Swal from "sweetalert2";
 

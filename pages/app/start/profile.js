@@ -161,6 +161,7 @@ const ProfileStartPage = () => {
                       onChange={(e) => {
                         handleChange(e);
                       }}
+                      disabled={true}
                     />
                   </FormControl>
                 </Col>
@@ -201,6 +202,7 @@ const ProfileStartPage = () => {
                       onChange={(e) => {
                         handleChange(e);
                       }}
+                      disabled={true}
                     />
                   </FormControl>
                 </Col>
@@ -288,6 +290,7 @@ const ProfileStartPage = () => {
                       onChange={(e) => {
                         handleChange(e);
                       }}
+                      disabled={true}
                     />
                   </FormControl>
                 </Col>

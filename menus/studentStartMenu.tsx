@@ -36,8 +36,7 @@ const LinkItems: Array<LinkItemProps> = [
     name: "Work Experience",
     icon: FiPieChart,
     href: "/app/start/experience",
-  },
-  { name: "Files & Documents", icon: FiFileText, href: "/app/start/files" },
+  }
 ];
 
 export default function StudentStartMenu() {
