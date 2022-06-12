@@ -9,6 +9,7 @@ import store from "../app/store";
 import "../styles/bootstrap-grid.css";
 import "../styles/bootstrap-views.css";
 import "../styles/style.css";
+import "../components/checkout/checkout.css";
 
 // Firebase App Object
 import app from "../firebase/app";
