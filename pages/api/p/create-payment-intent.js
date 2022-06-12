@@ -1,7 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 export default async function handler(req, res) {
-  const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
+  const stripe = require("stripe")(
+    "sk_test_51L9pxmBnVtOxX3zz4b4Zw6zIm62311R8nXCxvopPEzRrzodpWDkzBo7cK7AFPTHgwxfWkikXHDBGWYmJtDWJk1RR00Fv1BsZKH"
+  );
 
   const { items } = req.body;
   const customer = await stripe.customers.create();
