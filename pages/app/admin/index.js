@@ -71,7 +71,7 @@ const AdminIndexPage = () => {
 
   return (
     <>
-      <Seo title={`Experience Overview`} />
+      <Seo title="Site Administration" />
       <AppLayout>
         <Heading
           pt={2}
@@ -173,7 +173,7 @@ const AdminIndexPage = () => {
                 {/*  */}
                 <ListItem fontSize={{ base: "sm", sm: "md" }}>
                   <Link href="/app/admin/" color={"blue.400"}>
-                    THis is a link
+                    Manage Courses
                   </Link>
                 </ListItem>
               </UnorderedList>
