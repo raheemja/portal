@@ -1,12 +1,44 @@
 // UI Components
 import {
   SimpleGrid,
+  Badge,
   Box,
-  Button,
   Text,
+  Avatar,
+  Alert,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  AlertIcon,
+  TabPanel,
   Heading,
+  Show,
+  Hide,
   useColorModeValue,
+  List,
+  ListItem,
+  ListIcon,
+  OrderedList,
+  UnorderedList,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+  Input,
+  Select,
+  Button,
+  Radio,
+  RadioGroup,
+  Stack,
+  HStack,
+  Link,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
 } from "@chakra-ui/react";
+
 import { Row, Col } from "react-bootstrap";
 
 // Next & Redux Components
@@ -24,6 +56,18 @@ import Tuition from "../../components/dashboard/tuition/tuition";
 import GPA from "../../components/dashboard/gpa/gpa";
 import AcademicPerformance from "../../components/dashboard/ap/academicPerformance";
 
+// Icons
+import { FiExternalLink, FiBookmark, FiUser } from "react-icons/fi";
+
+import {
+  MdCheckCircle,
+  MdSettings,
+  WarningIcon,
+  InfoIcon,
+  FiExternalLik,
+  ChevronRightIcon,
+} from "@chakra-ui/icons";
+
 const DashboardPage = () => {
   const activeUser = useSelector((state) => state.user);
 
@@ -40,6 +84,27 @@ const DashboardPage = () => {
           >
             {activeUser.firstName}'s Dashboard
           </Heading>
+
+          <Breadcrumb
+            pt={1}
+            spacing="8px"
+            separator={<ChevronRightIcon color="gray.500" />}
+          >
+            <BreadcrumbItem>
+              <BreadcrumbLink color="blue.500">App</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem isCurrentPage>
+              <BreadcrumbLink
+                onClick={(e) => {
+                  router.push("/app/dashboard");
+                }}
+                color="blue.500"
+              >
+                Dashboard
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
+
           <br />
 
           <Card bg={""} xs={12} md={12}>

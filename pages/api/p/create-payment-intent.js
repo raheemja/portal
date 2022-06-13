@@ -12,7 +12,7 @@ export default async function handler(req, res) {
     // Replace this constant with a calculation of the order's amount
     // Calculate the order total on the server to prevent
     // people from directly manipulating the amount on the client
-    return 1400;
+    return 1;
   }
 
   async function chargeCustomer(customerId) {
@@ -24,8 +24,8 @@ export default async function handler(req, res) {
     try {
       // Charge the customer and payment method immediately
       const paymentIntent = await stripe.paymentIntents.create({
-        amount: 1099,
-        currency: "eur",
+        amount: 1,
+        currency: "usd",
         customer: customerId,
         payment_method: paymentMethods.data[0].id,
         off_session: true,

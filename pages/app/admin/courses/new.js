@@ -40,20 +40,21 @@ import {
 } from "@chakra-ui/react";
 
 // Essential app components
-import Seo from "../../../components/seo";
+import Seo from "../../../../components/seo";
+import AdminSkin from "../../../../components/admin/skin";
 
 // Custom components
-import Card from "../../../common/card";
+import Card from "../../../../common/card";
 import { Row, Col } from "react-bootstrap";
 import { isMobile, isBrowser } from "react-device-detect";
 import DatePicker from "react-datepicker";
 
-// Admin Components
-import AppLayout from "../../../components/appLayout.tsx";
-import AdminSkin from "../../../components/admin/skin";
+// Adminssions page components
+import AppLayout from "../../../../components/appLayout.tsx";
 
 // Icons
 import { FiExternalLink, FiBookmark, FiUser } from "react-icons/fi";
+
 import {
   MdCheckCircle,
   MdSettings,
@@ -64,7 +65,7 @@ import {
 } from "@chakra-ui/icons";
 
 // Scripts and libraries
-import getLoggedInUID from "../../../scripts/getLoggedInUID";
+import getLoggedInUID from "../../../../scripts/getLoggedInUID";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
@@ -72,9 +73,31 @@ import _ from "lodash";
 import moment from "moment";
 import Swal from "sweetalert2";
 
-const AdminIndexPage = () => {
+// Models
+import { CourseModel } from "../../../../models/course/course";
+
+const NewCoursePage = () => {
   const activeUser = useSelector((state) => state.user);
   const router = useRouter();
+
+  const [course, setCourse] = useState(CourseModel());
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setCourse((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const Yah = () => {
+    return (
+      <>
+        <Text>Yeahhhhhhhhhhh</Text>
+        <br />
+      </>
+    );
+  };
 
   return (
     <>
@@ -87,7 +110,7 @@ const AdminIndexPage = () => {
             size="lg"
             color={useColorModeValue("gray.600", "gray.600")}
           >
-            Site Admininstration
+            Add new course
           </Heading>
 
           <Breadcrumb
@@ -105,70 +128,77 @@ const AdminIndexPage = () => {
                 App
               </BreadcrumbLink>
             </BreadcrumbItem>
-
-            <BreadcrumbItem isCurrentPage>
+            <BreadcrumbItem>
               <BreadcrumbLink
                 onClick={(e) => {
                   router.push("/app/admin");
                 }}
                 color="blue.500"
               >
-                Administration
+                Site Admin
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink
+                onClick={(e) => {
+                  router.push("/app/admin/courses");
+                }}
+                color="blue.500"
+              >
+                Courses
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+
+            <BreadcrumbItem isCurrentPage>
+              <BreadcrumbLink
+                onClick={(e) => {
+                  router.push("/app/dashboard");
+                }}
+                color="blue.500"
+              >
+                Add new
               </BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>
 
           <br />
-          <Row>
-            <Card>
-              <br />
-              <br />
-              <br />
-              <br />
-            </Card>
-
-            <Heading
-              pt={2}
-              as={"h4"}
-              size="md"
-              color={useColorModeValue("gray.600", "gray.600")}
-            >
-              User Management
-            </Heading>
-
-            <br />
-            <br />
-            <Card>
-              <br />
-              <br />
-              <br />
-              <br />
-            </Card>
-
-            <Heading
-              pt={2}
-              as={"h4"}
-              size="md"
-              color={useColorModeValue("gray.600", "gray.600")}
-            >
-              Course Management
-            </Heading>
+          <Card>
+            <Row>
+              {/* Display Name */}
+              <Col xs={12} md={6}>
+                <FormControl isRequired>
+                  <FormLabel htmlFor="name" color={"gray.500"}>
+                    Full Name
+                  </FormLabel>
+                  <Input
+                    color={"gray.500"}
+                    id="name"
+                    name="name"
+                    type="text"
+                    onChange={(e) => {
+                      handleChange(e);
+                    }}
+                  />
+                </FormControl>
+                <br />
+              </Col>
+            </Row>
 
             <br />
             <br />
-            <Card>
-              <br />
-              <br />
-              <br />
-              <br />
-            </Card>
-          </Row>
+            <br />
+
+            <Button>Add New</Button>
+            <br />
+            <br />
+            <Text>{JSON.stringify(course, null, 2)}</Text>
+          </Card>
         </AdminSkin>
       </AppLayout>
     </>
   );
 };
 
-AdminIndexPage.restricted = true;
+NewCoursePage.restricted = true;
 
-export default AdminIndexPage;
+export default NewCoursePage;

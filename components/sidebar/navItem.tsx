@@ -6,6 +6,9 @@ import { ReactText } from "react";
 // Router
 import { useRouter } from "next/router";
 
+// Scripts
+import _ from "lodash";
+
 interface NavItemProps extends FlexProps {
   icon: IconType;
   children: ReactText;
@@ -21,13 +24,16 @@ export default function NavItem({
   const router = useRouter();
   const route = router.pathname.split("/").pop();
   const p = href.split("/").pop();
-  console.log(p);
 
   return (
     <Link href={href}>
       <a style={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
         <Flex
-          bg={route === href.split("/").pop() ? "blue.400" : "transparent"}
+          bg={
+            route === href.split("/").pop() && router.pathname.includes(route)
+              ? "blue.400"
+              : "transparent"
+          }
           color={router.pathname.includes(href) ? "white" : "black"}
           align="center"
           p="4"
