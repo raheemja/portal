@@ -1,20 +1,4 @@
-import {
-  FiHome,
-  FiTrendingUp,
-  FiCompass,
-  FiCalendar,
-  FiCreditCard,
-  FiSettings,
-  FiMenu,
-  FiBell,
-  FiHelpCircle,
-  FiChevronDown,
-  FiUser,
-  FiUsers,
-  FiBook,
-  FiFileText,
-  FiPieChart,
-} from "react-icons/fi";
+import { FiHome, FiUser, FiUsers, FiBook, FiPieChart } from "react-icons/fi";
 
 import { IconType } from "react-icons";
 import { useColorModeValue, Text } from "@chakra-ui/react";
@@ -36,7 +20,7 @@ const LinkItems: Array<LinkItemProps> = [
     name: "Work Experience",
     icon: FiPieChart,
     href: "/app/start/experience",
-  }
+  },
 ];
 
 export default function StudentStartMenu() {

@@ -49,7 +49,9 @@ const Contacts = (props) => {
         <br />
         {!props.hideNew ? (
           <NewContactModal uid={uid || getLoggedInUID()} />
-        ) : null}{" "}
+        ) : (
+          <></>
+        )}
       </Card>
     );
 
@@ -60,7 +62,9 @@ const Contacts = (props) => {
           <Text>No contacts found.</Text>''
           {!props.hideNew ? (
             <NewContactModal uid={uid || getLoggedInUID()} />
-          ) : null}{" "}
+          ) : (
+            <></>
+          )}
         </Card>
       </>
     );
@@ -76,13 +80,16 @@ const Contacts = (props) => {
             imgSrc={contact.imgSrc}
             phoneNumber={contact.phoneNumber}
             email={contact.email}
+            relationship={contact.relationship}
           />
         );
       })}
 
       {!props.hideNew ? (
         <NewContactModal uid={uid || getLoggedInUID()} />
-      ) : null}
+      ) : (
+        <></>
+      )}
     </Row>
   );
 };

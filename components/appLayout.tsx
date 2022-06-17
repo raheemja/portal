@@ -42,8 +42,6 @@ import { Row } from "react-bootstrap";
 
 // Customized menus
 import MainMenu from "./sidebar/mainMenu";
-import StudentMenu from "../menus/student.tsx";
-import AdminMenu from "../menus/admin.tsx";
 
 // Redux Components
 import { useSelector, userDispatch } from "react-redux";
@@ -230,23 +228,20 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
               bg={useColorModeValue("white", "gray.900")}
               borderColor={useColorModeValue("gray.200", "gray.700")}
             >
-              <>
-                <Link href={`/app/account`}>
-                  <MenuItem>Account</MenuItem>
-                </Link>
-              </>
+              {/* Account */}
+              <Link href={`/app/account`}>
+                <MenuItem>Account</MenuItem>
+              </Link>
 
-              <>
-                <Link href={`/app/courses`}>
-                  <MenuItem>Courses</MenuItem>
-                </Link>
-              </>
+              {/* Courses */}
+              <Link href={`/app/courses`}>
+                <MenuItem>Courses</MenuItem>
+              </Link>
 
-              <>
-                <Link href={`/app/bursary`}>
-                  <MenuItem>Bursary</MenuItem>
-                </Link>
-              </>
+              {/* Bursary */}
+              <Link href={`/app/bursary`}>
+                <MenuItem>Bursary</MenuItem>
+              </Link>
 
               <MenuDivider />
               <MenuItem>Sign out</MenuItem>

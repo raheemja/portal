@@ -146,6 +146,9 @@ const StartPage = () => {
             Get Started
           </Button>
         </Link>
+        <br />
+        <br />
+        <br />
       </StudentStartLayout>
     </>
   );

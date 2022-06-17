@@ -91,7 +91,7 @@ const ContactsStartPage = () => {
 
   const InfoTab = () => {
     return (
-      <Col xs={12} md={4}>
+      <Col xs={12} md={12}>
         <Card>
           <Text color={"gray.500"}>
             <InfoIcon mr={3} color={"blue.400"} />
@@ -294,15 +294,15 @@ const ContactsStartPage = () => {
         </Col>
 
         {isBrowser ? (
-          <>
-            <InfoTab />
-            <>
+          <Col md={4} xs={12}>
+            <Row>
+              <InfoTab />
               <Contacts
                 uid={activeUser.uid || getLoggedInUID()}
                 hideNew={true}
               />
-            </>
-          </>
+            </Row>
+          </Col>
         ) : (
           <Contacts uid={activeUser.uid || getLoggedInUID()} hideNew={true} />
         )}

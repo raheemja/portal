@@ -1,29 +1,12 @@
 // UI Components
 import {
-  SimpleGrid,
-  Badge,
-  Box,
-  Text,
-  Avatar,
-  Alert,
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  AlertIcon,
-  TabPanel,
   Heading,
-  Show,
-  Hide,
   useColorModeValue,
   List,
   ListItem,
   ListIcon,
-  OrderedList,
-  UnorderedList,
   FormControl,
   FormLabel,
-  FormErrorMessage,
   FormHelperText,
   Input,
   Select,
@@ -34,7 +17,6 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
-  BreadcrumbSeparator,
 } from "@chakra-ui/react";
 
 // Essential app components
@@ -45,16 +27,12 @@ import Seo from "../../../components/seo";
 import Card from "../../../common/card";
 import { Row, Col } from "react-bootstrap";
 import { isMobile, isBrowser } from "react-device-detect";
-import DatePicker from "react-datepicker";
 
 // Start page components
 
 // Icons
 import { FiSave } from "react-icons/fi";
 import {
-  MdCheckCircle,
-  MdSettings,
-  WarningIcon,
   InfoIcon,
   ChevronRightIcon,
 } from "@chakra-ui/icons";
@@ -63,9 +41,8 @@ import {
 import getLoggedInUID from "../../../scripts/getLoggedInUID";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import _ from "lodash";
-import moment from "moment";
 import Swal from "sweetalert2";
 
 // CSS Modules, react-datepicker-cssmodules.css

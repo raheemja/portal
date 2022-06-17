@@ -1,14 +1,10 @@
 import {
   FiHome,
-  FiTrendingUp,
   FiCompass,
   FiCalendar,
   FiCreditCard,
   FiSettings,
-  FiMenu,
-  FiBell,
   FiHelpCircle,
-  FiChevronDown,
 } from "react-icons/fi";
 
 import { IconType } from "react-icons";
@@ -31,7 +27,7 @@ const LinkItems: Array<LinkItemProps> = [
   { name: "Settings", icon: FiSettings, href: "/app/settings" },
 ];
 
-export default function StudentMenu() {
+function StudentSidebarMenu() {
   const color = useColorModeValue("gray.600", "gray.300");
 
   return (
@@ -44,3 +40,5 @@ export default function StudentMenu() {
     </>
   );
 }
+
+export default StudentSidebarMenu;

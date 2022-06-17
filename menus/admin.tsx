@@ -1,14 +1,10 @@
 import {
   FiHome,
-  FiTrendingUp,
   FiCompass,
   FiCalendar,
   FiCreditCard,
   FiSettings,
-  FiMenu,
-  FiBell,
   FiHelpCircle,
-  FiChevronDown,
 } from "react-icons/fi";
 
 import { IconType } from "react-icons";
@@ -24,6 +20,7 @@ interface LinkItemProps {
 
 const LinkItems: Array<LinkItemProps> = [
   { name: "Dashboard", icon: FiHome, href: "/app/admin-dashboard" },
+  { name: "Student Dashboard", icon: FiHome, href: "/app/dashboard" },
   { name: "Admissions", icon: FiCompass, href: "/app/admissions" },
   { name: "Calendar", icon: FiCalendar, href: "/app/calendar" },
   { name: "Bursary", icon: FiCreditCard, href: "/app/bursary" },
