@@ -41,6 +41,7 @@ import { ReactText } from "react";
 import { Row } from "react-bootstrap";
 
 // Customized menus
+import MainMenu from "./sidebar/mainMenu";
 import StudentMenu from "../menus/student.tsx";
 import AdminMenu from "../menus/admin.tsx";
 
@@ -110,12 +111,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
-
-      {activeUser.role === "Student" ? (
-        <StudentMenu />
-      ) : activeUser.role === "Admin" || "Super Admin" ? (
-        <AdminMenu />
-      ) : null}
+      <MainMenu />
     </Box>
   );
 };

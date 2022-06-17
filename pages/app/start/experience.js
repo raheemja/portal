@@ -31,6 +31,10 @@ import {
   Select,
   ButtonGroup,
   Textarea,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
 } from "@chakra-ui/react";
 
 // Essential app components
@@ -52,6 +56,7 @@ import {
   MdSettings,
   WarningIcon,
   InfoIcon,
+  ChevronRightIcon,
 } from "@chakra-ui/icons";
 
 // Scripts and libraries
@@ -133,7 +138,8 @@ const ExperienceStartPage = () => {
           <Card>
             <Text color={"gray.500"}>
               <InfoIcon mr={3} color={"blue.400"} />
-              Please share any relevant work experience that you have.
+              Please share any relevant work experience that you have. If you do
+              not have any work experience, please click 'Skip'.
             </Text>
           </Card>
         </Col>
@@ -154,6 +160,29 @@ const ExperienceStartPage = () => {
           >
             Employment Experience
           </Heading>
+
+          <Breadcrumb
+            pt={1}
+            spacing="6px"
+            separator={<ChevronRightIcon color="gray.500" />}
+          >
+            <BreadcrumbItem>
+              <BreadcrumbLink color="blue.500">App</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink
+                onClick={(e) => {
+                  router.push("/app/start");
+                }}
+                color="blue.500"
+              >
+                Getting Started
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem isCurrentPage>
+              <BreadcrumbLink color="blue.500">Experience</BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
 
           {isMobile ? (
             <>

@@ -128,7 +128,6 @@ const DashboardPage = () => {
           {isMobile ? (
             <>
               <Row>
-                <GPA />
                 <Tuition />
                 <Todo />
                 <AcademicPerformance />
@@ -138,9 +137,8 @@ const DashboardPage = () => {
         </Col>
 
         {isBrowser ? (
-          <Col md={4}>
+          <Col xs={12} md={4}>
             <Row>
-              <GPA />
               <Tuition />
               <Todo />
             </Row>

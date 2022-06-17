@@ -31,6 +31,10 @@ import {
   Radio,
   RadioGroup,
   Stack,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
 } from "@chakra-ui/react";
 
 // Essential app components
@@ -52,6 +56,7 @@ import {
   MdSettings,
   WarningIcon,
   InfoIcon,
+  ChevronRightIcon,
 } from "@chakra-ui/icons";
 
 // Scripts and libraries
@@ -140,6 +145,29 @@ const ProfileStartPage = () => {
           >
             Student Profile
           </Heading>
+
+          <Breadcrumb
+            pt={1}
+            spacing="6px"
+            separator={<ChevronRightIcon color="gray.500" />}
+          >
+            <BreadcrumbItem>
+              <BreadcrumbLink color="blue.500">App</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink
+                onClick={(e) => {
+                  router.push("/app/start");
+                }}
+                color="blue.500"
+              >
+                Getting Started
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem isCurrentPage>
+              <BreadcrumbLink color="blue.500">Profile</BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
 
           <br />
           <Row>

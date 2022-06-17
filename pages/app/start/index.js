@@ -8,14 +8,21 @@ import {
   UnorderedList,
   Button,
   ListIcon,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
+  Box,
 } from "@chakra-ui/react";
 
+import { ChevronRightIcon, InfoIcon } from "@chakra-ui/icons";
+
 // Essential app components
-import StudentStartLayout from "../../components/studentStartLayout.tsx";
-import Seo from "../../components/seo";
+import StudentStartLayout from "../../../components/studentStartLayout.tsx";
+import Seo from "../../../components/seo";
 
 // Custom components
-import Card from "../../common/card";
+import Card from "../../../common/card";
 import { Col } from "react-bootstrap";
 
 // Start page components
@@ -27,6 +34,7 @@ import { BsFillCaretRightFill } from "react-icons/bs";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import _ from "lodash";
+import { isMobile, isBrowser } from "react-device-detect";
 
 const StartPage = () => {
   const activeUser = useSelector((state) => state.user);
@@ -45,6 +53,26 @@ const StartPage = () => {
           >
             Welcome to the Application Portal
           </Heading>
+
+          <Breadcrumb
+            pt={1}
+            spacing="6px"
+            separator={<ChevronRightIcon color="gray.500" />}
+          >
+            <BreadcrumbItem>
+              <BreadcrumbLink color="blue.500">App</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem isCurrentPage>
+              <BreadcrumbLink
+                onClick={(e) => {
+                  router.push("/app/start");
+                }}
+                color="blue.500"
+              >
+                Getting Started
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
 
           <br />
           <Card>
@@ -96,23 +124,28 @@ const StartPage = () => {
               </ListItem>
             </UnorderedList>
           </Card>
-
-          <br />
-          <Link
-            onClick={() => {
-              router.push("/app/start/profile");
-            }}
-          >
-            <Button w={{ base: "100%", sm: "30%" }} colorScheme="blue">
-              Get Started
-            </Button>
-          </Link>
-
-          <br />
-          <br />
-          <br />
         </Col>
-        <Col xs={12} md={4}></Col>
+        <Col xs={12} md={4}>
+          <Box pt={[0, 0, 95]}>
+            <Card>
+              <Text color={"gray.600"} fontSize={{ base: "sm", sm: "md" }}>
+                <InfoIcon color={"yellow.400"} mr={2} />
+                You may see additional instructions on the right pane which will
+                guide you through the process.
+              </Text>
+            </Card>
+          </Box>
+        </Col>
+
+        <Link
+          onClick={() => {
+            router.push("/app/start/profile");
+          }}
+        >
+          <Button w={{ base: "100%", sm: "30%" }} colorScheme="blue">
+            Get Started
+          </Button>
+        </Link>
       </StudentStartLayout>
     </>
   );

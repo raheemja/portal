@@ -31,7 +31,7 @@ const TodoItem = (props) => {
       : category === "PROFILE"
       ? "green.400"
       : category === "COURSE"
-      ? "yellow.400"
+      ? "pink.400"
       : "orange.400";
 
   return (

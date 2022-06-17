@@ -28,6 +28,10 @@ const Seo = (props) => {
         <meta name="og:type" content="website" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:creator" content="csglearn" />
+        <link
+          rel="icon"
+          href="https://favpng.com/png_view/icon-moodle-learning-management-system-teacher-png/vHXaB11V"
+        />
       </Head>
     </>
   );

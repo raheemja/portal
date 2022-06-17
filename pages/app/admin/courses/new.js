@@ -93,8 +93,9 @@ const NewCoursePage = () => {
   const Yah = () => {
     return (
       <>
-        <Text>Yeahhhhhhhhhhh</Text>
-        <br />
+        <>
+          <></>
+        </>
       </>
     );
   };
@@ -186,9 +187,6 @@ const NewCoursePage = () => {
 
             <br />
             <br />
-            <br />
-
-            <Button>Add New</Button>
             <br />
             <br />
             <Text>{JSON.stringify(course, null, 2)}</Text>

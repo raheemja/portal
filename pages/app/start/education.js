@@ -15,6 +15,10 @@ import {
   Select,
   ButtonGroup,
   Textarea,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
 } from "@chakra-ui/react";
 
 // Essential app components
@@ -31,9 +35,7 @@ import { UserEducationModel } from "../../../models/user/userEducation";
 
 // Icons
 import { FiSave } from "react-icons/fi";
-import {
-  InfoIcon,
-} from "@chakra-ui/icons";
+import { InfoIcon, ChevronRightIcon } from "@chakra-ui/icons";
 
 // Scripts and libraries
 import getLoggedInUID from "../../../scripts/getLoggedInUID";
@@ -205,6 +207,29 @@ const EducationStartPage = () => {
           >
             Education Overview
           </Heading>
+
+          <Breadcrumb
+            pt={1}
+            spacing="6px"
+            separator={<ChevronRightIcon color="gray.500" />}
+          >
+            <BreadcrumbItem>
+              <BreadcrumbLink color="blue.500">App</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink
+                onClick={(e) => {
+                  router.push("/app/start");
+                }}
+                color="blue.500"
+              >
+                Getting Started
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem isCurrentPage>
+              <BreadcrumbLink color="blue.500">Education</BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
 
           {isMobile ? (
             <>

@@ -23,6 +23,7 @@ export default function Card(props) {
       <Col xs={xs} sm={sm} md={md} lg={lg} xl={xl}>
         <Box
           w={"full"}
+          h={"auto"}
           color={color || ""}
           bg={useColorModeValue(bg, bg) || useColorModeValue("white", "white")}
           boxShadow={"1xl"}

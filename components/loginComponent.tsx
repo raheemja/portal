@@ -75,7 +75,7 @@ function LoginComponent(props) {
           storeUser(response.data);
           dispatch(initialize(response.data));
           Cookies.set("sis-uid", response.data.uid);
-          router.push(props.href || "/app/start");
+          router.push(props.href || "/app/dashboard");
         }
       });
     }

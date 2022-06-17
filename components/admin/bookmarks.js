@@ -52,7 +52,7 @@ const Bookmarks = (props) => {
           size="md"
           color={useColorModeValue("gray.600", "gray.600")}
         >
-          Bookmarks
+          Admin Bookmarks
         </Heading>
 
         <UnorderedList
@@ -75,14 +75,14 @@ const Bookmarks = (props) => {
             </Link>
           </ListItem>
 
-          {/*  */}
+          {/* Configure Admissions */}
           <ListItem fontSize={{ base: "sm", sm: "md" }}>
             <Link href="/app/admin/" color={"blue.400"}>
               Configure Admissions
             </Link>
           </ListItem>
 
-          {/*  */}
+          {/* Manage Courses */}
           <ListItem fontSize={{ base: "sm", sm: "md" }}>
             <Link href="/app/admin/courses" color={"blue.400"}>
               Manage Courses
