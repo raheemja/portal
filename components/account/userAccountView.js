@@ -14,7 +14,13 @@ import {
   Stack,
   Button,
   Select,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
 } from "@chakra-ui/react";
+
 import { Row, Col } from "react-bootstrap";
 import { isMobile, isBrowser } from "react-device-detect";
 
@@ -23,6 +29,11 @@ import Card from "../../common/card";
 import Loading from "../../common/card";
 import CountrySelector from "../../common/countrySelector";
 import Contacts from "./contacts";
+import SavedCards from "./savedCards";
+import MyCourses from "./myCourses";
+
+// Tabs Componentsm
+import Profile from "./profile";
 
 // Icons
 import { FiSave, FiBook } from "react-icons/fi";
@@ -43,11 +54,12 @@ const FormGroup = (props) => {
 };
 
 const UserAccountView = (props) => {
+  const activeUser = useSelector((state) => state.user);
+  const [activeTab, setActiveTab] = useState("Profile");
+
   const { self, uid } = props;
 
   const router = useRouter();
-
-  const activeUser = useSelector((state) => state.user);
 
   const [editable, setEditable] = useState(true || false);
   const [editModeOn, setEditMode] = useState(false);
@@ -117,217 +129,76 @@ const UserAccountView = (props) => {
   };
 
   return (
-    <Row>
-      <Card xs={12} md={8} bc={isMobile}>
-        <form>
-          <Row>
-            <FormGroup xs={12} md={6}>
-              <FormControl isRequired={editModeOn}>
-                {editModeOn ? (
-                  <FormLabel htmlFor="firstName">First Name</FormLabel>
-                ) : null}
-                <Input
-                  id="firstName"
-                  name="firstName"
-                  placeholder="First Name"
-                  value={user.firstName}
-                  disabled={!editModeOn}
-                  onChange={(e) => {
-                    handleChange(e);
-                  }}
-                />
-              </FormControl>
-            </FormGroup>
+    <Col xs={12}>
+      <Row>
+        <Col xs={12} md={12} lg={8}>
+          <Tabs isFitted variant={"soft-rounded"} colorScheme="blue">
+            <TabList>
+              <Tab
+                onClick={() => {
+                  setActiveTab("Profile");
+                }}
+              >
+                Profile
+              </Tab>
+              <Tab
+                onClick={() => {
+                  setActiveTab("Grades");
+                }}
+              >
+                Grades
+              </Tab>
+              <Tab
+                onClick={() => {
+                  setActiveTab("Cards");
+                }}
+              >
+                Billing
+              </Tab>
+            </TabList>
 
-            <FormGroup xs={12} md={6}>
-              <FormControl isRequired={editModeOn}>
-                {editModeOn ? (
-                  <FormLabel htmlFor="lastName">Last Name</FormLabel>
-                ) : null}
-                <Input
-                  id="lastName"
-                  name="lastName"
-                  placeholder="Last Name"
-                  value={user.lastName}
-                  disabled={!editModeOn}
-                  onChange={(e) => {
-                    handleChange(e);
-                  }}
-                />
-              </FormControl>
-            </FormGroup>
+            <TabPanels>
+              <TabPanel px={0}>
+                <Row>
+                  <Profile />
+                </Row>
+              </TabPanel>
+              <TabPanel px={0}>
+                <Card xs={12} md={12} lg={12} xl={12} bc={isMobile}>
+                  <Text color={"gray.600"} fontSize={{ base: "sm", sm: "md" }}>
+                    This is grades tab
+                  </Text>
+                </Card>
+              </TabPanel>
+              <TabPanel px={0}>
+                <Card xs={12} md={12} lg={12} xl={12} bc={isMobile}>
+                  <Text color={"gray.600"} fontSize={{ base: "sm", sm: "md" }}>
+                    This is payments tab
+                  </Text>
+                </Card>
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
+        </Col>
 
-            {/* Phone Number */}
-            <FormGroup xs={12} md={6}>
-              <FormControl isRequired={editModeOn}>
-                {editModeOn ? (
-                  <FormLabel htmlFor="phoneNumber">Phone Number</FormLabel>
-                ) : null}
-                <Input
-                  id="phoneNumber"
-                  name="phoneNumber"
-                  placeholder="Enter your phone number"
-                  value={user.phoneNumber}
-                  disabled={!editModeOn}
-                  onChange={(e) => {
-                    handleChange(e);
-                  }}
-                />
-              </FormControl>
-            </FormGroup>
-
-            {/* Email */}
-            <FormGroup xs={12} md={6}>
-              <FormControl isRequired={editModeOn}>
-                {editModeOn ? (
-                  <FormLabel htmlFor="email">Email</FormLabel>
-                ) : null}
-                <Input
-                  id="email"
-                  name="email"
-                  placeholder="Enter your email"
-                  value={user.email}
-                  disabled={!editModeOn}
-                  onChange={(e) => {
-                    handleChange(e);
-                  }}
-                />
-              </FormControl>
-            </FormGroup>
-
-            <FormGroup xs={12} md={12}>
-              <FormControl isRequired={editModeOn}>
-                {editModeOn ? (
-                  <FormLabel htmlFor="streetAddress">Street Address</FormLabel>
-                ) : null}
-
-                <Input
-                  id="streetAddress"
-                  name="streetAddress"
-                  placeholder="Street Address"
-                  value={user.streetAddress}
-                  disabled={!editModeOn}
-                  onChange={(e) => {
-                    handleChange(e);
-                  }}
-                />
-              </FormControl>
-            </FormGroup>
-
-            <FormGroup xs={12} md={6}>
-              <FormControl isRequired={editModeOn}>
-                {editModeOn ? (
-                  <FormLabel htmlFor="community">Town / Community</FormLabel>
-                ) : null}
-                <Input
-                  id="community"
-                  name="community"
-                  placeholder="Town / Community"
-                  value={user.community}
-                  disabled={!editModeOn}
-                  onChange={(e) => {
-                    handleChange(e);
-                  }}
-                />
-              </FormControl>
-            </FormGroup>
-
-            <FormGroup xs={12} md={6}>
-              <FormControl isRequired={editModeOn}>
-                {editModeOn ? <FormLabel htmlFor="city">City</FormLabel> : null}
-
-                <Input
-                  id="city"
-                  name="city"
-                  placeholder="Enter your city"
-                  value={user.city}
-                  disabled={!editModeOn}
-                  onChange={(e) => {
-                    handleChange(e);
-                  }}
-                />
-              </FormControl>
-            </FormGroup>
-
-            <FormGroup xs={12} md={6}>
-              <FormControl isRequired={editModeOn}>
-                {editModeOn ? (
-                  <FormLabel htmlFor="state">Parish / State</FormLabel>
-                ) : null}
-
-                <Input
-                  id="state"
-                  name="state"
-                  placeholder="Enter your parish/ state"
-                  value={user.state}
-                  disabled={!editModeOn}
-                />
-              </FormControl>
-            </FormGroup>
-
-            <FormGroup xs={12} md={6}>
-              <FormControl isRequired={editModeOn}>
-                <CountrySelector
-                  isReadOnly={editModeOn}
-                  selected={user.country}
-                />
-              </FormControl>
-            </FormGroup>
-
-            <Row>
-              <Col xs={3} md={7}>
-                <br />
-                <FormControl display="flex" alignItems="center">
-                  <FormLabel htmlFor="email-alerts" mb="0">
-                    Edit {isMobile ? "" : "Profile"}
-                  </FormLabel>
-                  <Switch
-                    id="email-alerts"
-                    onChange={(e) => {
-                      setEditMode(!editModeOn);
-                    }}
-                  />
-                  <br />
-                  <br />
-                </FormControl>
-              </Col>
-
-              {isMobile && editModeOn ? (
-                <>
-                  <Row>
-                    <Col xs={4}>
-                      <CancelButton />
-                    </Col>
-                    <Col xs={8}>
-                      <SaveButton />
-                    </Col>
-                  </Row>
-                </>
-              ) : (
-                <Col xs={9} md={5}>
-                  <br />
-                  <br />
-                  <br />
-                  {editModeOn ? (
-                    <Stack spacing={4} direction="row" align="center">
-                      <CancelButton />
-                      <SaveButton />
-                    </Stack>
-                  ) : null}
-                </Col>
-              )}
-            </Row>
-          </Row>
-
-          <Text>{JSON.stringify(data, null, 2)}</Text>
-        </form>
-      </Card>
-
-      {/* Here we want to display the user contacts */}
-      <Col xs={12} md={4}>
-        <Contacts uid={getLoggedInUID()} />
-      </Col>
-    </Row>
+        {/* Here we want to display the user contacts */}
+        <Col xs={12} md={12} lg={4} xl={4}>
+          {activeTab === "Profile" ? (
+            <Contacts uid={activeUser.uid || getLoggedInUID()} />
+          ) : activeTab === "Grades" ? (
+            <MyCourses uid={activeUser.uid || getLoggedInUID()} />
+          ) : activeTab === "Profile" ? (
+            <Contacts uid={activeUser.uid || getLoggedInUID()} />
+          ) : activeTab === "Cards" ? (
+            <SavedCards uid={activeUser.uid || getLoggedInUID()} />
+          ) : activeTab === "Tickets" ? (
+            <Contacts uid={activeUser.uid || getLoggedInUID()} />
+          ) : (
+            <Contacts uid={activeUser.uid || getLoggedInUID()} />
+          )}
+        </Col>
+      </Row>
+    </Col>
   );
 };
 

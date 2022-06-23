@@ -51,7 +51,7 @@ const ContactsStartPage = () => {
   const router = useRouter();
   const axios = require("axios").default;
 
-  // List of relationship types
+  // Data
   const relationships = require("../../../data/relationships.json");
   const titles = require("../../../data/titles.json");
 
@@ -310,6 +310,12 @@ const ContactsStartPage = () => {
     </>
   );
 };
+
+export async function getServerSideProps(context) {
+  return {
+    props: {},
+  };
+}
 
 ContactsStartPage.restricted = true;
 

@@ -21,7 +21,7 @@ import {
 import StudentStartLayout from "../../../components/studentStartLayout.tsx";
 import Seo from "../../../components/seo";
 
-// Custome components
+// Custom components
 import Card from "../../../common/card";
 import { Row, Col } from "react-bootstrap";
 import { isMobile, isBrowser } from "react-device-detect";
@@ -89,7 +89,7 @@ const ExperienceStartPage = () => {
           Swal.fire({
             icon: "success",
             title: "Your entry has been saved",
-            messaage: `Employment histroy added successfully`,
+            message: `Employment history added successfully`,
           });
           router.reload(window.location.pathname);
         }

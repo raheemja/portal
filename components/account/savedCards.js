@@ -21,7 +21,7 @@ import { isMobile, isBrowser } from "react-device-detect";
 import getLoggedInUID from "../../scripts/getLoggedInUID";
 import { Row, Col } from "react-bootstrap";
 
-const Contacts = (props) => {
+const SavedCards = (props) => {
   const [data, setData] = useState();
   const [isLoading, setLoading] = useState(true);
   const [count, setCount] = useState();
@@ -30,10 +30,11 @@ const Contacts = (props) => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`/api/contacts/${uid || getLoggedInUID()}`)
+    fetch(`/api/cards/${uid || getLoggedInUID()}`)
       .then((res) => res.json())
       .then((data) => {
-        if (!data.error) {
+        if (!data.error && !data.message) {
+          alert(JSON.stringify(data));
           setData(data);
           setLoading(false);
         }
@@ -46,7 +47,7 @@ const Contacts = (props) => {
     return (
       <Card>
         <Heading as={"h5"} size={"md"} color={"gray.600"}>
-          Emergency Contacts
+          My Saved Cards
         </Heading>
 
         <Loading />
@@ -64,7 +65,7 @@ const Contacts = (props) => {
       <>
         <Card>
           <Heading as={"h5"} size={"md"} color={"gray.600"}>
-            Emergency Contacts
+            My Saved Cards
           </Heading>
           <br />
           {!props.hideNew ? (
@@ -80,24 +81,26 @@ const Contacts = (props) => {
   return (
     <Card>
       <Heading as={"h5"} size={"md"} color={"gray.600"}>
-        Emergency Contacts
+        My Saved Cards
       </Heading>
       <br />
 
       <Row>
-        {Object.values(data).map((contact, i) => {
-          return (
-            <ContactCard
-              key={contact.id}
-              id={contact.id}
-              displayName={contact.displayName}
-              imgSrc={contact.imgSrc}
-              phoneNumber={contact.phoneNumber}
-              email={contact.email}
-              relationship={contact.relationship}
-            />
-          );
-        })}
+        {data
+          ? Object.values(data).map((contact, i) => {
+              return (
+                <ContactCard
+                  key={contact.id}
+                  id={contact.id}
+                  displayName={contact.displayName}
+                  imgSrc={contact.imgSrc}
+                  phoneNumber={contact.phoneNumber}
+                  email={contact.email}
+                  relationship={contact.relationship}
+                />
+              );
+            })
+          : null}
 
         {!props.hideNew ? (
           <NewContactModal uid={uid || getLoggedInUID()} />
@@ -109,4 +112,4 @@ const Contacts = (props) => {
   );
 };
 
-export default Contacts;
+export default SavedCards;

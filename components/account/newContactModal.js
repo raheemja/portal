@@ -16,6 +16,10 @@ import {
   FormErrorMessage,
   FormHelperText,
   Text,
+  Select,
+  Stack,
+  ButtonGroup,
+  useColorModeValue,
 } from "@chakra-ui/react";
 
 // View Components
@@ -27,10 +31,15 @@ import { ContactModel } from "../../models/user/contact";
 
 // Icons
 import { FiSave } from "react-icons/fi";
+import { AddIcon } from "@chakra-ui/icons";
 
 const NewContactModal = (props) => {
   const [contact, setContact] = useState(new ContactModel({ uid: props.uid }));
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  // Data
+  const relationships = require("../../data/relationships.json");
+  const titles = require("../../data/titles.json");
 
   const axios = require("axios").default;
   const { uid } = props;
@@ -60,11 +69,22 @@ const NewContactModal = (props) => {
 
   return (
     <>
-      <Button colorScheme="blue" onClick={onOpen}>
-        Add Contact
-      </Button>
+      <Stack align={""}>
+        <Button
+          color={"white"}
+          bg={"blue.200"}
+          _hover={{ bg: "blue.400" }}
+          align={"right"}
+          w={"30px"}
+          variant={"solid"}
+          onClick={onOpen}
+          size={"sm"}
+        >
+          <AddIcon />
+        </Button>
+      </Stack>
 
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} size={"lg"}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>New Contact</ModalHeader>
@@ -72,7 +92,32 @@ const NewContactModal = (props) => {
           <ModalBody>
             <form>
               <Row>
-                <Col xs={12} md={12}>
+                <Col xs={12} md={4}>
+                  <FormControl isRequired>
+                    <FormLabel htmlFor="title">Title</FormLabel>
+
+                    <Select
+                      color={"gray.500"}
+                      id="title"
+                      name="title"
+                      placeholder="Select option"
+                      onChange={(e) => {
+                        handleChange(e);
+                      }}
+                    >
+                      {titles.map((item, i) => {
+                        return (
+                          <option key={i} value={item.name}>
+                            {item.name}
+                          </option>
+                        );
+                      })}
+                    </Select>
+                  </FormControl>
+                  <br />
+                </Col>
+
+                <Col xs={12} md={8}>
                   <FormControl isRequired>
                     <FormLabel htmlFor="displayName">Full name</FormLabel>
                     <Input
@@ -101,6 +146,7 @@ const NewContactModal = (props) => {
                   </FormControl>
                   <br />
                 </Col>
+
                 <Col xs={12} md={6}>
                   <FormControl isRequired>
                     <FormLabel htmlFor="email">Email</FormLabel>
@@ -115,27 +161,61 @@ const NewContactModal = (props) => {
                   </FormControl>
                   <br />
                 </Col>
+
+                <Col xs={12} md={6}>
+                  <FormControl isRequired>
+                    <FormLabel htmlFor="email">Relationship</FormLabel>
+
+                    <Select
+                      placeholder="Select option"
+                      id="relationship"
+                      name="relationship"
+                      onChange={(e) => {
+                        handleChange(e);
+                      }}
+                      color={"gray.500"}
+                    >
+                      {relationships.map((item, i) => {
+                        return (
+                          <option key={i} value={item.name}>
+                            {item.name}
+                          </option>
+                        );
+                      })}
+                    </Select>
+                  </FormControl>
+                  <br />
+                </Col>
+
+                <Col xs={12} md={6}>
+                  <br />
+                  <Stack align={"right"}>
+                    <ButtonGroup pt={[0, 0, 2]}>
+                      <Button
+                        leftIcon={<FiSave />}
+                        w={"50%"}
+                        bg={useColorModeValue("blue.400", "blue.400")}
+                        color={useColorModeValue("white", "white")}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          saveContact();
+                          onClose();
+                        }}
+                      >
+                        Save
+                      </Button>
+
+                      <Button colorScheme="red" mr={3} onClick={onClose}>
+                        Cancel
+                      </Button>
+                    </ButtonGroup>
+                  </Stack>
+                </Col>
               </Row>
             </form>
           </ModalBody>
-
-          <ModalFooter>
-            <Button colorScheme="red" mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            <Button
-              leftIcon={<FiSave />}
-              colorScheme="whatsapp"
-              onClick={(e) => {
-                e.preventDefault();
-                saveContact();
-                onClose();
-              }}
-            >
-              Create Contact
-            </Button>
-          </ModalFooter>
         </ModalContent>
+        <br />
       </Modal>
     </>
   );

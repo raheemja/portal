@@ -18,18 +18,17 @@ interface LinkItemProps {
   href: string;
 }
 
+// List of menu items that will be rendered for the student's side menu
 const LinkItems: Array<LinkItemProps> = [
   { name: "Dashboard", icon: FiHome, href: "/app/dashboard" },
   { name: "Courses", icon: FiCompass, href: "/app/courses" },
   { name: "Calendar", icon: FiCalendar, href: "/app/calendar" },
   { name: "Bursary", icon: FiCreditCard, href: "/app/bursary" },
-  { name: "Support Tickets", icon: FiHelpCircle, href: "/app/support" },
+  { name: "Support Tickets", icon: FiHelpCircle, href: "/app/tickets" },
   { name: "Settings", icon: FiSettings, href: "/app/settings" },
 ];
 
 function StudentSidebarMenu() {
-  const color = useColorModeValue("gray.600", "gray.300");
-
   return (
     <>
       {LinkItems.map((link) => (

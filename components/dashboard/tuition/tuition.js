@@ -60,9 +60,8 @@ const Tuition = (props) => {
           setData(data);
         } else {
           setData({
-            tuition: 21800,
+            tuition: 0,
             due: moment(new Date(), "YYYYMMDD").fromNow(),
-            message: "Monthly tuition, due on the 25th of each month.",
           });
         }
 

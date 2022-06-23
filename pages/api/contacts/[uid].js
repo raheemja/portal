@@ -27,7 +27,6 @@ export default function handler(req, res) {
               }
             });
 
-            console.log(contacts);
             res.status(200).json(contacts);
           } else {
             res.status(200).json({

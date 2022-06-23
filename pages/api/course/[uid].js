@@ -21,7 +21,7 @@ function filterById(list, uid) {
   });
 }
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   // Attempts to extract the User ID, if sent
   const { uid } = req.query;
 
@@ -30,12 +30,12 @@ export default function handler(req, res) {
 
   switch (req.method) {
     case "GET":
-      get(child(ref(database), `cards/`)).then((snapshot) => {
+      await get(child(ref(database), `course/`)).then((snapshot) => {
         if (snapshot.exists()) {
           // We then filter out the user's card(s) and return those values
           res.status(200).json(filterById(snapshot.val(), uid));
         } else {
-          res.status(200).json({ error: "No saved cards found" });
+          res.status(200).json({ message: "No tuition found" });
         }
       });
       break;

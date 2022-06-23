@@ -57,6 +57,7 @@ export default function AppLayout({ children }: { children: ReactNode }) {
           onClose={() => onClose}
           display={{ base: "none", md: "block" }}
         />
+
         <Drawer
           autoFocus={false}
           isOpen={isOpen}

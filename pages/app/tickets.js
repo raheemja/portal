@@ -1,4 +1,4 @@
-import { SimpleGrid, Box } from "@chakra-ui/react";
+import { SimpleGrid, Box, AspectRatio } from "@chakra-ui/react";
 
 import Layout from "../../components/layout";
 import AppLayout from "../../components/appLayout.tsx";
@@ -9,7 +9,15 @@ const SupportPage = () => {
   return (
     <>
       <Seo title="Support" />
-      <AppLayout></AppLayout>
+      <AppLayout>
+        <AspectRatio ratio={1}>
+          <iframe
+            title="naruto"
+            src="https://www.support.csglearn.com/"
+            allowFullScreen
+          />
+        </AspectRatio>
+      </AppLayout>
     </>
   );
 };

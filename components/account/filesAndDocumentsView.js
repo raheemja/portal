@@ -47,12 +47,12 @@ const UserFilesAndDocumentsView = (props) => {
       <Row>
         <Col md={8}>
           <Card>
-            <Text>Experience</Text>
+            <Text>Files & Docs</Text>
           </Card>
         </Col>
         <Col md={4}>
           <Card>
-            <Text>Experience</Text>
+            <Text>Files & Docs</Text>
           </Card>
         </Col>
       </Row>

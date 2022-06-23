@@ -32,6 +32,8 @@ import MobileView from "../../common/mobileView";
 import UserAccountView from "../../components/account/userAccountView";
 import UserEducationView from "../../components/account/userEducationView";
 import UserFilesAndDocumentsView from "../../components/account/filesAndDocumentsView";
+import UserExperienceView from "../../components/account/userExperienceView";
+import AccountUserCard from "../../components/account/accountUserCard";
 
 // Icons
 import {
@@ -68,123 +70,13 @@ const AccountPage = () => {
       }
     : null;
 
-  const DetailsTray = () => {
-    return (
-      <>
-        <Row>
-          <Col xs={3} md={3} lg={2}>
-            <Avatar size={"lg"} src={activeUser.avatar} />
-          </Col>
-          <Col xs={9} md={9} lg={10}>
-            <Heading as={"h5"}>{activeUser.displayName}</Heading>
-
-            <BrowserView>
-              <Text>
-                <Badge status="green" colorScheme="green">
-                  {activeUser.role}
-                </Badge>{" "}
-                • <SchoolPreview schoolCode={activeUser.activeSchoolCode} />
-              </Text>
-              <br />
-
-              {activeUser.description ?? (
-                <>
-                  <br />
-                  <Text>{activeUser.description} "browsers"</Text>
-                </>
-              )}
-            </BrowserView>
-          </Col>
-        </Row>
-
-        <MobileView>
-          <Text>
-            <Badge status="green" colorScheme="green">
-              {activeUser.role}
-            </Badge>{" "}
-            • <SchoolPreview schoolCode={activeUser.activeSchoolCode} />
-          </Text>
-          <br />
-
-          {activeUser.description ?? (
-            <>
-              <Box>
-                <Text mt={4}>{activeUser.description} "mobile"</Text>
-              </Box>
-            </>
-          )}
-        </MobileView>
-      </>
-    );
-  };
-
   return (
     <>
       <Seo title={`My Account - ${activeUser.displayName}`} />
       <AppLayout>
-        <Col xs={12}>
-          <Row>
-            <Card xs={12} md={6}>
-              <DetailsTray />
-            </Card>
-          </Row>
-
-          <br />
-          <br />
-          <Tabs variant="soft-rounded" colorScheme="blue" size="sm" isFitted>
-            <TabList>
-              <Tab>
-                <FiUser style={{ marginRight: "10px" }} />
-                Profile
-              </Tab>
-              <Tab>
-                <FiBook style={{ marginRight: "10px" }} />
-                Education
-              </Tab>
-              <Tab>
-                <FiLayers style={{ marginRight: "10px" }} />
-                Experience
-              </Tab>
-              {isBrowser ? (
-                <Tab>
-                  <FiFile style={{ marginRight: "10px" }} />
-                  Files & Documents
-                </Tab>
-              ) : null}
-            </TabList>
-
-            <TabPanels>
-              <TabPanel sx={sx}>
-                <UserAccountView
-                  uid={activeUser.uid || getLoggedInUID()}
-                  self={true}
-                />
-              </TabPanel>
-
-              <TabPanel sx={sx}>
-                <UserEducationView
-                  uid={activeUser.uid || getLoggedInUID()}
-                  self={true}
-                />
-              </TabPanel>
-
-              <TabPanel sx={sx}>
-                <Card>
-                  <Text>This is the Experience tab</Text>
-                  <br />
-                </Card>
-              </TabPanel>
-
-              {isBrowser ? (
-                <TabPanel sx={isMobile ? { width: "105%" } : null}>
-                  <UserFilesAndDocumentsView
-                    uid={activeUser.uid || getLoggedInUID()}
-                  />
-                </TabPanel>
-              ) : null}
-            </TabPanels>
-          </Tabs>
-        </Col>
+        <AccountUserCard />
+        <Col xs={12} md={12} lg={6} xl={6}></Col>
+        <UserAccountView uid={activeUser.uid || getLoggedInUID()} self={true} />
       </AppLayout>
     </>
   );

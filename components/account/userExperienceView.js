@@ -1,13 +1,23 @@
-// React Components
-import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { Component, useEffect, useState } from "react";
+import {
+  Container,
+  Heading,
+  Box,
+  Spinner,
+  Center,
+  Button,
+  Text,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
 // UI Components
-import { Text } from "@chakra-ui/react";
-
-// Appication Components
 import Card from "../../common/card";
+import ContactCard from "./contactCard";
+import Loading from "../../common/loading";
+import NewContactModal from "./newContactModal";
+import { Row, Col } from "react-bootstrap";
+import { useSelector, useDispatch } from "react-redux";
 
 const UserExperienceView = ({ uid, self, ...rest }) => {
   const router = useRouter();
@@ -18,9 +28,18 @@ const UserExperienceView = ({ uid, self, ...rest }) => {
   const [user, setUser] = useState(self ? activeUser : null);
 
   return (
-    <>
-      <Card></Card>
-    </>
+    <Row>
+      <Col md={8}>
+        <Card>
+          <Text>Experience</Text>
+        </Card>
+      </Col>
+      <Col md={4}>
+        <Card>
+          <Text>Experience</Text>
+        </Card>
+      </Col>
+    </Row>
   );
 };
 
