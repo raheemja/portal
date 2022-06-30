@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from "uuid";
 export function ContactModel(props) {
   const { uid, isActive } = props;
   return {
-    id: "",
     imgSrc: "",
     uid: uid || "",
     title: "",
@@ -11,6 +10,6 @@ export function ContactModel(props) {
     phoneNumber: "",
     email: "",
     relationship: "",
-    isActive: isActive || true,
+    active: true,
   };
 }

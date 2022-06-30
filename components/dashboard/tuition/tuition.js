@@ -69,16 +69,18 @@ const Tuition = (props) => {
       });
   }, []);
 
-  if (isLoading) return <Loading />;
+  if (isLoading)
+    return (
+      <Card xs={12} md={12} bg={"blue.400"}>
+        <Loading />
+      </Card>
+    );
 
   return (
     <Card xs={12} md={12} bg={"blue.400"} color={"white"}>
       <Stat>
         <StatLabel>Tuition</StatLabel>
-        <StatNumber>
-          {formatter.format(data.tuition)}
-          {data.message ? <TuitionPopover message={data.message} /> : null}
-        </StatNumber>
+        <StatNumber>{formatter.format(data.tuition)}</StatNumber>
         <StatHelpText>Due {data.due}</StatHelpText>
       </Stat>
 

@@ -1,6 +1,7 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { Provider } from "react-redux";
 import Protected from "../components/protected";
+import Script from "next/script";
 
 // Sore
 import store from "../app/store";
@@ -19,6 +20,8 @@ function MyApp({ Component, pageProps }) {
     <>
       <Provider store={store}>
         <ChakraProvider>
+          <Script src="//fw-cdn.com/1747461/2608830.js" chat="true" />
+
           {Component?.restricted ? (
             <>
               <Protected />

@@ -17,21 +17,21 @@ import {
 } from "@chakra-ui/react";
 
 // Essential app components
-import StudentStartLayout from "../../../components/studentStartLayout.tsx";
-import Seo from "../../../components/seo";
+import StudentStartLayout from "../../../../components/studentStartLayout.tsx";
+import Seo from "../../../../components/seo";
 
 // Custome components
-import Card from "../../../common/card";
+import Card from "../../../../common/card";
 import { Row, Col } from "react-bootstrap";
 import { isMobile, isBrowser } from "react-device-detect";
-import Contacts from "../../../components/account/contacts";
+import Contacts from "../../../../components/account/contacts";
 
 // Icons
 import { FiSave } from "react-icons/fi";
 import { InfoIcon, ChevronRightIcon } from "@chakra-ui/icons";
 
 // Scripts and libraries
-import getLoggedInUID from "../../../scripts/getLoggedInUID";
+import getLoggedInUID from "../../../../scripts/getLoggedInUID";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
@@ -39,7 +39,7 @@ import _ from "lodash";
 import Swal from "sweetalert2";
 
 // Models
-import { ContactModel } from "../../../models/user/contact";
+import { ContactModel } from "../../../../models/user/contact";
 
 const ContactsStartPage = () => {
   const activeUser = useSelector((state) => state.user);
@@ -52,8 +52,8 @@ const ContactsStartPage = () => {
   const axios = require("axios").default;
 
   // Data
-  const relationships = require("../../../data/relationships.json");
-  const titles = require("../../../data/titles.json");
+  const relationships = require("../../../../data/relationships.json");
+  const titles = require("../../../../data/titles.json");
 
   const handleChange = (e) => {
     const { name, value } = e.target;

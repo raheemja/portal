@@ -9,12 +9,10 @@ const Seo = (props) => {
         <title>{props.title} | Student SIS</title>
         <meta name="og:title" content={props.title} />
         <meta name="twitter:title" content={props.title} />
-
         {/* Description */}
         <meta name="description" content={props.description} />
         <meta name="og:description" content={props.description} />
         <meta name="twitter:description" content={props.description} />
-
         {/* Other Important Meta tags */}
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

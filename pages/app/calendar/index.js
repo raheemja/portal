@@ -1,9 +1,9 @@
 import { SimpleGrid, Box } from "@chakra-ui/react";
 
-import Layout from "../../components/layout";
-import AppLayout from "../../components/appLayout.tsx";
+import Layout from "../../../components/layout";
+import AppLayout from "../../../components/appLayout.tsx";
 
-import Seo from "../../components/seo";
+import Seo from "../../../components/seo";
 
 const CalendarPage = () => {
   return (

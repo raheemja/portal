@@ -7,8 +7,19 @@ import { v4 as uuidv4 } from "uuid";
 
 const database = getDatabase();
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   const method = req.method;
+
+  const { MongoClient, ServerApiVersion } = require("mongodb");
+
+  const uri =
+    "mongodb+srv://webapp:XlGYOTRSozgWfy8N@cluster0.1nm6qnu.mongodb.net/?retryWrites=true&w=majority";
+
+  const client = new MongoClient(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverApi: ServerApiVersion.v1,
+  });
 
   switch (method) {
     case "GET":
@@ -42,14 +53,28 @@ export default function handler(req, res) {
       break;
 
     case "POST":
-      let contact = req.query;
-      contact.id = uuidv4();
-      set(ref(database, "contacts/" + contact.id), contact);
-      res.status(200).json({
-        success: {
-          message: `Contact ${contact.displayName} saved successfully.`,
-        },
-      });
+      const { contact } = req.query;
+
+      try {
+        // Connect the client to the server
+        await client.connect();
+
+        const database = client.db("students");
+
+        const students = database.collection("contacts");
+        const results = await students.insertOne(contact);
+
+        res.status(200).json({
+          success: {
+            message: `Contact ${contact.displayName} saved successfully.`,
+          },
+        });
+      } catch (e) {
+        console.log(e);
+      } finally {
+        await client.close();
+      }
+
       break;
 
     case "DELETE":

@@ -45,16 +45,16 @@ import { Row, Col } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 
 // Components
-import AppLayout from "../../components/appLayout.tsx";
-import Seo from "../../components/seo";
-import Card from "../../common/card";
-import { isMobile, isBrowser } from "react-device-detect";
+import AppLayout from "../../../components/appLayout.tsx";
+import Seo from "../../../components/seo";
+import Card from "../../../common/card";
+import { isMobile, isBrowser, isTablet } from "react-device-detect";
 
 // Dashboard components
-import Todo from "../../components/dashboard/todo/todo.tsx";
-import Tuition from "../../components/dashboard/tuition/tuition";
-import GPA from "../../components/dashboard/gpa/gpa";
-import AcademicPerformance from "../../components/dashboard/ap/academicPerformance";
+import Todo from "../../../components/dashboard/todo/todo.tsx";
+import Tuition from "../../../components/dashboard/tuition/tuition";
+import GPA from "../../../components/dashboard/gpa/gpa";
+import AcademicPerformance from "../../../components/dashboard/ap/academicPerformance";
 
 // Icons
 import { FiExternalLink, FiBookmark, FiUser } from "react-icons/fi";
@@ -75,38 +75,38 @@ const DashboardPage = () => {
     <>
       <Seo title="Dashboard" />
       <AppLayout>
-        <Col xs={12} md={8}>
-          <Heading
-            pt={2}
-            as={"h3"}
-            size="lg"
-            color={useColorModeValue("gray.600", "gray.600")}
-          >
-            {activeUser.firstName}'s Dashboard
-          </Heading>
+        <Heading
+          pt={2}
+          as={"h3"}
+          size="lg"
+          color={useColorModeValue("gray.600", "gray.600")}
+        >
+          {activeUser.firstName}'s Dashboard
+        </Heading>
 
-          <Breadcrumb
-            pt={1}
-            spacing="8px"
-            separator={<ChevronRightIcon color="gray.500" />}
-          >
-            <BreadcrumbItem>
-              <BreadcrumbLink color="blue.500">App</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem isCurrentPage>
-              <BreadcrumbLink
-                onClick={(e) => {
-                  router.push("/app/dashboard");
-                }}
-                color="blue.500"
-              >
-                Dashboard
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-          </Breadcrumb>
+        <Breadcrumb
+          pt={1}
+          spacing="8px"
+          separator={<ChevronRightIcon color="gray.500" />}
+        >
+          <BreadcrumbItem>
+            <BreadcrumbLink color="blue.500">App</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbItem isCurrentPage>
+            <BreadcrumbLink
+              onClick={(e) => {
+                router.push("/app/dashboard");
+              }}
+              color="blue.500"
+            >
+              Dashboard
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+        </Breadcrumb>
 
-          <br />
-
+        <br />
+        <br />
+        <Col xs={12} md={12} lg={8} xl={8}>
           <Card bg={""} xs={12} md={12}>
             <br />
             <Text
@@ -125,7 +125,7 @@ const DashboardPage = () => {
             </>
           ) : null}
 
-          {isMobile ? (
+          {isMobile || isTablet ? (
             <>
               <Row>
                 <Tuition />
@@ -137,12 +137,18 @@ const DashboardPage = () => {
         </Col>
 
         {isBrowser ? (
-          <Col xs={12} md={4}>
-            <Row>
-              <Tuition />
-              <Todo />
-            </Row>
-          </Col>
+          <>
+            <br />
+            <br />
+            <br />
+            <br />
+            <Col xs={12} md={4} lg={4} xl={4}>
+              <Row>
+                <Tuition />
+                <Todo />
+              </Row>
+            </Col>
+          </>
         ) : null}
 
         <br />

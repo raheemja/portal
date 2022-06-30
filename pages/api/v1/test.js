@@ -32,7 +32,7 @@ export default function handler(req, res) {
 
       // Establish and verify connection
       await client.db("admin").command({ ping: 1 });
-      res.status(200).json({ message: "Connected successfully to server" });
+      res.status(200).json(result);
     } finally {
       // Ensures that the client will close when you finish/error
       await client.close();

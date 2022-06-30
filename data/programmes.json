@@ -1,0 +1,131 @@
+[
+  {
+    "id": "CSEC",
+    "name": "CSEC Programme",
+    "description": "Registration is now open for our online CSEC classes for the academic year 2022/ 2023. Candidates are able to register for online classes for the January and the May/ June 2023 exams.",
+    "startDate": "August 8, 2022",
+    "endDate": "",
+    "logo": "https://www.csglearn.com/static/bc0587b39c3f0e12f83351264060ee00/8c6ff/csec.webp",
+    "duration": "10 Months",
+    "orientation": "Orientation - July 25, 2022",
+    "paymentFrequency": "Per subject per month"
+  },
+  {
+    "id": "CAPE",
+    "name": "CAPE Programme",
+    "description": "Registration is now open for our online CAPE classes for the academic year 2022/ 2023. Candidates are able to register for online classes for the January and the May/ June 2023 exams.",
+    "startDate": "August 8, 2022",
+    "endDate": "",
+    "logo": "https://www.csglearn.com/static/8ba8f5c952b0f16c69a3967a6f04689a/8c6ff/cape.webp",
+    "duration": "10 Months",
+    "orientation": "Orientation - July 25, 2022",
+
+    "paymentFrequency": "Per subject per month"
+  },
+  {
+    "id": "SATs",
+    "name": "SATs Programme",
+    "description": "The SAT is an entrance exam used by most colleges and universities to make admissions decisions. The SAT is a multiple-choice, pencil-and-paper test created and administered by the College Board and in Jamaica.",
+    "startDate": "",
+    "endDate": "",
+    "startDate": "July 6, 2022",
+    "logo": "https://www.csglearn.com/static/sat-3b10ab9d35b42991d64ca7241e8574bc.png",
+    "duration": "3 Months",
+    "orientation": "July, 2022",
+
+    "paymentFrequency": ""
+  },
+  {
+    "id": "Diplomas in Spanish",
+    "name": "Diplomas in Spanish",
+    "description": "The The Diplomas in Spanish are official diplomas certifying a degree of competence and mastery of the Spanish language. Students of all ages and levels in Spanish are able to take this exam, whether they are a beginner, at the intermediate level or fluent.",
+    "startDate": "July 25, 2022",
+    "endDate": "",
+    "logo": "https://csglearn.com/static/5043e59bb79b010b0f42cd2774f3490c/8495a/dele.webp",
+    "duration": "3 Months",
+    "orientation": "",
+
+    "paymentFrequency": ""
+  },
+  {
+    "id": "Diplomas in French",
+    "name": "Diplomas in French",
+    "description": "DELF (Diplôme d’Etudes en Langue Française) and DALF (Diplôme Approfondi en Langue Française) are the only French language Diplomas certified by the French Ministry of Education French.",
+    "startDate": "July 25, 2022",
+    "endDate": "",
+    "logo": "https://www.alliancefrancaise.org.tw/wp-content/uploads/2018/09/DelfDalf-CMJN.jpg",
+    "duration": "3 Months",
+    "orientation": "",
+
+    "paymentFrequency": ""
+  },
+  {
+    "id": "",
+    "name": "",
+    "description": "",
+    "startDate": "",
+    "endDate": "",
+    "logo": "",
+    "duration": "",
+    "orientation": "",
+
+    "paymentFrequency": ""
+  },
+  {
+    "id": "",
+    "name": "",
+    "description": "",
+    "startDate": "",
+    "endDate": "",
+    "logo": "",
+    "duration": "",
+    "orientation": "",
+
+    "paymentFrequency": ""
+  },
+  {
+    "id": "",
+    "name": "",
+    "description": "",
+    "startDate": "",
+    "endDate": "",
+    "logo": "",
+    "duration": "",
+    "orientation": "",
+    "paymentFrequency": ""
+  },
+  {
+    "id": "",
+    "name": "",
+    "description": "",
+    "startDate": "",
+    "endDate": "",
+    "logo": "",
+    "duration": "",
+    "orientation": "",
+    "paymentFrequency": ""
+  },
+  {
+    "id": "PEP (Primary Exit Profile)",
+    "name": "PEP (Primary Exit Profile)",
+    "description": "The Primary Exit Profile (PEP) is a series of assessments that will replace the existing Grade Six Achievement Test (GSAT). PEP will provide a profile of where the student is academically, the student’s strengths and weaknesses, and their readiness for grade 7. PEP will assess students’ knowledge, in addition to placing increased emphasis on assessing 21st century skills including critical thinking and communication",
+    "startDate": "September 12, 2022",
+    "endDate": "",
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLWGLZnJlqT3aR08HpOzYlHO0yKCVAv3X5M0KMLDnVLHBPxAvfJ0XvG8cBqIxNbG-Q4Mg&usqp=CAU",
+    "duration": "5 Months",
+    "paymentFrequency": "",
+    "orientation": "Orientation - September, 2022"
+  },
+  {
+    "id": "Short Course",
+    "name": "Short Course",
+    "description": "",
+    "startDate": "N/A",
+    "endDate": "",
+    "logo": "https://media-exp1.licdn.com/dms/image/C4E0BAQFAQRiQR_871Q/company-logo_200_200/0/1601566688558?e=2147483647&v=beta&t=XnlvvwgY8p5QC6CufdxCC1f2pLYi02yAvN-A3r2RaLA",
+    "duration": "6 Weeks",
+    "orientation": "",
+
+    "paymentFrequency": ""
+  }
+]

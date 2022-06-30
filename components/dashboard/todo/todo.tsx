@@ -18,6 +18,7 @@ import {
   useBreakpointValue,
   Alert,
   AlertIcon,
+  Heading,
 } from "@chakra-ui/react";
 
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
@@ -53,11 +54,11 @@ const items = {
     message: "Choose the subjects and/ or courses you'd like to enroll in.",
     action: "Get Started",
     category: "COURSE",
-    href: "/app/courses",
+    href: "/app/apply",
   },
   "1": {
     id: "0",
-    title: "Comlete your account",
+    title: "Complete your account",
     message:
       "Complete your sudent profile so you can starting applying for courses.",
     action: "Get Started",
@@ -77,9 +78,20 @@ const NewTodo = () => {
 const Todo = () => {
   const activeUser = useSelector((state) => state.user);
 
-  const [data, setData] = useState([]);
-  const [isLoading, setLoading] = useState(false);
+  const [todos, setTodos] = useState({
+    "0": {
+      id: "1",
+      title: "Start Applying",
+      message: "Choose the subjects and/ or courses you'd like to enroll in.",
+      action: "Get Started",
+      category: "COURSE",
+      href: "/app/apply",
+    },
+  });
+
+  const [isLoading, setLoading] = useState(true);
   const [message, setMessage] = useState();
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     setLoading(true);
@@ -89,8 +101,10 @@ const Todo = () => {
       .then((data) => {
         if (data.message) {
           setMessage(data.message);
+          setCount(Object.values(items).length);
         } else {
-          setData(data);
+          setTodos(data);
+          setCount(Object.values(data).length);
         }
       });
 
@@ -99,30 +113,63 @@ const Todo = () => {
 
   if (isLoading) {
     return (
-      <>
+      <Card xs={12} md={12} lg={12} xl={12}>
+        <Heading as={"h5"} size={"md"} color={"gray.600"}>
+          My Todo List
+        </Heading>
+        <br />
+
         <Loading />
-      </>
+      </Card>
     );
   }
 
   return (
-    <Box position={"relative"} height={""} width={"full"} overflow={"hidden"}>
-      {Object.values(items).map((item, i) => {
-        return (
-          <div key={i} style={{ background: "" }}>
-            <TodoItem
-              title={item.title}
-              message={item.message}
-              category={item.category}
-              href={item.href}
-              action={item.action}
-            />
-          </div>
-        );
-      })}
-      <NewTodo />
-    </Box>
+    <>
+      <Card
+        position={"relative"}
+        height={""}
+        width={"full"}
+        overflow={"hidden"}
+        xs={12}
+        md={12}
+        lg={12}
+        xl={12}
+      >
+        <Heading as={"h5"} size={"md"} color={"gray.600"}>
+          My Todo List
+        </Heading>
+        <br />
+
+        {Object.values(todos).map((item, i) => {
+          return (
+            <div key={i} style={{ background: "" }}>
+              {count > 1 && i !== 0 ? (
+                <>
+                  <hr style={{ margin: "30px" }} />
+                </>
+              ) : null}
+
+              <TodoItem
+                title={item.title}
+                message={item.message}
+                category={item.category}
+                href={item.href}
+                action={item.action}
+              />
+            </div>
+          );
+        })}
+        <NewTodo />
+      </Card>
+    </>
   );
 };
+
+export async function getServerSideProps(context) {
+  return {
+    props: {}, // will be passed to the page component as props
+  };
+}
 
 export default Todo;

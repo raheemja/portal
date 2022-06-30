@@ -11,6 +11,7 @@ import {
   Stack,
   HStack,
   ButtonGroup,
+  Heading,
 } from "@chakra-ui/react";
 
 import Link from "next/link";
@@ -46,8 +47,13 @@ const TodoItem = (props) => {
             rounded={"md"}
             overflow={"hidden"}
           >
-            <Stack textAlign={"left"} p={6} align={"left"}>
-              <br /> <br /> <br />
+            <br />
+            <Stack textAlign={"left"} align={"left"}>
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
             </Stack>
           </Box>
         </Col>
@@ -60,7 +66,16 @@ const TodoItem = (props) => {
             rounded={"md"}
             overflow={"hidden"}
           >
-            <Stack textAlign={"left"} p={6} align={"left"}>
+            <Stack textAlign={"left"} align={"left"}>
+              <Heading
+                pt={2}
+                as={"h6"}
+                size="sm"
+                color={useColorModeValue("gray.500", "gray.500")}
+              >
+                {title}
+              </Heading>
+
               <Text
                 color={"gray.500"}
                 fontSize={{ base: "sm", sm: "md" }}
@@ -83,8 +98,6 @@ const TodoItem = (props) => {
           </Box>
         </Col>
       </Row>
-
-      <br />
     </>
   );
 };

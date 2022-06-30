@@ -17,6 +17,8 @@ import {
   useBreakpointValue,
   IconProps,
   Icon,
+  FormHelperText,
+  FormControl,
 } from "@chakra-ui/react";
 
 // Redux components and hooks
@@ -178,36 +180,41 @@ function LoginComponent(props) {
           </Stack>
           <Box as={"form"} mt={10}>
             <Stack spacing={4}>
-              <Input
-                placeholder="Email"
-                type="email"
-                name="email"
-                id="email"
-                bg={"gray.100"}
-                border={0}
-                color={"gray.500"}
-                _placeholder={{
-                  color: "gray.500",
-                }}
-                onChange={(e) => {
-                  handleChange(e);
-                }}
-              />
-              <Input
-                placeholder="Password"
-                bg={"gray.100"}
-                type="password"
-                name="password"
-                id="password"
-                border={0}
-                color={"gray.500"}
-                _placeholder={{
-                  color: "gray.500",
-                }}
-                onChange={(e) => {
-                  handleChange(e);
-                }}
-              />
+              <FormControl>
+                <Input
+                  placeholder="Email"
+                  type="email"
+                  name="email"
+                  id="email"
+                  bg={"gray.100"}
+                  border={0}
+                  color={"gray.500"}
+                  _placeholder={{
+                    color: "gray.500",
+                  }}
+                  onChange={(e) => {
+                    handleChange(e);
+                  }}
+                />
+              </FormControl>
+
+              <FormControl>
+                <Input
+                  placeholder="Password"
+                  bg={"gray.100"}
+                  type="password"
+                  name="password"
+                  id="password"
+                  border={0}
+                  color={"gray.500"}
+                  _placeholder={{
+                    color: "gray.500",
+                  }}
+                  onChange={(e) => {
+                    handleChange(e);
+                  }}
+                />
+              </FormControl>
             </Stack>
 
             <Button

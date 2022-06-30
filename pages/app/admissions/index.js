@@ -34,16 +34,16 @@ import {
 } from "@chakra-ui/react";
 
 // Essential app components
-import Seo from "../../components/seo";
+import Seo from "../../../components/seo";
 
 // Custom components
-import Card from "../../common/card";
+import Card from "../../../common/card";
 import { Row, Col } from "react-bootstrap";
 import { isMobile, isBrowser } from "react-device-detect";
 import DatePicker from "react-datepicker";
 
 // Adminssions page components
-import AppLayout from "../../components/appLayout.tsx";
+import AppLayout from "../../../components/appLayout.tsx";
 
 // Icons
 import { FiSave } from "react-icons/fi";
@@ -55,7 +55,7 @@ import {
 } from "@chakra-ui/icons";
 
 // Scripts and libraries
-import getLoggedInUID from "../../scripts/getLoggedInUID";
+import getLoggedInUID from "../../../scripts/getLoggedInUID";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";

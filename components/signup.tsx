@@ -317,13 +317,13 @@ export default function SignupComponent() {
                 >
                   <HStack direction="row" spacing="30px">
                     <Radio
-                      value="STUDENT"
+                      value="Student"
                       defaultChecked={true}
                       isChecked={true}
                     >
                       I am a student
                     </Radio>
-                    <Radio value="PARENT">I am a parent</Radio>
+                    <Radio value="Parent">I am a parent</Radio>
                   </HStack>
                 </RadioGroup>
               </FormControl>

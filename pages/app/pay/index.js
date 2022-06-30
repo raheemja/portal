@@ -36,16 +36,16 @@ import {
 } from "@chakra-ui/react";
 
 // Essential app components
-import Seo from "../../components/seo";
+import Seo from "../../../components/seo";
 
 // Custom components
-import Card from "../../common/card";
+import Card from "../../../common/card";
 import { Row, Col } from "react-bootstrap";
 import { isMobile, isBrowser } from "react-device-detect";
 import DatePicker from "react-datepicker";
 
 // Adminssions page components
-import AppLayout from "../../components/appLayout.tsx";
+import AppLayout from "../../../components/appLayout.tsx";
 
 // Icons
 import { FiSave } from "react-icons/fi";
@@ -57,7 +57,7 @@ import {
 } from "@chakra-ui/icons";
 
 // Scripts and libraries
-import getLoggedInUID from "../../scripts/getLoggedInUID";
+import getLoggedInUID from "../../../scripts/getLoggedInUID";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
@@ -68,7 +68,7 @@ import Swal from "sweetalert2";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 
-import CheckoutForm from "../../components/checkout/checkout";
+import CheckoutForm from "../../../components/checkout/checkout";
 // import "./App.css";
 
 // Make sure to call loadStripe outside of a component’s render to avoid
@@ -81,6 +81,7 @@ const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
 export default function PaymentPage() {
   const [clientSecret, setClientSecret] = useState("");
 
+  /*
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
     fetch("/api/p/create-payment-intent", {
@@ -91,6 +92,7 @@ export default function PaymentPage() {
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
   }, []);
+  */
 
   const appearance = {
     theme: "stripe",

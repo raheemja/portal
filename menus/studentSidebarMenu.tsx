@@ -24,7 +24,7 @@ const LinkItems: Array<LinkItemProps> = [
   { name: "Courses", icon: FiCompass, href: "/app/courses" },
   { name: "Calendar", icon: FiCalendar, href: "/app/calendar" },
   { name: "Bursary", icon: FiCreditCard, href: "/app/bursary" },
-  { name: "Support Tickets", icon: FiHelpCircle, href: "/app/tickets" },
+  { name: "Tickets & Support", icon: FiHelpCircle, href: "/app/tickets" },
   { name: "Settings", icon: FiSettings, href: "/app/settings" },
 ];
 

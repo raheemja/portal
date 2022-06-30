@@ -18,23 +18,23 @@ import {
 } from "@chakra-ui/react";
 
 // Essential app components
-import StudentStartLayout from "../../../components/studentStartLayout.tsx";
-import Seo from "../../../components/seo";
+import StudentStartLayout from "../../../../components/studentStartLayout.tsx";
+import Seo from "../../../../components/seo";
 
 // Custom components
-import Card from "../../../common/card";
+import Card from "../../../../common/card";
 import { Row, Col } from "react-bootstrap";
 import { isMobile, isBrowser } from "react-device-detect";
 
 // Models
-import { UserExperienceModel } from "../../../models/user/userExperience";
+import { UserExperienceModel } from "../../../../models/user/userExperience";
 
 // Icons
 import { FiSave } from "react-icons/fi";
 import { InfoIcon, ChevronRightIcon } from "@chakra-ui/icons";
 
 // Scripts and libraries
-import getLoggedInUID from "../../../scripts/getLoggedInUID";
+import getLoggedInUID from "../../../../scripts/getLoggedInUID";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
@@ -42,7 +42,7 @@ import _ from "lodash";
 import Swal from "sweetalert2";
 
 // Data
-const occupations = require("../../../data/occupations.json");
+const occupations = require("../../../../data/occupations.json");
 
 const ExperienceStartPage = () => {
   const activeUser = useSelector((state) => state.user);
@@ -55,7 +55,7 @@ const ExperienceStartPage = () => {
   const router = useRouter();
 
   // Data
-  const months = require("../../../data/months-detailed.json");
+  const months = require("../../../../data/months-detailed.json");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -352,7 +352,7 @@ const ExperienceStartPage = () => {
                 <Button
                   onClick={(e) => {
                     e.preventDefault();
-                    router.push("/app/courses");
+                    router.push("/app/apply");
                   }}
                 >
                   Skip

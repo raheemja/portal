@@ -107,7 +107,7 @@ const AccountUserCard = (props) => {
         <Col xs={12} md={6}>
           <HStack pt={1}>
             <FiPhone color="green" />
-            <Text fontSize={{ base: "md", sm: "md" }} color={"gray.500"}>
+            <Text fontSize={{ base: "md", sm: "md" }} color={"gray.600"}>
               +1 {phoneFormat(activeUser.phoneNumber)}
             </Text>
           </HStack>
@@ -135,7 +135,7 @@ const AccountUserCard = (props) => {
           </Heading>
 
           {/*  */}
-          <Text color={"blue.400"} fontSize={{ base: "sm", sm: "md" }}>
+          <Text fontSize={{ base: "sm", sm: "md" }} color={"gray.600"}>
             <Badge color={"white"} bg={getBadgeColor()}>
               {activeUser.role}
             </Badge>{" "}

@@ -20,11 +20,11 @@ import {
 } from "@chakra-ui/react";
 
 // Essential app components
-import StudentStartLayout from "../../../components/studentStartLayout.tsx";
-import Seo from "../../../components/seo";
+import StudentStartLayout from "../../../../components/studentStartLayout.tsx";
+import Seo from "../../../../components/seo";
 
 // Custom components
-import Card from "../../../common/card";
+import Card from "../../../../common/card";
 import { Row, Col } from "react-bootstrap";
 import { isMobile, isBrowser } from "react-device-detect";
 
@@ -32,13 +32,10 @@ import { isMobile, isBrowser } from "react-device-detect";
 
 // Icons
 import { FiSave } from "react-icons/fi";
-import {
-  InfoIcon,
-  ChevronRightIcon,
-} from "@chakra-ui/icons";
+import { InfoIcon, ChevronRightIcon } from "@chakra-ui/icons";
 
 // Scripts and libraries
-import getLoggedInUID from "../../../scripts/getLoggedInUID";
+import getLoggedInUID from "../../../../scripts/getLoggedInUID";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
@@ -60,7 +57,7 @@ const ProfileStartPage = () => {
   const axios = require("axios").default;
 
   // Countries
-  const countries = require("../../../data/countries.json");
+  const countries = require("../../../../data/countries.json");
 
   const saveChanges = () => {
     if (

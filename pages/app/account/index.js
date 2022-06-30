@@ -18,22 +18,22 @@ import {
 } from "@chakra-ui/react";
 
 // Components
-import Seo from "../../components/seo";
-import AppLayout from "../../components/appLayout.tsx";
-import Card from "../../common/card";
+import Seo from "../../../components/seo";
+import AppLayout from "../../../components/appLayout.tsx";
+import Card from "../../../common/card";
 import { Row, Col } from "react-bootstrap";
-import SchoolPreview from "../../components/schoolPreview";
+import SchoolPreview from "../../../components/schoolPreview";
 
 // Commmon Components
-import BrowserView from "../../common/browserView";
-import MobileView from "../../common/mobileView";
+import BrowserView from "../../../common/browserView";
+import MobileView from "../../../common/mobileView";
 
 // User display Components
-import UserAccountView from "../../components/account/userAccountView";
-import UserEducationView from "../../components/account/userEducationView";
-import UserFilesAndDocumentsView from "../../components/account/filesAndDocumentsView";
-import UserExperienceView from "../../components/account/userExperienceView";
-import AccountUserCard from "../../components/account/accountUserCard";
+import UserAccountView from "../../../components/account/userAccountView";
+import UserEducationView from "../../../components/account/userEducationView";
+import UserFilesAndDocumentsView from "../../../components/account/filesAndDocumentsView";
+import UserExperienceView from "../../../components/account/userExperienceView";
+import AccountUserCard from "../../../components/account/accountUserCard";
 
 // Icons
 import {
@@ -46,7 +46,7 @@ import {
 } from "react-icons/fi";
 
 // Scripts and libraries
-import getLoggedInUID from "../../scripts/getLoggedInUID";
+import getLoggedInUID from "../../../scripts/getLoggedInUID";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { isMobile, isBrowser } from "react-device-detect";
