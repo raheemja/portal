@@ -12,16 +12,12 @@ import "../styles/bootstrap-views.css";
 import "../styles/style.css";
 import "../components/checkout/checkout.css";
 
-// Firebase App Object
-import app from "../firebase/app";
-
 function MyApp({ Component, pageProps }) {
   return (
     <>
+      <Script src="//fw-cdn.com/1747461/2608830.js" chat="true" />
       <Provider store={store}>
         <ChakraProvider>
-          <Script src="//fw-cdn.com/1747461/2608830.js" chat="true" />
-
           {Component?.restricted ? (
             <>
               <Protected />
