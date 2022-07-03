@@ -148,6 +148,41 @@ const CoursesPage = (props) => {
     });
   };
 
+  const ButtonActions = () => {
+    return (
+      <Row>
+        <Col xs={6}>
+          <Button
+            variant={"outline"}
+            colorScheme="red"
+            size="md"
+            onClick={(e) => {
+              e.preventDefault();
+
+              router.push("/app/dashboard");
+            }}
+          >
+            Cancel
+          </Button>
+        </Col>
+        <Col xs={6}>
+          <Button
+            bg={"blue.400"}
+            color={"white"}
+            size="md"
+            w={"full"}
+            onClick={(e) => {
+              e.preventDefault();
+              submit();
+            }}
+          >
+            Submit
+          </Button>
+        </Col>
+      </Row>
+    );
+  };
+
   const EmptyCol = () => {
     return (
       <>
@@ -540,32 +575,7 @@ const CoursesPage = (props) => {
         <Col xs={12} md={12} lg={12} xl={12}></Col>
 
         <Col xs={6} md={6} lg={6} xl={6}>
-          <Stack>
-            <ButtonGroup>
-              <Button
-                colorScheme="red"
-                size="md"
-                onClick={(e) => {
-                  e.preventDefault();
-
-                  router.push("/app/dashboard");
-                }}
-              >
-                Cancel
-              </Button>
-              <Button
-                bg={"blue.400"}
-                color={"white"}
-                size="md"
-                onClick={(e) => {
-                  e.preventDefault();
-                  submit();
-                }}
-              >
-                Submit Application
-              </Button>
-            </ButtonGroup>
-          </Stack>
+          <ButtonActions />
           <br />
           <br />
         </Col>

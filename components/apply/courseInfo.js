@@ -123,6 +123,7 @@ const CourseInfo = ({ course, courses, selectedCourses }) => {
           >
             My Selected Courses
           </Heading>
+
           <Text color={"gray.600"} fontSize={{ base: "sm", sm: "md" }}>
             {selectedCourses.length > 0
               ? "Here'a breakdown of your selection, including your tuition fees and course outline. Chick on a subject to view the syllabus and course outline."
