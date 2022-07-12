@@ -12,9 +12,12 @@ import "../styles/bootstrap-views.css";
 import "../styles/style.css";
 import "../components/checkout/checkout.css";
 
+import App from "../firebase/app";
+
 function MyApp({ Component, pageProps }) {
   return (
     <>
+      <App />
       <Script src="//fw-cdn.com/1747461/2608830.js" chat="true" />
       <Provider store={store}>
         <ChakraProvider>
